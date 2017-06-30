@@ -1,0 +1,10 @@
+*
+!.i3/config
+!.compton.conf
+!.bashr
+!.vimrc
+!.vim
+!.local/bin/conky-i3bar
+!.conkyrc
+!.config/rofi/config
+!.gitignore

@@ -28,7 +28,7 @@ TEXT
   { "full_text" : "${execi 60 nvidia-settings -query GPUCoreTemp | perl -ne 'print $1 if /GPUCoreTemp.*?\]\): (\d+)./;'}°C", "color" : "\#93E0E3", "min_width" : 25, "separator" : false, "separator_block_width" : 3 }, \
 \
   { "full_text" : " | mem ", "color" : "\#EEE8D5", "separator" : false, "separator_block_width" : 3 }, \
-  { "full_text" : "${memperc}% ${mem}", "color" : ${if_match ${memperc}>80}"\#ff1844"${else}"\#93E0E3"${endif}, "min_width" : 25, "separator" : false, "separator_block_width" : 3 }, \
+  { "full_text" : "${memperc}%  ${mem}", "color" : ${if_match ${memperc}>80}"\#ff1844"${else}"\#93E0E3"${endif}, "min_width" : 25, "separator" : false, "separator_block_width" : 3 }, \
 \
   { "full_text" : " | up", "color" : "\#EEE8D5", "separator" : false, "separator_block_width" : 3 }, \
   { "full_text" : "${upspeed enp5s0}", "color" : "\#93E0E3", "min_width" : 25, "separator" : false, "separator_block_width" : 3 }, \
