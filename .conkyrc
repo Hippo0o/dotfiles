@@ -1,0 +1,43 @@
+# vim: filetype=rc:
+# conky
+out_to_x                no
+override_utf8_locale    no
+own_window              no
+
+# conky-cli
+background              no
+out_to_console          yes
+update_interval         2.0
+total_run_times         0
+short_units             yes
+use_spacer              left
+cpu_avg_samples         2
+max_text_width          0
+
+# JSON for i3bar
+TEXT
+
+[ \
+  { "full_text" : "load ", "color" : "\#EEE8D5", "separator" : false, "separator_block_width" : 3 }, \
+  { "full_text" : "${loadavg 1}", "color" : ${if_match ${loadavg 1}>5}"\#DC322F" ${else}"\#FFFFFF"${endif}, "separator" : false, "separator_block_width" : 3 }, \
+\
+  { "full_text" : " | cpu ", "color" : "\#EEE8D5", "separator" : false, "separator_block_width" : 3 }, \
+  { "full_text" : "${cpu cpu0}% ${platform f71882fg.1536 temp 1}°C", "color" : ${if_match ${platform f71882fg.1536 temp 1}>65}"\#DC322F"${else}"\#FFFFFF"${endif}, "min_width" : 25, "separator" : false, "separator_block_width" : 3 }, \
+\
+  { "full_text" : " | gpu ", "color" : "\#EEE8D5", "separator" : false, "separator_block_width" : 3 }, \
+  { "full_text" : "${execi 60 nvidia-settings -query GPUCoreTemp | perl -ne 'print $1 if /GPUCoreTemp.*?\]\): (\d+)./;'}°C", "color" : "\#FFFFFF", "min_width" : 25, "separator" : false, "separator_block_width" : 3 }, \
+\
+  { "full_text" : " | mem ", "color" : "\#EEE8D5", "separator" : false, "separator_block_width" : 3 }, \
+  { "full_text" : "${memperc}% ${mem}", "color" : ${if_match ${memperc}>80}"\#DC322F"${else}"\#FFFFFF"${endif}, "min_width" : 25, "separator" : false, "separator_block_width" : 3 }, \
+\
+  { "full_text" : " | up", "color" : "\#EEE8D5", "separator" : false, "separator_block_width" : 3 }, \
+  { "full_text" : "${upspeed enp5s0}", "color" : "\#FFFFFF", "min_width" : 25, "separator" : false, "separator_block_width" : 3 }, \
+\
+  { "full_text" : " down", "color" : "\#EEE8D5", "separator" : false, "separator_block_width" : 3 }, \
+  { "full_text" : "${downspeed enp5s0}", "color" : "\#FFFFFF", "min_width" : 25, "separator" : false, "separator_block_width" : 3 }, \
+\
+  { "full_text" : " | ", "color" : "\#EEE8D5", "separator" : false, "separator_block_width" : 3 }, \
+  { "full_text" : "${time %d %B %Y %H:%M}", "color" : "\#FFFFFF", "separator" : false, "separator_block_width" : 3 }, \
+\
+  { "full_text" : " ", "color" : "\#FFFFFF", "separator" : false, "separator_block_width" : 3 } \
+],
