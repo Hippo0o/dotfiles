@@ -1,4 +1,5 @@
 *
+!.gitignore
 !.i3/config
 !.compton.conf
 !.bashr
@@ -7,4 +8,5 @@
 !.local/bin/conky-i3bar
 !.conkyrc
 !.config/rofi/config
-!.gitignore
+!.local/bin/intelX
+!.local/bin/nvidiaX

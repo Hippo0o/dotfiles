@@ -9,6 +9,11 @@
 
 PS1='\[\033[01;36m\][\u@\h\[\033[01;37m\] \W\[\033[01;36m\]]\$\[\033[00m\] '
 
+[ -e "/etc/DIR_COLORS" ] && DIR_COLORS="/etc/DIR_COLORS"
+[ -e "$HOME/.dircolors" ] && DIR_COLORS="$HOME/.dircolors"
+[ -e "$DIR_COLORS" ] || DIR_COLORS=""
+eval "`dircolors -b $DIR_COLORS`"
+
 # custom global bash
 shopt -s expand_aliases
 
