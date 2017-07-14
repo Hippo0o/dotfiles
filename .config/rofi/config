@@ -41,8 +41,8 @@ rofi.hlbg:                           fg
 rofi.bc:                             magenta5
 ! Use extended color scheme
 rofi.color-enabled: true
-rofi.color-window: argb:fa1e1e1e, #93E0E3, #394249
-rofi.color-normal: argb:00000000, #c1c1c1, argb:00000000, #93E0E3, #1e1e1e
+rofi.color-window: argb:ef1e1e1e, #93E0E3, #394249
+rofi.color-normal: argb:00000000, #93E0E3, argb:00000000, #93E0E3, #1e1e1e
 rofi.color-active: argb:00000000, #ff1844, argb:00000000, #ff1844, #1e1e1e
 rofi.color-urgent: argb:00000000, #ff1844, argb:00000000, #93E0E3, #ff1844
 
