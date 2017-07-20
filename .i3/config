@@ -107,7 +107,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'
 
 bindsym Print exec scrot
 
@@ -196,13 +196,12 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (Shift+h) hybrid-sleep, (r) reboot, (Shift+s) shutdown
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hybrid-sleep, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
     bindsym l exec --no-startup-id loginctl lock-session $XDG_SESSION_ID, mode "default"
     bindsym e exec --no-startup-id i3-msg exit, mode "default"
     bindsym s exec --no-startup-id systemctl suspend, mode "default"
-    bindsym h exec --no-startup-id systemctl hibernate, mode "default"
-    bindsym Shift+h exec --no-startup-id systemctl hybrid-sleep, mode "default"
+    bindsym h exec --no-startup-id systemctl hybrid-sleep, mode "default"
     bindsym r exec --no-startup-id systemctl reboot, mode "default"
     bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"  
 
@@ -227,10 +226,10 @@ bar {
         separator  #1e1e1e
 
         # Type             border  background font
-        focused_workspace  #1e1e1e #1e1e1e #93E0E3
+        focused_workspace  #1e1e1e #1e1e1e #FF3545
         active_workspace   #1e1e1e #1e1e1e #EEE8D5
         inactive_workspace #1e1e1e #1e1e1e #888888
-        urgent_workspace   #1e1e1e #1e1e1e #FE0030
+        urgent_workspace   #1e1e1e #1e1e1e #EEE8D5
     }
     # i3bar position
     position top
@@ -242,10 +241,10 @@ gaps inner 5
 gaps outer 2
 
 # class			border	backgr.	text	indicator
-client.focused		#93E0E3 #93E0E3 #1e1e1e #ff1844
-client.focused_inactive	#1e1e1e #1e1e1e #93E0E3 #1e1e1e
-client.unfocused	#1e1e1e #1e1e1e #93E0E3 #1e1e1e
-client.urgent		#FE0030 #FE0030 #1e1e1e #FE0030
+client.focused		#FF3545 #FF3545 #1e1e1e #EEE8D5
+client.focused_inactive	#1e1e1e #1e1e1e #FF3545 #1e1e1e
+client.unfocused	#1e1e1e #1e1e1e #FF3545 #1e1e1e
+client.urgent		#EEE8D5 #EEE8D5 #1e1e1e #EEE8D5
 
 new_window 1pixel
 
@@ -253,19 +252,17 @@ new_window 1pixel
 
 #BEGIN AUTOSTART
 
-exec --no-startup-id xrandr --output eDP-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-1 --off
-exec --no-startup-id xrandr --output eDP-1-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-1-1 --off
-
 #wallpapers
-exec_always --no-startup-id feh --bg-scale $HOME/.i3/wallpaper1.png --bg-scale $HOME/.i3/wallpaper2.png
+exec_always --no-startup-id feh --bg-scale $HOME/.i3/wallpaper.png
 
-exec_always --no-startup-id numlockx on
-exec "setxkbmap -rules evdev -model pc105 -layout de,de -variant ,"
+exec_always --no-startup-id numlockx off
+exec setxkbmap -rules evdev -model pc105 -layout de,de -variant ,
 
-exec --no-startup-id xss-lock -- i3lock -d -c 000000
-exec --no-startup-id compton -b --config $HOME/.compton.conf
-exec --no-startup-id dunst
+exec --no-startup-id xss-lock -- i3lock -d -c 000000 
+exec --no-startup-id compton -b --config $HOME/.compton.conf 
+exec --no-startup-id dunst 
 exec --no-startup-id nm-applet
-exec --no-startup-id pa-applet
+exec --no-startup-id pa-applet 
+exec --no-startup-id blueman-applet 
 
 #END AUTOSTART

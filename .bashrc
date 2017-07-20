@@ -7,7 +7,7 @@
 
 [[ $DISPLAY ]] && shopt -s checkwinsize
 
-PS1='\[\033[01;36m\][\u@\h\[\033[01;37m\] \W\[\033[01;36m\]]\$\[\033[00m\] '
+PS1='\[\033[01;31m\][\u@\h\[\033[01;37m\] \W\[\033[01;31m\]]\$\[\033[00m\] '
 
 # custom global bash
 shopt -s expand_aliases
@@ -32,8 +32,7 @@ alias fgrep='fgrep --colour=auto'
 export YAOURT_COLORS="nb=1:pkg=1:ver=1;32:lver=1;45:installed=1;42:grp=1;34:od=1;41;5:votes=1;44:dsc=0:other=1;35"
 
 #local binary path
-PATH=$PATH:$HOME/.local/bin
-
+PATH=$PATH:$HOME/.local/bin:$(ruby -rubygems -e "puts Gem.user_dir")/bin
 
 #
 # # ex - archive extractor
@@ -61,4 +60,4 @@ ex ()
 }
 
 # neofetch
-neofetch --color_blocks off --ascii_distro arch --ascii_colors 7 --colors 6 7 7 6
+neofetch --color_blocks off --ascii_distro arch --ascii_colors 7 --colors 1 7 7 1
