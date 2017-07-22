@@ -21,23 +21,26 @@ TEXT
   { "full_text" : "load ", "color" : "\#888888", "separator" : false, "separator_block_width" : 3 }, \
   { "full_text" : "${loadavg 1}", "color" : ${if_match ${loadavg 1}>5}"\#EEE8D5" ${else}"\#FF3545"${endif}, "separator" : false, "separator_block_width" : 3 }, \
 \
+  { "full_text" : " | tlp-mode", "color" : "\#888888", "separator" : false, "separator_block_width" : 3 }, \
+  { "full_text" : "${execi 1 tlp-stat -s | grep Mode | cut -d "=" -f2}", "color" : "\#FF3545", "separator" : false, "separator_block_width" : 3 }, \
+\
   { "full_text" : " | cpu ", "color" : "\#888888", "separator" : false, "separator_block_width" : 3 }, \
   { "full_text" : "${cpu cpu0}% ${freq}MHz ${hwmon 1 temp 1}°C", "color" : ${if_match ${hwmon 1 temp 1}>65}"\#EEE8D5"${else}"\#FF3545"${endif}, "min_width" : 25, "separator" : false, "separator_block_width" : 3 }, \
 \
   { "full_text" : " | gpu ", "color" : "\#888888", "separator" : false, "separator_block_width" : 3 }, \
-  { "full_text" : "${execi 60 nvidia-settings -query GPUCoreTemp | perl -ne 'print $1 if /GPUCoreTemp.*?\]\): (\d+)./;'ff}°C", "color" : "\#FF3545", "min_width" : 25, "separator" : false, "separator_block_width" : 3 }, \
+  { "full_text" : "${execi 20 nvidia-settings -query GPUCoreTemp | perl -ne 'print $1 if /GPUCoreTemp.*?\]\): (\d+)./;'ff}°C", "color" : "\#FF3545", "min_width" : 25, "separator" : false, "separator_block_width" : 3 }, \
 \
   { "full_text" : " | mem ", "color" : "\#888888", "separator" : false, "separator_block_width" : 3 }, \
   { "full_text" : "${memperc}%  ${mem}", "color" : ${if_match ${memperc}>80}"\#EEE8D5"${else}"\#FF3545"${endif}, "min_width" : 25, "separator" : false, "separator_block_width" : 3 }, \
 \
-  { "full_text" : " | up", "color" : "\#888888", "separator" : false, "separator_block_width" : 3 }, \
+  { "full_text" : " | up ", "color" : "\#888888", "separator" : false, "separator_block_width" : 3 }, \
   { "full_text" : "${if_up wlp8s0}${upspeed wlp8s0}${else}${upspeed enp5s0}${endif}", "color" : "\#FF3545", "min_width" : 25, "separator" : false, "separator_block_width" : 3 }, \
 \
-  { "full_text" : " down", "color" : "\#888888", "separator" : false, "separator_block_width" : 3 }, \
+  { "full_text" : " down ", "color" : "\#888888", "separator" : false, "separator_block_width" : 3 }, \
   { "full_text" : "${if_up wlp8s0}${downspeed wlp8s0}${else}${downspeed enp5s0}${endif}", "color" : "\#FF3545", "min_width" : 25, "separator" : false, "separator_block_width" : 3 }, \
 \
   { "full_text" : " | bat ", "color" : "\#888888", "separator" : false, "separator_block_width" : 3 }, \
-  { "full_text" : "${battery_time BAT1}  ${battery BAT1}", "color" : ${if_match ${battery_percent BAT1}<20}"\#EEE8D5"${else}"\#FF3545"${endif}, "separator" : false, "separator_block_width" : 3 }, \
+  { "full_text" : ${if_match "${battery BAT1}"=="charged"}"${battery BAT1}"${else}"${battery_time BAT1}  ${battery BAT1}"${endif}, "color" : ${if_match ${battery_percent BAT1}<20}"\#EEE8D5"${else}"\#FF3545"${endif}, "separator" : false, "separator_block_width" : 3 }, \
 \
   { "full_text" : " | ", "color" : "\#888888", "separator" : false, "separator_block_width" : 3 }, \
   { "full_text" : "${time %a %d.%m.%Y %H:%M}", "color" : "\#FF3545", "separator" : false, "separator_block_width" : 3 }, \
