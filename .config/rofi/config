@@ -46,6 +46,7 @@ rofi.color-normal: argb:00000000, #FF3545, argb:00000000, #FF3545, #1e1e1e
 rofi.color-active: argb:00000000, #EEE8D5, argb:00000000, #EEE8D5, #1e1e1e
 rofi.color-urgent: argb:00000000, #EEE8D5, argb:00000000, #FF3545, #EEE8D5
 
+
 ! Border width
 rofi.bw:                             1
 
@@ -65,18 +66,19 @@ rofi.xoffset:                        0
 rofi.fixed-num-lines:                true
 
 ! Terminal to use
-rofi.terminal:                       gnome-terminal
+! rofi.terminal:                       i3-sensible-terminal
 
 ! Ssh client to use
 ! rofi.ssh-client:                     ssh
 ! Ssh command to execute
 ! rofi.ssh-command:                    {terminal} -e {ssh-client} {host}
 ! Run command to execute
-rofi.run-command:                    {cmd}
+rofi.run-command:                    i3 exec {cmd}
 ! Command to get extra run targets
 ! rofi.run-list-command:               
 ! Run command to execute that runs in shell
-rofi.run-shell-command:              {terminal} -e {cmd}
+! rofi.run-shell-command:              {terminal} -e {cmd}
+
 ! Disable history in run/ssh
 ! rofi.disable-history:                false
 ! Use levenshtein sorting
