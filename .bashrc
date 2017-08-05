@@ -35,7 +35,7 @@ export YAOURT_COLORS="nb=1:pkg=1:ver=1;32:lver=1;45:installed=1;42:grp=1;34:od=1
 export VISUAL="vim"
 
 #local binary path
-PATH=$PATH:$HOME/.local/bin:$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$HOME/.local/lib/node_modules/bin
+PATH=$PATH:$HOME/.local/bin:$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$HOME/.local/lib/node_modules/bin:$HOME/.config/composer/vendor/bin
 
 #
 # # ex - archive extractor

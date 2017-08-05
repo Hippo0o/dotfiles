@@ -73,7 +73,7 @@ rofi.fixed-num-lines:                true
 ! Ssh command to execute
 ! rofi.ssh-command:                    {terminal} -e {ssh-client} {host}
 ! Run command to execute
-rofi.run-command:                    i3 exec {cmd}
+rofi.run-command:                    i3-msg exec {cmd}
 ! Command to get extra run targets
 ! rofi.run-list-command:               
 ! Run command to execute that runs in shell
