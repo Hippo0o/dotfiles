@@ -2,7 +2,7 @@
 rofi.modi:                           window,run,ssh
 
 ! Window width
-rofi.width:                          50
+rofi.width:                          100
 
 ! Number of lines
 rofi.lines:                          10
@@ -41,23 +41,25 @@ rofi.hlbg:                           fg
 rofi.bc:                             magenta5
 ! Use extended color scheme
 rofi.color-enabled: true
-rofi.color-window: argb:ef1e1e1e, #FF3545, #394249
+rofi.color-window: argb:fa1e1e1e, #FF3545, #394249
 rofi.color-normal: argb:00000000, #FF3545, argb:00000000, #FF3545, #1e1e1e
 rofi.color-active: argb:00000000, #EEE8D5, argb:00000000, #EEE8D5, #1e1e1e
 rofi.color-urgent: argb:00000000, #EEE8D5, argb:00000000, #FF3545, #EEE8D5
 
+! Font
+rofi.font:                           Fira Mono Regular 17
 
 ! Border width
-rofi.bw:                             1
+rofi.bw:                             0
 
 ! Location on screen
 rofi.location:                       0
 
 ! Padding
-rofi.padding:                        8
+rofi.padding:                        700
 
 ! Y-offset relative to location
-rofi.yoffset:                        24
+rofi.yoffset:                        140
 
 ! X-offset relative to location
 rofi.xoffset:                        0

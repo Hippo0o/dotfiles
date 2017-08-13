@@ -41,6 +41,12 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
+# resize focused window
+bindsym $mod+Ctrl+Left resize shrink width 5 px or 5 ppt
+bindsym $mod+Ctrl+Down resize shrink height 5 px or 5 ppt
+bindsym $mod+Ctrl+Up resize grow height 5 px or 5 ppt
+bindsym $mod+Ctrl+Right resize grow width 5 px or 5 ppt
+
 # split in horizontal orientation
 bindsym $mod+h split h
 
@@ -75,7 +81,7 @@ bindsym $mod+Shift+r restart
 #bindsym $mod+Shift+e exec i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'
 
 #lock & turn off monitors
-bindsym Pause exec --no-startup-id loginctl lock-session $XDG_SESSION_ID && sleep 1 && xset dpms force off
+bindsym Pause exec --no-startup-id xset dpms force off
 
 #screenshot
 bindsym Print exec --no-startup-id scrot && notify-send "screenshot taken" -a "scrot" -u low
@@ -86,13 +92,10 @@ bindsym F1 exec --no-startup-id echo 'no help' > /dev/null
 # Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master '3%+'
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master '3%-'
-# Pulse Audio controls
-#bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +3% #increase sound volume
-#bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -3% #decrease sound volume
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 20 # increase screen brightness
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 20 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 5 
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5
 
 #END BINDINGS
 
@@ -139,24 +142,19 @@ bindsym $mod+Shift+Tab move container to workspace back_and_forth
 
 #BEGIN MODES
 
-# resize window (you can also use the mouse for that)
-mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
+set $mode_display Display switch (e) eDP, (h) HDMI, (d) eDP=HDMI, (Shift+e) eDP|HDMI, (Shift+h) HDMI|eDP
+mode "$mode_display" {
+    bindsym e exec --no-startup-id xrandr --output eDP-1 --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-1 --off & xrandr --output eDP-1-1 --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-1-1 --off
+    bindsym h exec --no-startup-id xrandr --output eDP-1 --off --output HDMI-1 --mode 1920x1080 --pos 0x0 --rotate normal & xrandr --output eDP-1-1 --off --output HDMI-1-1 --mode 1920x1080 --pos 0x0 --rotate normal
+    bindsym d exec --no-startup-id xrandr --output eDP-1 --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-1 --mode 1920x1080 --pos 0x0 --rotate normal & xrandr --output eDP-1-1 --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-1-1 --mode 1920x1080 --pos 0x0 --rotate normal
+    bindsym Shift+e exec --no-startup-id xrandr --output eDP-1 --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-1 --mode 1920x1080 --pos 1920x0 --rotate normal & xrandr --output eDP-1-1 --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-1-1 --mode 1920x1080 --pos 1920x0 --rotate normal
+    bindsym Shift+h exec --no-startup-id xrandr --output eDP-1 --mode 1920x1080 --pos 1920x0 --rotate normal --output HDMI-1 --mode 1920x1080 --pos 0x0 --rotate normal & xrandr --output eDP-1-1 --mode 1920x1080 --pos 1920x0 --rotate normal --output HDMI-1-1 --mode 1920x1080 --pos 0x0 --rotate normal 
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
-
-        # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
 }
-bindsym $mod+r mode "resize"
+bindsym $mod+p mode "$mode_display"
 
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hybrid-sleep, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
@@ -218,6 +216,7 @@ new_float 1pixel
 #wallpaper
 exec_always --no-startup-id feh --bg-scale $HOME/.i3/wallpaper.png
 
+#system
 exec --no-startup-id numlockx off
 exec --no-startup-id setxkbmap -rules evdev -model pc105 -layout de,de -variant ,
 

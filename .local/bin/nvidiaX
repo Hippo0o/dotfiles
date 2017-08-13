@@ -3,5 +3,4 @@ sudo tee /proc/acpi/bbswitch <<<'ON'
 sudo modprobe nvidia-drm  modeset=1
 sudo modprobe nvidia-modeset 
 sudo modprobe nvidia
-#ln -s /etc/X11/switcher/nvidia.conf /etc/X11/xorg.conf.d/switcher-nvidia.conf
 startx "$@"
