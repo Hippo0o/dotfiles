@@ -1,5 +1,6 @@
 syntax on
 set number
+set nowrap
 
 set t_Co=256            " use 256 colors in vim
 colorscheme elflord   " an appropriate color scheme

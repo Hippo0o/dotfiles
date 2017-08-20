@@ -26,8 +26,8 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+q kill
 
 # start rofi (a program launcher)
-bindsym $mod+Shift+d exec j4-dmenu-desktop --dmenu='rofi -dmenu -i' 
-bindsym $mod+d exec rofi -show run
+bindsym $mod+Shift+d exec j4-dmenu-desktop --dmenu='rofi -dmenu -i -m -5' 
+bindsym $mod+d exec rofi -m -5 -show run
 
 # change focus
 bindsym $mod+Left focus left

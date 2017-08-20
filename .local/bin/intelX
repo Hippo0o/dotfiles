@@ -1,6 +1,4 @@
 #! /bin/bash
-sudo rmmod nvidia_drm 
-sudo rmmod nvidia_modeset 
-sudo rmmod nvidia
+sudo rmmod nvidia_drm nvidia_modeset nvidia
 sudo tee /proc/acpi/bbswitch <<< 'OFF'
 startx "$@"
