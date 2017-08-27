@@ -84,7 +84,8 @@ bindsym $mod+Shift+r restart
 bindsym Pause exec --no-startup-id xset dpms force off
 
 #screenshot
-bindsym Print exec --no-startup-id scrot && notify-send "screenshot taken" -a "scrot" -u low
+bindsym Print exec --no-startup-id maim $HOME/screenshot-$(date +%s).png && notify-send "screenshot taken and saved in $HOME/screenshot-$(date +%s).png" -a "maim" -u low
+bindsym --release Shift+Print exec --no-startup-id maim -s | xclip -selection clipboard -t image/png && notify-send "screenshot taken and saved to clipboard" -a "maim" -u low
 
 #i dont need help
 bindsym F1 exec --no-startup-id echo 'no help' > /dev/null

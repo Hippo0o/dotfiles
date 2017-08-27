@@ -17,7 +17,7 @@ max_text_width          0
 TEXT
 
 [ \
-  { "full_text" : " ", "color" : "\#888888", "separator" : false, "separator_block_width" : 3 }, \
+  { "full_text" : "load ", "color" : "\#888888", "separator" : false, "separator_block_width" : 3 }, \
   { "full_text" : "${loadavg 1}", "color" : ${if_match "${loadavg 1}">"5"}"\#EEE8D5"${else}"\#FF3545"${endif}, "separator" : false, "separator_block_width" : 3 }, \
 \
   { "full_text" : " | tlp-mode", "color" : "\#888888", "separator" : false, "separator_block_width" : 3 }, \
@@ -32,9 +32,9 @@ TEXT
   { "full_text" : " | mem ", "color" : "\#888888", "separator" : false, "separator_block_width" : 3 }, \
   { "full_text" : "${memperc}%  ${mem}", "color" : ${if_match ${memperc}>90}"\#EEE8D5"${else}"\#FF3545"${endif},  "separator" : false, "separator_block_width" : 3 }, \
 \
-  { "full_text" : " |  ", "color" : "\#888888", "separator" : false, "separator_block_width" : 3 }, \
+  { "full_text" : " |  ", "color" : "\#666666", "separator" : false, "separator_block_width" : 3 }, \
   { "full_text" : "${if_up wlp8s0}${upspeed wlp8s0}${else}${upspeed enp5s0}${endif}", "color" : "\#FF3545",  "separator" : false, "separator_block_width" : 3 }, \
-  { "full_text" : "  ", "color" : "\#888888", "separator" : false, "separator_block_width" : 3 }, \
+  { "full_text" : "  ", "color" : "\#666666", "separator" : false, "separator_block_width" : 3 }, \
   { "full_text" : "${if_up wlp8s0}${downspeed wlp8s0}${else}${downspeed enp5s0}${endif}", "color" : "\#FF3545",  "separator" : false, "separator_block_width" : 3 }, \
 \
   { "full_text" : " | ", "color" : "\#888888", "separator" : false, "separator_block_width" : 3 }, \
