@@ -1,6 +1,4 @@
 #! /bin/bash
 sudo tee /proc/acpi/bbswitch <<<'ON'
-sudo modprobe nvidia-drm  modeset=1
-sudo modprobe nvidia-modeset 
-sudo modprobe nvidia
+sudo modprobe nvidia-drm modeset=1
 startx "$@"

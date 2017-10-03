@@ -1,4 +1,6 @@
 #! /bin/bash
-sudo rmmod nvidia_drm nvidia_modeset nvidia
+sudo systemctl stop systemd-logind
+sudo modprobe -r nvidia_drm
 sudo tee /proc/acpi/bbswitch <<< 'OFF'
+sudo systemctl start systemd-logind
 startx "$@"
