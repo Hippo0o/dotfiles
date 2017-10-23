@@ -1,0 +1,38 @@
+#! /bin/bash
+
+# calculate current VT
+LVT=`fgconsole`
+
+# calculate first usable display
+XNUM="-1"
+SOCK="something"
+while [ ! -z "$SOCK" ] 
+do
+  XNUM=$(( $XNUM + 1 ))
+  SOCK=$(ls -A -1 /tmp/.X11-unix | grep "X$XNUM" )
+done
+
+NEWDISP=":$XNUM"
+
+if [ ! -z "$*" ] # generate exec line if arguments are given
+then 
+  # test if executable exists
+  if [ ! -x "$(which $1 2> /dev/null)" ] 
+  then
+    echo "$1: No such executable!"
+    exit 1
+  fi
+  # generate exec line
+  EXECL="$(which $1)"
+  shift 1
+  EXECL="$EXECL $*"
+else # prepare to start new X sessions if no arguments passed
+  EXECL=""
+fi
+
+EXECL="$HOME/.xinitrc-xrun $EXECL"
+
+COMMAND="xinit $EXECL -- $NEWDISP vt$LVT -nolisten tcp -br"
+
+# ---------- EXECUTING COMMAND --------
+$COMMAND
