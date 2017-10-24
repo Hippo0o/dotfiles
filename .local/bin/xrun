@@ -26,8 +26,9 @@ then
   EXECL="$(which $1)"
   shift 1
   EXECL="$EXECL $*"
-else # prepare to start new X sessions if no arguments passed
-  EXECL=""
+else
+  echo "No executable to execute!"	
+  exit 1
 fi
 
 EXECL="$HOME/.xinitrc-xrun $EXECL"
