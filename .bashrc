@@ -14,7 +14,7 @@ shopt -s expand_aliases
 
 alias ll='ls -alFh --group-directories-first --color=auto'
 alias update='yaourt -Syua'
-alias i3edit='vi ~/.i3/config'
+alias i3config='vi ~/.i3/config'
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
