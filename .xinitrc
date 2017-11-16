@@ -40,7 +40,7 @@ export SSH_AUTH_SOCK
 xrandr --output eDP-1 --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-1 --off
 xrandr --output eDP-1-1 --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-1-1 --off
 
-xss-lock -- i3lock -d -c 000000 &
+xss-lock -- i3lock -c 000000  &
 compton -b --config $HOME/.config/compton.conf &
 dunst &
 nm-applet &
