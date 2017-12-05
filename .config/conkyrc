@@ -28,7 +28,7 @@ TEXT
   { "full_text" : "${freq}MHz", "color" : ${if_match ${hwmon 1 temp 1}>65}"\#EEE8D5"${else}"\#FF3545"${endif},  "separator" : false, "separator_block_width" : 1 }, \
   { "full_text" : "${hwmon 1 temp 1}°C", "color" : ${if_match ${hwmon 1 temp 1}>65}"\#EEE8D5"${else}"\#FF3545"${endif},  "separator" : false, "separator_block_width" : 3 }, \
 \
-  { "full_text" : " |  gpu ", "color" : "\#888888", "separator" : false, "separator_block_width" : 3 }, \
+  { "full_text" : " | gpu ", "color" : "\#888888", "separator" : false, "separator_block_width" : 3 }, \
   { "full_text" : "${execi 20 nvidia-settings -query GPUCoreTemp | perl -ne 'print $1 if /GPUCoreTemp.*?\]\): (\d+)./;'ff}°C", "color" : "\#FF3545",  "separator" : false, "separator_block_width" : 3 }, \
 \
   { "full_text" : " | mem ", "color" : "\#888888", "separator" : false, "separator_block_width" : 3 }, \
@@ -41,10 +41,7 @@ TEXT
   { "full_text" : "${if_match ${downspeed wlp8s0}=="0B"}${downspeed enp9s0}${else}${downspeed wlp8s0}${endif}", "color" : "\#FF3545",  "separator" : false, "separator_block_width" : 3 }, \
 \
   { "full_text" : " | ", "color" : "\#888888", "separator" : false, "separator_block_width" : 3 }, \
-  { "full_text" : "${time %a %d.%m.%Y}", "color" : "\#FF3545", "separator" : false, "separator_block_width" : 3 }, \
-\
-  { "full_text" : " ", "color" : "\#888888", "separator" : false, "separator_block_width" : 3 }, \
-  { "full_text" : "${time %H:%M}", "color" : "\#FF3545", "separator" : false, "separator_block_width" : 3 }, \
+  { "full_text" : "${time %a %d.%m.%Y} ${time %H:%M}", "color" : "\#FF3545", "separator" : false, "separator_block_width" : 3 }, \
 \
   { "full_text" : " | ", "color" : "\#888888", "separator" : false, "separator_block_width" : 3 }, \
   { "full_text" : "${battery_time BAT1}", "color" : ${if_match ${battery_percent BAT1}<=15}"\#EEE8D5"${else}"\#FF3545"${endif}, "separator" : false, "separator_block_width" : 3 }, \
