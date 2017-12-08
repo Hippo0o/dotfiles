@@ -43,10 +43,5 @@ TEXT
   { "full_text" : " | ", "color" : "\#888888", "separator" : false, "separator_block_width" : 3 }, \
   { "full_text" : "${time %a %d.%m.%Y} ${time %H:%M}", "color" : "\#FF3545", "separator" : false, "separator_block_width" : 3 }, \
 \
-  { "full_text" : " | ", "color" : "\#888888", "separator" : false, "separator_block_width" : 3 }, \
-  { "full_text" : "${battery_time BAT1}", "color" : ${if_match ${battery_percent BAT1}<=15}"\#EEE8D5"${else}"\#FF3545"${endif}, "separator" : false, "separator_block_width" : 3 }, \
-  { "full_text" : ${if_match ${battery_percent BAT1}<=15}"  "${else}${if_match ${battery_percent BAT1}<=40}"  "${else}${if_match ${battery_percent BAT1}<=60}"  "${else}${if_match ${battery_percent BAT1}<=90}"  "${else}"  "${endif}${endif}${endif}${endif}, "color" : ${if_match ${battery_percent BAT1}<=15}"\#EEE8D5"${else}"\#FF3545"${endif}, "separator" : false, "separator_block_width" : 3 }, \
-  { "full_text" : ${if_match "${execi 1 cat /sys/class/power_supply/BAT1/status}"=="Charging"}" ${battery_percent BAT1}%"${else}${if_match "${execi 1 cat /sys/class/power_supply/BAT1/status}"=="Full"}""${else}"${battery_percent BAT1}%"${endif}${endif}, "color" : ${if_match ${battery_percent BAT1}<=15}"\#EEE8D5"${else}"\#FF3545"${endif}, "separator" : false, "separator_block_width" : 3 }, \
-\
   { "full_text" : "", "color" : "\#888888", "separator" : false, "separator_block_width" : 3 } \
 ],
