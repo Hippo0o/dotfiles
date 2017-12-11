@@ -36,9 +36,9 @@ TEXT
   { "full_text" : "${mem}", "color" : ${if_match ${memperc}>90}"\#EEE8D5"${else}"\#FF3545"${endif},  "separator" : false, "separator_block_width" : 3 }, \
 \
   { "full_text" : " |  ", "color" : "\#666666", "separator" : false, "separator_block_width" : 3 }, \
-  { "full_text" : "${if_match ${upspeed wlp8s0}=="0B"}${upspeed enp9s0}${else}${upspeed wlp8s0}${endif}", "color" : "\#FF3545",  "separator" : false, "separator_block_width" : 3 }, \
+  { "full_text" : "${if_match "${upspeed wlp8s0}"=="   0B"}${upspeed enp9s0}${else}${upspeed wlp8s0}${endif}", "color" : "\#FF3545",  "separator" : false, "separator_block_width" : 3 }, \
   { "full_text" : "  ", "color" : "\#666666", "separator" : false, "separator_block_width" : 3 }, \
-  { "full_text" : "${if_match ${downspeed wlp8s0}=="0B"}${downspeed enp9s0}${else}${downspeed wlp8s0}${endif}", "color" : "\#FF3545",  "separator" : false, "separator_block_width" : 3 }, \
+  { "full_text" : "${if_match "${downspeed wlp8s0}"=="   0B"}${downspeed enp9s0}${else}${downspeed wlp8s0}${endif}", "color" : "\#FF3545",  "separator" : false, "separator_block_width" : 3 }, \
 \
   { "full_text" : " | ", "color" : "\#888888", "separator" : false, "separator_block_width" : 3 }, \
   { "full_text" : "${time %a %d.%m.%Y} ${time %H:%M}", "color" : "\#FF3545", "separator" : false, "separator_block_width" : 3 }, \

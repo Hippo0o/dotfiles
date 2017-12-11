@@ -7,7 +7,7 @@ ZSH=/usr/share/oh-my-zsh/
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-#ZSH_THEME="amuse"
+#ZSH_THEME="robbyrussell"
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -99,17 +99,12 @@ fi
 
 source $ZSH/oh-my-zsh.sh
 
-PROMPT='
-%{$fg_bold[red]%}[%{$reset_color%}${PWD/#$HOME/~}$(git_prompt_info)%{$fg_bold[red]%}]%{$reset_color%}
-%{$fg_bold[red]%}$%{$reset_color%} '
+PROMPT='%{$fg_bold[red]%}%n %{$reset_color%}${PWD/#$HOME/~}$(git_prompt_info)
+%{$reset_color%}$ '
+RPROMPT='%{$fg[red]%}[%*]%{$reset_color%}'
 
-# Must use Powerline font, for \uE0A0 to render.
-ZSH_THEME_GIT_PROMPT_PREFIX=" on %{$fg[magenta]%}\uE0A0 "
-ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[red]%}!"
-ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[green]%}?"
-ZSH_THEME_GIT_PROMPT_CLEAN=""
-
+ZSH_THEME_GIT_PROMPT_PREFIX=" %{$fg_bold[white]%}git:("
+ZSH_THEME_GIT_PROMPT_SUFFIX=")%{$reset_color%}"
 
 alias ll='ls -alFh --group-directories-first --color=auto'
 alias update='yaourt -Syua'
