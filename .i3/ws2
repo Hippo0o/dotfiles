@@ -1,0 +1,4 @@
+#! /bin/bash
+if [ ! $(pgrep -f xfce4-terminal) ]; then
+  xfce4-terminal &
+fi
