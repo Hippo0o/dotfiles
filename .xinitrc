@@ -35,16 +35,17 @@ fi
 eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
 export SSH_AUTH_SOCK
 
-/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-
 xrandr --output eDP-1 --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-1 --off
 xrandr --output eDP-1-1 --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-1-1 --off
 
+/usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &
+mate-power-manager &
+/usr/lib/mate-settings-daemon/mate-settings-daemon &
 xss-lock -- i3lock -c 000000 &
 compton -b --config $HOME/.config/compton.conf &
 dunst &
 nm-applet &
-pa-applet &
+mate-volume-control-applet &
 blueman-applet &
-xfce4-power-manager &
+
 exec i3

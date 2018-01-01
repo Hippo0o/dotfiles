@@ -61,18 +61,16 @@ DISABLE_AUTO_UPDATE="true"
 plugins=(
   git
   sudo
-  systemd
 )
 
-
 # User configuration
-
 ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
 if [[ ! -d $ZSH_CACHE_DIR ]]; then
   mkdir $ZSH_CACHE_DIR
 fi
 
 source $ZSH/oh-my-zsh.sh
+zstyle ':completion:*' rehash true
 
 PROMPT='%{$fg[red]%}%n %{$reset_color%}${PWD/#$HOME/~}$(git_prompt_info)
 %{$fg[red]%}$%{$reset_color%} '
@@ -80,7 +78,6 @@ RPROMPT='%{$fg[red]%}[%*]%{$reset_color%}'
 
 ZSH_THEME_GIT_PROMPT_PREFIX=" %{$fg[red]%}git:("
 ZSH_THEME_GIT_PROMPT_SUFFIX=")%{$reset_color%}"
-
 
 export EDITOR='vim'
 export VISUAL='vim'

@@ -1,4 +1,4 @@
 #! /bin/bash
-if [ ! $(pgrep -f xfce4-terminal) ]; then
-  xfce4-terminal &
+if [ ! $(pgrep -f mate-terminal) ]; then
+  mate-terminal &
 fi
