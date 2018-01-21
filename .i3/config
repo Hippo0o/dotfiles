@@ -128,6 +128,8 @@ bindsym $mod+0 workspace $ws10
 bindsym $mod+Tab workspace back_and_forth
 bindsym $mod+dead_circumflex [urgent=latest] focus
 
+bindsym $mod+F1 scratchpad show
+
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
 bindsym $mod+Shift+2 move container to workspace $ws2
@@ -141,10 +143,7 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 bindsym $mod+Shift+Tab move container to workspace back_and_forth
 
-# Make the currently focused window a scratchpad
 bindsym $mod+Shift+F1 move scratchpad
-# Show the first scratchpad window
-bindsym $mod+F1 scratchpad show
 
 assign [class="Google-chrome"] $ws3
 assign [class="jetbrains-phpstorm"] $ws4
@@ -184,12 +183,10 @@ bindsym $mod+Shift+e mode "$mode_system"
 
 #END MODES
 
-#i3THEMING
+#THEMING
 
-# Start i3bar to display a workspace bar (plus the system information conky) 
 bar {
     colors {
-        # Whole color settings
         background #1e1e1e
         statusline #ffffff
         separator  #1e1e1e
@@ -200,9 +197,7 @@ bar {
         inactive_workspace #1e1e1e #1e1e1e #888888
         urgent_workspace   #1e1e1e #1e1e1e #EEE8D5
     }
-    # i3bar position
     position top
-    # Using custom i3status.conf
     status_command conky-i3bar #i3status -c ~/.i3/i3status.conf
 }
 
@@ -220,7 +215,7 @@ client.urgent		#EEE8D5 #EEE8D5 #1e1e1e #EEE8D5
 new_window 1pixel
 new_float 1pixel
 
-#END i3THEMING
+#END THEMING
 
 #BEGIN AUTOSTART
 
