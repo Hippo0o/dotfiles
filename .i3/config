@@ -20,7 +20,7 @@ for_window [class="Wine"] floating enable
 #BEGIN BINDINGS
 
 # start a terminal
-bindsym $mod+Return exec --no-startup-id mate-terminal
+bindsym $mod+Return exec --no-startup-id termite
 
 # kill focused window
 bindsym $mod+q kill
@@ -220,7 +220,7 @@ new_float 1pixel
 #BEGIN AUTOSTART
 
 #wallpaper
-exec_always --no-startup-id feh --bg-scale $HOME/.i3/wallpaper.png
+exec_always --no-startup-id feh --bg-scale $HOME/.i3/makepkg.png
 
 #system
 #exec --no-startup-id numlockx off

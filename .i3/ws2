@@ -1,4 +1,4 @@
 #! /bin/bash
-if [ ! $(pgrep -f mate-terminal) ]; then
-  mate-terminal &
+if [ ! "$(pgrep -f termite)" ]; then
+  termite &
 fi

@@ -63,6 +63,12 @@ plugins=(
   sudo
 )
 
+# termite keybindings
+if [[ $TERM == xterm-termite ]]; then
+  . /etc/profile.d/vte.sh
+  __vte_osc7
+fi
+
 # User configuration
 ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
 if [[ ! -d $ZSH_CACHE_DIR ]]; then
@@ -85,7 +91,7 @@ export VISUAL='vim'
 alias ll='ls -alFh --group-directories-first --color=auto'
 alias update='yaourt -Syua'
 alias i3config='vi ~/.i3/config'
-alias neofetch='neofetch --color_blocks off --ascii_distro arch --ascii_colors 7 --colors 1 7 7 1'
+#alias neofetch='neofetch --color_blocks off --ascii_distro arch --ascii_colors 7 --colors 1 7 7 1'
 
 #
 # # ex - archive extractor
