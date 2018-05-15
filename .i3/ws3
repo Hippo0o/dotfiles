@@ -1,4 +1,0 @@
-#! /bin/bash
-if [ ! "$(pgrep -f /opt/google/chrome/chrome)" ]; then
-  google-chrome-stable &
-fi

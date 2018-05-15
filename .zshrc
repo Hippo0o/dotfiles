@@ -65,8 +65,7 @@ plugins=(
 
 # termite keybindings
 if [[ $TERM == xterm-termite ]]; then
-  . /etc/profile.d/vte.sh
-  __vte_osc7
+  source /etc/profile.d/vte.sh
 fi
 
 # User configuration
@@ -79,7 +78,7 @@ source $ZSH/oh-my-zsh.sh
 zstyle ':completion:*' rehash true
 
 PROMPT='%{$fg[red]%}%n %{$reset_color%}${PWD/#$HOME/~}$(git_prompt_info)
-%{$fg[red]%}$%{$reset_color%} '
+%{$fg[red]%}%(!.#.$)%{$reset_color%} '
 RPROMPT='%{$fg[red]%}[%*]%{$reset_color%}'
 
 ZSH_THEME_GIT_PROMPT_PREFIX=" %{$fg[red]%}git:("

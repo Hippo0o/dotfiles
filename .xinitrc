@@ -47,5 +47,6 @@ dunst &
 nm-applet &
 mate-volume-control-applet &
 blueman-applet &
+xset s off
 
 exec i3
