@@ -1,0 +1,268 @@
+# i3 config file
+#
+# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+
+#BEGIN BINDINGS
+
+set $mod Mod4
+floating_modifier $mod
+
+# start a terminal
+bindsym $mod+Return exec termite
+bindsym $mod+Shift+Return exec google-chrome-stable
+bindsym $mod+Ctrl+Return exec caja
+
+# kill focused window
+bindsym $mod+q kill
+
+# start rofi (a program launcher)
+bindsym $mod+Shift+d exec rofi-drun
+bindsym $mod+d exec rofi -show run 
+
+# change focus
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# resize focused window
+bindsym $mod+Ctrl+Left resize shrink width 15 px or 5 ppt
+bindsym $mod+Ctrl+Down resize shrink height 15 px or 5 ppt
+bindsym $mod+Ctrl+Up resize grow height 15 px or 5 ppt
+bindsym $mod+Ctrl+Right resize grow width 15 px or 5 ppt
+
+bindsym $mod+Next exec i3-msg resize shrink height 90 px && i3-msg resize shrink width 160 px
+bindsym $mod+Prior exec i3-msg resize grow height 90 px && i3-msg resize grow width 160 px
+
+bindsym $mod+Home resize set 1280px 800px
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating|sticky
+bindsym $mod+space floating toggle
+bindsym $mod+Ctrl+space sticky toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+Shift+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+bindsym $mod+Shift+a focus child
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+#bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+#lock & turn off monitors
+#bindsym Pause exec --no-startup-id loginctl lock-session
+
+#screenshot
+bindsym --release Print exec --no-startup-id mate-screenshot -i
+bindsym --release Shift+Print exec --no-startup-id mate-screenshot -ca
+
+#i dont need help
+bindsym F1 nop
+
+# Audio controls
+#bindsym $mod+KP_Add exec --no-startup-id amixer -D pulse sset Master '3%+'
+#bindsym $mod+KP_Subtract exec --no-startup-id amixer -D pulse sset Master '3%-'
+
+#END BINDINGS
+
+#BEGIN RULES
+
+for_window [class="Wine"] floating enable
+#for_window [class="Termite"] focus
+#no_focus [class=".*"]
+#focus_on_window_activation smart
+#mouse_warping none
+
+#END RULES
+
+#BEGIN WORKSPACE
+
+set $wsf1 "11:f1"
+set $wsf2 "12:f2"
+set $wsf3 "13:f3"
+set $wsf4 "14:f4"
+set $wsf5 "15:f5"
+
+set $ws1 "1:1"
+set $ws2 "2:2"
+set $ws3 "3:3"
+set $ws4 "4:4"
+set $ws5 "5:5"
+set $ws6 "6:6"
+set $ws7 "7:7"
+set $ws8 "8:8"
+set $ws9 "9:9"
+set $ws10 "10:10"
+
+# switch to workspace
+bindsym $mod+F1 workspace $wsf1
+bindsym $mod+F2 workspace $wsf2
+bindsym $mod+F3 workspace $wsf3
+bindsym $mod+F4 workspace $wsf4
+bindsym $mod+F5 workspace $wsf5
+
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+bindsym $mod+Tab workspace back_and_forth
+#bindsym $mod+Tab workspace next
+#bindsym $mod+Shift+Tab workspace prev
+bindsym $mod+Escape scratchpad show
+
+bindsym $mod+grave [urgent=latest] focus
+
+# move focused container to workspace
+bindsym $mod+Shift+F1 move container to workspace $wsf1
+bindsym $mod+Shift+F2 move container to workspace $wsf2
+bindsym $mod+Shift+F3 move container to workspace $wsf3
+bindsym $mod+Shift+F4 move container to workspace $wsf4
+bindsym $mod+Shift+F5 move container to workspace $wsf5
+
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+bindsym $mod+Shift+Escape move scratchpad
+
+set $mon1 DP-0
+set $mon2 DVI-D-0
+#set $mon2 HDMI-A-0
+
+workspace $wsf1 output $mon2
+workspace $wsf2 output $mon2
+workspace $wsf3 output $mon2
+workspace $wsf4 output $mon2
+
+workspace $ws1 output $mon1
+workspace $ws2 output $mon1
+workspace $ws3 output $mon1
+workspace $ws4 output $mon1
+workspace $ws5 output $mon1
+workspace $ws6 output $mon1
+workspace $ws7 output $mon1
+workspace $ws8 output $mon1
+workspace $ws9 output $mon1
+workspace $ws10 output $mon1
+
+#END WORKSPACE
+
+#BEGIN MODES
+
+set $mode_system System (l) lock, (e) logout, (r) reboot, (s) shutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id loginctl lock-session, mode "default"
+    bindsym e exec --no-startup-id i3-msg exit, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym s exec --no-startup-id systemctl poweroff -i, mode "default"  
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+Shift+e mode "$mode_system"
+
+#END MODES
+
+#BEGIN THEMING
+
+font pango:Fira Mono Regular 10
+
+bar {
+    colors {
+        # Whole color settings
+        background #1e1e1e
+        statusline #93E0E3
+        separator  #888888
+
+        # Type             border  background font
+        focused_workspace  #1e1e1e #1e1e1e #93E0E3
+        active_workspace   #1e1e1e #1e1e1e #EEE8D5
+        inactive_workspace #1e1e1e #1e1e1e #888888
+        urgent_workspace   #1e1e1e #1e1e1e #FE0030
+    }
+    # i3bar position
+    position top
+
+    tray_output primary
+
+    #to force an workspace order without displaying the order numbers
+    strip_workspace_numbers yes
+
+    status_command conky-i3bar
+
+    i3bar_command i3bar
+
+    bindsym button3 exec rofi-drun
+}
+
+gaps inner 5
+gaps outer 1
+
+# class                 border  backgr. text    indicator child_border
+client.focused		#93E0E3 #93E0E3 #1e1e1e #EEE8D5
+client.focused_inactive	#1e1e1e #1e1e1e #93E0E3 #1e1e1e
+client.unfocused	#1e1e1e #1e1e1e #93E0E3 #1e1e1e
+client.urgent		#FE0030 #FE0030 #1e1e1e #FE0030
+
+#no window decoration
+new_window pixel 1
+new_float pixel 1
+
+#END THEMING
+
+#BEGIN AUTOSTART
+
+#wallpaper
+exec_always --no-startup-id $HOME/.fehbg
+
+#system
+exec --no-startup-id picom -b --config $HOME/.config/compton.conf
+#exec --no-startup-id dunst
+exec --no-startup-id nm-applet
+exec --no-startup-id mate-volume-control-status-icon
+exec --no-startup-id unclutter
+
+#applications
+
+#END AUTOSTART

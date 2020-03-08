@@ -1,0 +1,17 @@
+*
+!.gitignore
+!.i3/config
+!.xinitrc
+!.xinitrc-xrun
+!.zprofile
+!.zshrc
+!.config/compton.conf
+!.config/conkyrc
+!.config/dunstrc
+!.config/termite/config
+!.config/rofi/config
+!.vimrc
+!.local/bin/conky-i3bar
+!.local/bin/rofi-drun
+!.local/bin/lock
+!.local/bin/xrun
