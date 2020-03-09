@@ -5,6 +5,7 @@
 !.xinitrc-xrun
 !.zprofile
 !.zshrc
+!.Xresources
 !.config/compton.conf
 !.config/conkyrc
 !.config/dunstrc
@@ -13,5 +14,5 @@
 !.vimrc
 !.local/bin/conky-i3bar
 !.local/bin/rofi-drun
-!.local/bin/lock
+!.local/bin/exec-once
 !.local/bin/xrun

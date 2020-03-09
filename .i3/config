@@ -87,8 +87,8 @@ bindsym --release Shift+Print exec --no-startup-id mate-screenshot -ca
 bindsym F1 nop
 
 # Audio controls
-#bindsym $mod+KP_Add exec --no-startup-id amixer -D pulse sset Master '3%+'
-#bindsym $mod+KP_Subtract exec --no-startup-id amixer -D pulse sset Master '3%-'
+#bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master '3%+'
+#bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master '3%-'
 
 #END BINDINGS
 
@@ -253,14 +253,22 @@ new_float pixel 1
 
 #BEGIN AUTOSTART
 
-#wallpaper
-exec_always --no-startup-id $HOME/.fehbg
-
 #system
+exec --no-startup-id /usr/lib/mate-polkit/polkit-mate-authentication-agent-1
+exec --no-startup-id /usr/lib/mate-notification-daemon/mate-notification-daemon
 exec --no-startup-id unclutter
 exec --no-startup-id nm-applet
-exec --no-startup-id mate-volume-control-status-icon
-exec_always --no-startup-id [ $( ps h -C picom | wc -l ) = 0 ] && picom --config ~/.config/compton.conf
+exec_always --no-startup-id exec-once volumeicon
+exec_always --no-startup-id exec-once picom --config ~/.config/compton.conf
+exec_always --no-startup-id exec-once xss-lock -- i3lock -c 000000
+
+#settings
+exec $HOME/.screenlayout/monitor.sh
+exec setxkbmap -layout de -variant us 
+exec xset m 1/1 0
+
+#wallpaper
+exec_always --no-startup-id $HOME/.fehbg
 
 #applications
 
