@@ -257,11 +257,10 @@ new_float pixel 1
 exec_always --no-startup-id $HOME/.fehbg
 
 #system
-exec --no-startup-id picom -b --config $HOME/.config/compton.conf
-#exec --no-startup-id dunst
+exec --no-startup-id unclutter
 exec --no-startup-id nm-applet
 exec --no-startup-id mate-volume-control-status-icon
-exec --no-startup-id unclutter
+exec_always --no-startup-id [ $( ps h -C picom | wc -l ) = 0 ] && picom --config ~/.config/compton.conf
 
 #applications
 

@@ -35,7 +35,8 @@ fi
 eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
 export SSH_AUTH_SOCK
 
-$HOME/.screenlayout/2-monitor.sh
+$HOME/.screenlayout/2-monitor.sh &
+
 /usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &> /dev/null &
 /usr/lib/mate-settings-daemon/mate-settings-daemon &
 xss-lock -- i3lock -c 000000 &
