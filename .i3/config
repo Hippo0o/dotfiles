@@ -81,7 +81,7 @@ bindsym $mod+Shift+r restart
 
 #screenshot
 bindsym --release Print exec --no-startup-id mate-screenshot -i
-bindsym --release Shift+Print exec --no-startup-id mate-screenshot -ca
+bindsym --release Shift+Print exec --no-startup-id mate-screenshot -a
 
 #i dont need help
 bindsym F1 nop
@@ -237,13 +237,13 @@ bar {
 }
 
 gaps inner 5
-gaps outer 1
+gaps outer 2
 
 # class                 border  backgr. text    indicator child_border
-client.focused		#93E0E3 #93E0E3 #1e1e1e #EEE8D5
-client.focused_inactive	#1e1e1e #1e1e1e #93E0E3 #1e1e1e
-client.unfocused	#1e1e1e #1e1e1e #93E0E3 #1e1e1e
-client.urgent		#FE0030 #FE0030 #1e1e1e #FE0030
+client.focused          #93E0E3 #93E0E3 #1e1e1e #EEE8D5
+client.focused_inactive #1e1e1e #1e1e1e #93E0E3 #1e1e1e
+client.unfocused        #1e1e1e #1e1e1e #93E0E3 #1e1e1e
+client.urgent           #FE0030 #FE0030 #1e1e1e #FE0030
 
 #no window decoration
 new_window pixel 1
@@ -259,13 +259,13 @@ exec --no-startup-id /usr/lib/mate-notification-daemon/mate-notification-daemon
 exec --no-startup-id unclutter
 exec --no-startup-id nm-applet
 exec_always --no-startup-id exec-once volumeicon
-exec_always --no-startup-id exec-once picom --config ~/.config/compton.conf
+exec_always --no-startup-id pkill picom; picom --config ~/.config/compton.conf
 exec_always --no-startup-id exec-once xss-lock -- i3lock -c 000000
 
 #settings
 exec $HOME/.screenlayout/monitor.sh
 exec setxkbmap -layout de -variant us 
-exec xset m 1/1 0
+exec xset m 0 0
 
 #wallpaper
 exec_always --no-startup-id $HOME/.fehbg
