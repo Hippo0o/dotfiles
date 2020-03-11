@@ -95,6 +95,7 @@ bindsym F1 nop
 #BEGIN RULES
 
 for_window [class="Wine"] floating enable
+for_window [instance="google-chrome \(\/tmp*"] floating enable #chromedriver
 #for_window [class="Termite"] focus
 #no_focus [class=".*"]
 #focus_on_window_activation smart
