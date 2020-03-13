@@ -1,1 +1,1 @@
-rofi -show drun -show-icons -padding 350 -columns 3 -disable-history -width 100 -lines 18 -bw 0
+rofi -show drun -show-icons -padding 350 -columns 4 -disable-history -width 100 -lines 18 -yoffset 0 -bw 0 $@

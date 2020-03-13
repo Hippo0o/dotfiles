@@ -92,21 +92,10 @@ bindsym F1 nop
 
 #END BINDINGS
 
-#BEGIN RULES
-
-for_window [class="Wine"] floating enable
-for_window [instance="google-chrome \(\/tmp*"] floating enable #chromedriver
-#for_window [class="Termite"] focus
-#no_focus [class=".*"]
-#focus_on_window_activation smart
-#mouse_warping none
-
-#END RULES
-
 #BEGIN WORKSPACE
 
-set $wsf1 "11:f1"
-set $wsf2 "12:f2"
+set $wsf1 "11:f1 "
+set $wsf2 "12:f2 "
 set $wsf3 "13:f3"
 set $wsf4 "14:f4"
 set $wsf5 "15:f5"
@@ -168,7 +157,6 @@ bindsym $mod+Shift+Escape move scratchpad
 
 set $mon1 DP-0
 set $mon2 DVI-D-0
-#set $mon2 HDMI-A-0
 
 workspace $wsf1 output $mon2
 workspace $wsf2 output $mon2
@@ -187,6 +175,17 @@ workspace $ws9 output $mon1
 workspace $ws10 output $mon1
 
 #END WORKSPACE
+
+#BEGIN RULES
+
+for_window [class="Wine"] floating enable
+for_window [class="Pavucontrol"] floating enable
+for_window [instance="google-chrome \(\/tmp*"] floating enable #chromedriver
+
+assign [class="discord"] $wsf1
+assign [title="^.+ - Twitch - Google Chrome$"] $wsf2
+
+#END RULES
 
 #BEGIN MODES
 
@@ -255,22 +254,22 @@ new_float pixel 1
 #BEGIN AUTOSTART
 
 #system
-exec --no-startup-id /usr/lib/mate-polkit/polkit-mate-authentication-agent-1
+exec --no-startup-id /usr/lib/mate-polkit/polkit-mate-authentication-agent-1/usr/lib/mate-polkit/polkit-mate-authentication-agent-1
 exec --no-startup-id /usr/lib/mate-notification-daemon/mate-notification-daemon
 exec --no-startup-id unclutter
 exec --no-startup-id nm-applet
-exec_always --no-startup-id exec-once volumeicon
+exec --no-startup-id volumeicon
 exec_always --no-startup-id pkill picom; picom --config ~/.config/compton.conf
-exec_always --no-startup-id exec-once xss-lock -- i3lock -c 000000
+exec --no-startup-id xss-lock -- i3lock -c 000000
 
 #settings
 exec $HOME/.screenlayout/monitor.sh
 exec setxkbmap -layout de -variant us 
-exec xset m 0 0
 
 #wallpaper
 exec_always --no-startup-id $HOME/.fehbg
 
 #applications
+exec --no-startup-id discord
 
 #END AUTOSTART
