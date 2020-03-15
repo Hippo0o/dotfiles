@@ -40,7 +40,7 @@ bindsym $mod+Ctrl+Right resize grow width 15 px or 5 ppt
 bindsym $mod+Next exec i3-msg resize shrink height 90 px && i3-msg resize shrink width 160 px
 bindsym $mod+Prior exec i3-msg resize grow height 90 px && i3-msg resize grow width 160 px
 
-bindsym $mod+Home resize set 1280px 800px
+bindsym $mod+Home resize set 500px 283px
 
 # split in horizontal orientation
 bindsym $mod+h split h
@@ -254,7 +254,7 @@ new_float pixel 1
 #BEGIN AUTOSTART
 
 #system
-exec --no-startup-id /usr/lib/mate-polkit/polkit-mate-authentication-agent-1/usr/lib/mate-polkit/polkit-mate-authentication-agent-1
+exec --no-startup-id /usr/lib/mate-polkit/polkit-mate-authentication-agent-1
 exec --no-startup-id /usr/lib/mate-notification-daemon/mate-notification-daemon
 exec --no-startup-id unclutter
 exec --no-startup-id nm-applet
