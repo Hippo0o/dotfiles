@@ -98,6 +98,7 @@ alias ssh='TERM=xterm ssh'
 alias dockerc='docker-compose'
 alias yay='yay --nocleanmenu --nodiffmenu --editmenu'
 alias update='yay -Syu'
+alias git-acp='git add .; git commit -m "$(date +%Y-%m-%d\ %H:%M)"; git push'
 
 #
 # # ex - archive extractor

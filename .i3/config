@@ -260,7 +260,7 @@ exec --no-startup-id unclutter
 exec --no-startup-id nm-applet
 exec --no-startup-id volumeicon
 exec_always --no-startup-id pkill picom; picom --config ~/.config/compton.conf
-exec --no-startup-id xss-lock -- i3lock -c 000000
+#exec --no-startup-id xss-lock -- i3lock -c 000000
 
 #settings
 exec --no-startup-id $HOME/.screenlayout/monitor.sh
