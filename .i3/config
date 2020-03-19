@@ -16,8 +16,8 @@ bindsym $mod+Ctrl+Return exec caja
 bindsym $mod+q kill
 
 # start rofi (a program launcher)
-bindsym $mod+Shift+d exec rofi-drun
-bindsym $mod+d exec rofi -show run 
+bindsym $mod+Shift+d exec dmenu-run
+bindsym $mod+d exec rofi-drun
 
 # change focus
 bindsym $mod+Left focus left
@@ -180,7 +180,7 @@ workspace $ws10 output $mon1
 
 for_window [class="Wine"] floating enable
 for_window [class="Pavucontrol"] floating enable
-for_window [instance="google-chrome \(\/tmp*"] floating enable #chromedriver
+for_window [instance="google-chrome \(\/*"] floating enable #chromedriver
 
 assign [class="discord"] $wsf1
 assign [title="^.+ - Twitch - Google Chrome$"] $wsf2
@@ -254,13 +254,13 @@ new_float pixel 1
 #BEGIN AUTOSTART
 
 #system
+exec --no-startup-id gnome-keyring-daemon --start --components=pkcs11,secrets,ssh
 exec --no-startup-id /usr/lib/mate-polkit/polkit-mate-authentication-agent-1
 exec --no-startup-id /usr/lib/mate-notification-daemon/mate-notification-daemon
 exec --no-startup-id unclutter
 exec --no-startup-id nm-applet
 exec --no-startup-id volumeicon
 exec_always --no-startup-id pkill picom; picom --config ~/.config/compton.conf
-#exec --no-startup-id xss-lock -- i3lock -c 000000
 
 #settings
 exec --no-startup-id $HOME/.screenlayout/monitor.sh
