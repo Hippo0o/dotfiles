@@ -178,7 +178,6 @@ workspace $ws10 output $mon1
 
 #BEGIN RULES
 
-#no window decoration
 new_window pixel 1
 new_float pixel 1
 for_window [class=.*] border pixel 1
