@@ -178,9 +178,15 @@ workspace $ws10 output $mon1
 
 #BEGIN RULES
 
+#no window decoration
+new_window pixel 1
+new_float pixel 1
+for_window [class=.*] border pixel 1
+
 for_window [class="Wine"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [instance="google-chrome \(\/*"] floating enable #chromedriver
+for_window [class="Mate-screenshot"] sticky enable
 
 assign [class="discord"] $wsf1
 assign [title="^.+ - Twitch - Google Chrome$"] $wsf2
@@ -245,10 +251,6 @@ client.focused_inactive #1e1e1e #1e1e1e #93E0E3 #1e1e1e
 client.unfocused        #1e1e1e #1e1e1e #93E0E3 #1e1e1e
 client.urgent           #FE0030 #FE0030 #1e1e1e #FE0030
 
-#no window decoration
-new_window pixel 1
-new_float pixel 1
-
 #END THEMING
 
 #BEGIN AUTOSTART
@@ -260,7 +262,8 @@ exec --no-startup-id /usr/lib/mate-notification-daemon/mate-notification-daemon
 exec --no-startup-id unclutter
 exec --no-startup-id nm-applet
 exec --no-startup-id volumeicon
-exec_always --no-startup-id pkill picom; picom --config ~/.config/compton.conf
+#exec_always --no-startup-id pkill picom; picom --config ~/.config/compton.conf
+exec_always --no-startup-id pkill xcompmgr; xcompmgr -c -t-5 -l-5 -r3.3 -o.33
 
 #settings
 exec --no-startup-id $HOME/.screenlayout/monitor.sh
@@ -270,6 +273,6 @@ exec --no-startup-id setxkbmap -layout de -variant us
 exec_always --no-startup-id $HOME/.fehbg
 
 #applications
-exec --no-startup-id discord
+#exec --no-startup-id discord
 
 #END AUTOSTART
