@@ -186,10 +186,10 @@ for_window [class="Wine"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [instance="google-chrome \(\/*"] floating enable #chromedriver
 for_window [class="Mate-screenshot"] sticky enable
-
 for_window [class="X2GoAgent"] fullscreen enable
-assign [class="X2GoAgent"] $ws10
 
+assign [class="X2GoAgent"] $ws10
+assign [class="x2goclient"] $ws10
 assign [class="discord"] $wsf1
 assign [title="^.+ - Twitch - Google Chrome$"] $wsf2
 
@@ -211,11 +211,11 @@ mode "$mode_system" {
 }
 bindsym $mod+Shift+e mode "$mode_system"
 
-set $mode_x2go x2go
-mode "$mode_x2go" {
-    bindsym $mod+Shift+End mode "default"
+set $mode_nop nop
+mode "$mode_nop" {
+    bindsym Scroll_Lock mode "default"
 }
-bindsym $mod+Shift+End mode "$mode_x2go"
+bindsym Scroll_Lock mode "$mode_nop"
 
 #END MODES
 
