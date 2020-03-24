@@ -256,9 +256,7 @@ client.urgent           #FE0030 #FE0030 #1e1e1e #FE0030
 #BEGIN AUTOSTART
 
 #system
-exec --no-startup-id gnome-keyring-daemon --start --components=pkcs11,secrets,ssh
 exec --no-startup-id /usr/lib/mate-polkit/polkit-mate-authentication-agent-1
-exec --no-startup-id /usr/lib/mate-notification-daemon/mate-notification-daemon
 exec --no-startup-id unclutter
 exec --no-startup-id nm-applet
 exec --no-startup-id volumeicon
