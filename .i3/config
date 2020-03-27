@@ -189,7 +189,6 @@ for_window [class="Mate-screenshot"] sticky enable
 for_window [class="X2GoAgent"] fullscreen enable
 
 assign [class="X2GoAgent"] $ws10
-assign [class="x2goclient"] $ws10
 assign [class="discord"] $wsf1
 assign [title="^.+ - Twitch - Google Chrome$"] $wsf2
 
@@ -277,6 +276,7 @@ exec_always --no-startup-id pkill xcompmgr; xcompmgr -c -t-5 -l-5 -r3.3 -o.33
 exec_always --no-startup-id $HOME/.fehbg
 
 #applications
-#exec --no-startup-id discord
+exec --no-startup-id discord
+exec --no-startup-id telegram-desktop -startintray
 
 #END AUTOSTART
