@@ -1,0 +1,2 @@
+#!/bin/bash
+greenclip print | sed '/^$/d' | dmenu -fn 'Fira Mono Regular-13' -sb '#93E0E3' -sf '#1e1e1e' -nb '#1e1e1e' -nf '#93E0E3' -i -l 10 -p clipboard | xargs -r -d'\n' -I '{}' greenclip print '{}'

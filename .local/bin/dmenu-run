@@ -1,0 +1,1 @@
+dmenu_run -fn 'pango:Fira Mono Regular' -sb '#93E0E3' -sf '#1e1e1e' -nb '#1e1e1e' -nf '#93E0E3'

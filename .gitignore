@@ -14,6 +14,8 @@
 !.config/rofi/config
 !.vimrc
 !.local/bin/conky-i3bar
+!.local/bin/dmenu-run
+!.local/bin/dmenu-clipboard
 !.local/bin/rofi-drun
 !.local/bin/exec-once
 !.local/bin/xrun

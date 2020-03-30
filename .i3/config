@@ -7,31 +7,26 @@
 set $mod Mod4
 floating_modifier $mod
 
-# start a terminal
 bindsym $mod+Return exec termite
 bindsym $mod+Shift+Return exec google-chrome-stable
 bindsym $mod+Ctrl+Return exec caja
 
-# kill focused window
 bindsym $mod+q kill
 
-# start rofi (a program launcher)
 bindsym $mod+Shift+d exec dmenu-run
 bindsym $mod+d exec rofi-drun
+bindsym $mod+p exec dmenu-clipboard
 
-# change focus
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
-# move focused window
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# resize focused window
 bindsym $mod+Ctrl+Left resize shrink width 15 px or 5 ppt
 bindsym $mod+Ctrl+Down resize shrink height 15 px or 5 ppt
 bindsym $mod+Ctrl+Up resize grow height 15 px or 5 ppt
@@ -42,51 +37,34 @@ bindsym $mod+Prior exec i3-msg resize grow height 90 px && i3-msg resize grow wi
 
 bindsym $mod+Home resize set 500px 283px
 
-# split in horizontal orientation
 bindsym $mod+h split h
-
-# split in vertical orientation
 bindsym $mod+v split v
 
-# enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
-# change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
-# toggle tiling / floating|sticky
 bindsym $mod+space floating toggle
 bindsym $mod+Ctrl+space sticky toggle
 
-# change focus between tiling / floating windows
 bindsym $mod+Shift+space focus mode_toggle
-
-# focus the parent container
 bindsym $mod+a focus parent
-
-# focus the child container
 bindsym $mod+Shift+a focus child
 
-# reload the configuration file
 bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
 #bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
-#lock & turn off monitors
 #bindsym Pause exec --no-startup-id loginctl lock-session
 
-#screenshot
 bindsym --release Print exec --no-startup-id mate-screenshot -i
 bindsym --release Shift+Print exec --no-startup-id mate-screenshot -a
 
 #i dont need help
 bindsym F1 nop
 
-# Audio controls
 #bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master '3%+'
 #bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master '3%-'
 
@@ -111,7 +89,6 @@ set $ws8 "8:8"
 set $ws9 "9:9"
 set $ws10 "10:10"
 
-# switch to workspace
 bindsym $mod+F1 workspace $wsf1
 bindsym $mod+F2 workspace $wsf2
 bindsym $mod+F3 workspace $wsf3
@@ -135,7 +112,6 @@ bindsym $mod+Escape scratchpad show
 
 bindsym $mod+grave [urgent=latest] focus
 
-# move focused container to workspace
 bindsym $mod+Shift+F1 move container to workspace $wsf1
 bindsym $mod+Shift+F2 move container to workspace $wsf2
 bindsym $mod+Shift+F3 move container to workspace $wsf3
@@ -190,7 +166,7 @@ for_window [class="X2GoAgent"] fullscreen enable
 
 assign [class="X2GoAgent"] $ws10
 assign [class="discord"] $wsf1
-assign [title="^.+ - Twitch - Google Chrome$"] $wsf2
+assign [title="^.+Twitch.+$"] $wsf2
 
 #END RULES
 
@@ -204,7 +180,6 @@ mode "$mode_system" {
     bindsym s exec --no-startup-id systemctl suspend, mode "default"  
     bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"  
 
-    # back to normal: Enter or Escape
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
@@ -235,7 +210,6 @@ bar {
         inactive_workspace #1e1e1e #1e1e1e #888888
         urgent_workspace   #1e1e1e #1e1e1e #FE0030
     }
-    # i3bar position
     position top
 
     tray_output primary
@@ -270,13 +244,13 @@ exec --no-startup-id unclutter
 exec --no-startup-id nm-applet
 exec --no-startup-id volumeicon
 #exec_always --no-startup-id pkill picom; picom --config ~/.config/compton.conf
-exec_always --no-startup-id pkill xcompmgr; xcompmgr -c -t-5 -l-5 -r3.3 -o.33
+exec_always --no-startup-id pkill xcompmgr; xcompmgr #-c -t-5 -l-5 -r3.3 -o.33
 
 #wallpaper
 exec_always --no-startup-id $HOME/.fehbg
 
 #applications
-exec --no-startup-id discord
+exec --no-startup-id discord --start-minimized
 exec --no-startup-id telegram-desktop -startintray
 
 #END AUTOSTART
