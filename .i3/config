@@ -195,7 +195,7 @@ bindsym Scroll_Lock mode "$mode_nop"
 
 #BEGIN THEMING
 
-font pango:Fira Mono Regular 10
+font pango:Fira Mono Regular 11
 
 bar {
     colors {
@@ -213,6 +213,7 @@ bar {
     position top
 
     tray_output primary
+    tray_padding 3
 
     #to force an workspace order without displaying the order numbers
     strip_workspace_numbers yes
