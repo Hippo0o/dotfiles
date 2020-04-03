@@ -166,6 +166,7 @@ for_window [class="X2GoAgent"] fullscreen enable
 
 assign [class="X2GoAgent"] $ws10
 assign [class="discord"] $wsf1
+assign [class="TelegramDesktop"] $wsf1
 assign [title="^.+Twitch.+$"] $wsf2
 
 #END RULES
@@ -213,7 +214,7 @@ bar {
     position top
 
     tray_output primary
-    tray_padding 3
+    tray_padding 1
 
     #to force an workspace order without displaying the order numbers
     strip_workspace_numbers yes
@@ -226,7 +227,7 @@ bar {
 }
 
 gaps inner 5
-gaps outer 2
+gaps outer 1
 
 # class                 border  backgr. text    indicator child_border
 client.focused          #93E0E3 #93E0E3 #1e1e1e #EEE8D5
