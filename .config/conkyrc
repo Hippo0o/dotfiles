@@ -17,16 +17,13 @@ max_text_width          0
 TEXT
 
 [ \
-  { "full_text" : "load ", "color" : "\#888888", "separator" : false, "separator_block_width" : 3 }, \
-  { "full_text" : "${loadavg 1}", "color" : ${if_match "${loadavg 1}">"5"}"\#EEE8D5"${else}"\#FF3545"${endif}, "separator" : false, "separator_block_width" : 0 }, \
-\
-  { "full_text" : " | tlp-mode", "color" : "\#888888", "separator" : false, "separator_block_width" : 3 }, \
+  { "full_text" : "tlp-mode", "color" : "\#888888", "separator" : false, "separator_block_width" : 3 }, \
   { "full_text" : "${execi 1 tlp-stat -s | grep Mode | cut -d "=" -f2}", "color" : "\#FF3545", "separator" : false, "separator_block_width" : 0 }, \
 \
   { "full_text" : " | cpu ", "color" : "\#888888", "separator" : false, "separator_block_width" : 3 }, \
-  { "full_text" : "${cpu cpu0}% ", "color" : ${if_match ${hwmon 1 temp 1}>65}"\#EEE8D5"${else}"\#FF3545"${endif},  "separator" : false, "separator_block_width" : 3 }, \
-  { "full_text" : "${freq}MHz", "color" : ${if_match ${hwmon 1 temp 1}>65}"\#EEE8D5"${else}"\#FF3545"${endif},  "separator" : false, "separator_block_width" : 1 }, \
-  { "full_text" : "${hwmon 1 temp 1}°C", "color" : ${if_match ${hwmon 1 temp 1}>65}"\#EEE8D5"${else}"\#FF3545"${endif},  "separator" : false, "separator_block_width" : 0 }, \
+  { "full_text" : "${cpu cpu0}% ", "color" : ${if_match ${hwmon 0 temp 1}>65}"\#EEE8D5"${else}"\#FF3545"${endif},  "separator" : false, "separator_block_width" : 3 }, \
+  { "full_text" : "${freq}MHz", "color" : ${if_match ${hwmon 0 temp 1}>65}"\#EEE8D5"${else}"\#FF3545"${endif},  "separator" : false, "separator_block_width" : 1 }, \
+  { "full_text" : "${hwmon 0 temp 1}°C", "color" : ${if_match ${hwmon 0 temp 1}>65}"\#EEE8D5"${else}"\#FF3545"${endif},  "separator" : false, "separator_block_width" : 0 }, \
 \
   { "full_text" : " | gpu ", "color" : "\#888888", "separator" : false, "separator_block_width" : 3 }, \
   { "full_text" : "${execi 20 nvidia-settings -query GPUCoreTemp | perl -ne 'print $1 if /GPUCoreTemp.*?\]\): (\d+)./;'ff}°C", "color" : "\#FF3545",  "separator" : false, "separator_block_width" : 0 }, \

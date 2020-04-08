@@ -37,16 +37,17 @@ export SSH_AUTH_SOCK
 
 xrandr --output eDP-1 --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-1 --off
 xrandr --output eDP-1-1 --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-1-1 --off
+xrandr --dpi 120
 
-/usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &
-mate-power-manager &
-/usr/lib/mate-settings-daemon/mate-settings-daemon &
-xss-lock -- i3lock -c 000000 &
-compton -b --config $HOME/.config/compton.conf &
-dunst &
+/usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &> /dev/null &
+mate-power-manager &> /dev/null &
+/usr/lib/mate-settings-daemon/mate-settings-daemon &> /dev/null &
+#xss-lock -- i3lock -c 000000 &
+#picom -b --config $HOME/.config/compton.conf &
 nm-applet &
-mate-volume-control-applet &
+mate-volume-control-applet &> /dev/null &
 blueman-applet &
-xset s off
+unclutter &
+xset s off &
 
 exec i3

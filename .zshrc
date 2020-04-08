@@ -88,9 +88,11 @@ export EDITOR='vim'
 export VISUAL='vim'
 
 alias ll='ls -alFh --group-directories-first --color=auto'
-alias update='yaourt -Syua'
 alias i3config='vi ~/.i3/config'
-#alias neofetch='neofetch --color_blocks off --ascii_distro arch --ascii_colors 7 --colors 1 7 7 1'
+alias update='yay -Syu'
+alias copy-to-clipboard='xclip -selection clipboard'
+alias ssh='TERM=xterm ssh'
+alias neofetch='neofetch --color_blocks off --ascii_distro arch --ascii_colors 7 --colors 1 7 7 1'
 
 #
 # # ex - archive extractor
@@ -115,5 +117,4 @@ ex ()
   else
     echo "'$1' is not a valid file"
   fi
-}
-
+} 

@@ -2,22 +2,11 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
+#BEGIN BINDINGS
+
 set $mod Mod4
 
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
-font pango:Fira Mono Regular 10
-
-#BEGIN FLOATING
-
-# Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
-
-for_window [class="Wine"] floating enable
-
-#END FLOATING
-
-#BEGIN BINDINGS
 
 # start a terminal
 bindsym $mod+Return exec --no-startup-id termite
@@ -26,7 +15,7 @@ bindsym $mod+Return exec --no-startup-id termite
 bindsym $mod+q kill
 
 # start rofi (a program launcher)
-bindsym $mod+Shift+d exec rofi -show drun -show-icons 
+bindsym $mod+Shift+d exec rofi -show drun -show-icons -padding 20 -columns 7 
 bindsym $mod+d exec rofi -show run
 
 # change focus
@@ -85,8 +74,9 @@ bindsym $mod+Shift+r restart
 bindsym $mod+l exec --no-startup-id loginctl lock-session
 
 #screenshot
-bindsym Print exec --no-startup-id maim $HOME/screenshot-$(date +%s).png && notify-send "screenshot saved as $HOME/screenshot-$(date +%s).png" -a "maim" -u low
-bindsym --release Shift+Print exec --no-startup-id maim -s | xclip -selection clipboard -t image/png && notify-send "screenshot saved to clipboard" -a "maim" -u low
+bindsym Print exec --no-startup-id maim $HOME/screenshot-$(date +%s).png 
+bindsym --release Shift+Print exec --no-startup-id maim -s | xclip -selection clipboard -t image/png 
+#bindsym --release Shift+Print exec --no-startup-id maim -s $HOME/screenshot-$(date +%s).png && notify-send "screenshot saved" -a "maim" -u low
 
 #i dont need help
 bindsym F1 nop
@@ -101,12 +91,22 @@ bindsym F1 nop
 
 #END BINDINGS
 
+#BEGIN RULES
+
+for_window [class="Wine"] floating enable
+for_window [class="Termite"] focus
+
+#no_focus [class=".*"]
+#focus_on_window_activation urgent
+
+#END RULES
+
 #BEGIN WORKSPACE
 
 set $ws1 1
-set $ws2 "2:&#xf120;"
+set $ws2 "2:&#xf121;"
+set $ws4 "4:&#xf120;"
 set $ws3 "3:&#xf268;"
-set $ws4 "4:&#xf121;"
 set $ws5 5
 set $ws6 6
 set $ws7 7
@@ -116,9 +116,9 @@ set $ws10 10
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
-bindsym $mod+2 workspace $ws2; exec --no-startup-id [ $( ps h -C termite | wc -l ) = 0 ] && termite
+bindsym $mod+2 workspace $ws2
 bindsym $mod+3 workspace $ws3; exec --no-startup-id [ $( ps h -C chrome | wc -l ) = 0 ] && google-chrome-stable
-bindsym $mod+4 workspace $ws4
+bindsym $mod+4 workspace $ws4; exec --no-startup-id [ $( ps h -C termite | wc -l ) = 0 ] && termite
 bindsym $mod+5 workspace $ws5
 bindsym $mod+6 workspace $ws6
 bindsym $mod+7 workspace $ws7
@@ -128,7 +128,7 @@ bindsym $mod+0 workspace $ws10
 bindsym $mod+Tab workspace back_and_forth
 bindsym $mod+dead_circumflex [urgent=latest] focus
 
-bindsym $mod+F1 scratchpad show
+bindsym $mod+Escape scratchpad show
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -143,10 +143,10 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 bindsym $mod+Shift+Tab move container to workspace back_and_forth
 
-bindsym $mod+Shift+F1 move scratchpad
+bindsym $mod+Shift+Escape move scratchpad
 
 assign [class="Google-chrome"] $ws3
-assign [class="jetbrains-phpstorm"] $ws4
+assign [class="jetbrains-phpstorm"] $ws2
 
 #END WORKSPACE
 
@@ -183,7 +183,9 @@ bindsym $mod+Shift+e mode "$mode_system"
 
 #END MODES
 
-#THEMING
+#BEGIN THEMING
+
+font pango:Fira Mono Regular 10
 
 bar {
     colors {
@@ -199,6 +201,7 @@ bar {
     }
     position top
     status_command conky-i3bar #i3status -c ~/.i3/i3status.conf
+    i3bar_command i3bar 
 }
 
 #i3-gaps specific
