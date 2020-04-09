@@ -77,6 +77,10 @@ fi
 source $ZSH/oh-my-zsh.sh
 zstyle ':completion:*' rehash true
 
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_FIND_NO_DUPS
+
 PROMPT='%{$fg[red]%}%n %{$reset_color%}${PWD/#$HOME/~}$(git_prompt_info)
 %{$fg[red]%}%(!.#.$)%{$reset_color%} '
 RPROMPT='%{$fg[red]%}[%*]%{$reset_color%}'
@@ -93,6 +97,7 @@ alias update='yay -Syu'
 alias copy-to-clipboard='xclip -selection clipboard'
 alias ssh='TERM=xterm ssh'
 alias neofetch='neofetch --color_blocks off --ascii_distro arch --ascii_colors 7 --colors 1 7 7 1'
+alias git-acp='git add .; git commit -m "$(date +%Y-%m-%d\ %H:%M)"; git push'
 
 #
 # # ex - archive extractor

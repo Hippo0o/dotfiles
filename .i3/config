@@ -8,72 +8,52 @@ set $mod Mod4
 
 floating_modifier $mod
 
-# start a terminal
-bindsym $mod+Return exec --no-startup-id termite
+bindsym $mod+Return exec termite
+bindsym $mod+Shift+Return exec google-chrome-stable
+bindsym $mod+Ctrl+Return exec caja
 
-# kill focused window
 bindsym $mod+q kill
 
-# start rofi (a program launcher)
 bindsym $mod+Shift+d exec rofi -show drun -show-icons -padding 20 -columns 7 
 bindsym $mod+d exec rofi -show run
 
-# change focus
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
-# move focused window
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# resize focused window
 bindsym $mod+Ctrl+Left resize shrink width 15 px or 5 ppt
 bindsym $mod+Ctrl+Down resize shrink height 15 px or 5 ppt
 bindsym $mod+Ctrl+Up resize grow height 15 px or 5 ppt
 bindsym $mod+Ctrl+Right resize grow width 15 px or 5 ppt
 
-# split in horizontal orientation
 bindsym $mod+h split h
-
-# split in vertical orientation
 bindsym $mod+v split v
 
-# enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
-# change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
-# toggle tiling / floating
 bindsym $mod+space floating toggle
 bindsym $mod+Ctrl+space sticky toggle
-
-# change focus between tiling / floating windows
 bindsym $mod+Shift+space focus mode_toggle
 
-# focus the parent container
 bindsym $mod+a focus parent
-
-# focus the child container
 bindsym $mod+Shift+a focus child
 
-# reload the configuration file
 bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
 #bindsym $mod+Shift+e exec i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'
 
-#lock & turn off monitors
 bindsym $mod+l exec --no-startup-id loginctl lock-session
 
-#screenshot
 bindsym Print exec --no-startup-id maim $HOME/screenshot-$(date +%s).png 
 bindsym --release Shift+Print exec --no-startup-id maim -s | xclip -selection clipboard -t image/png 
 #bindsym --release Shift+Print exec --no-startup-id maim -s $HOME/screenshot-$(date +%s).png && notify-send "screenshot saved" -a "maim" -u low
@@ -81,25 +61,7 @@ bindsym --release Shift+Print exec --no-startup-id maim -s | xclip -selection cl
 #i dont need help
 bindsym F1 nop
 
-# Audio controls
-#bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master '3%+'
-#bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master '3%-'
-
-# Sreen brightness controls
-#bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10 
-#bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
-
 #END BINDINGS
-
-#BEGIN RULES
-
-for_window [class="Wine"] floating enable
-for_window [class="Termite"] focus
-
-#no_focus [class=".*"]
-#focus_on_window_activation urgent
-
-#END RULES
 
 #BEGIN WORKSPACE
 
@@ -114,7 +76,6 @@ set $ws8 8
 set $ws9 9
 set $ws10 10
 
-# switch to workspace
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
 bindsym $mod+3 workspace $ws3; exec --no-startup-id [ $( ps h -C chrome | wc -l ) = 0 ] && google-chrome-stable
@@ -130,7 +91,6 @@ bindsym $mod+dead_circumflex [urgent=latest] focus
 
 bindsym $mod+Escape scratchpad show
 
-# move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
 bindsym $mod+Shift+2 move container to workspace $ws2
 bindsym $mod+Shift+3 move container to workspace $ws3
@@ -145,10 +105,24 @@ bindsym $mod+Shift+Tab move container to workspace back_and_forth
 
 bindsym $mod+Shift+Escape move scratchpad
 
+#END WORKSPACE
+
+#BEGIN RULES
+
+new_window pixel 1
+new_float pixel 1
+for_window [class=.*] border pixel 1
+
 assign [class="Google-chrome"] $ws3
 assign [class="jetbrains-phpstorm"] $ws2
 
-#END WORKSPACE
+for_window [class="Wine"] floating enable
+for_window [class="Termite"] focus
+
+#no_focus [class=".*"]
+#focus_on_window_activation urgent
+
+#END RULES
 
 #BEGIN MODES
 
@@ -160,7 +134,6 @@ mode "$mode_display" {
     bindsym Shift+e exec --no-startup-id xrandr --output eDP-1 --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-1 --mode 1920x1080 --pos 1920x0 --rotate normal & xrandr --output eDP-1-1 --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-1-1 --mode 1920x1080 --pos 1920x0 --rotate normal
     bindsym Shift+h exec --no-startup-id xrandr --output eDP-1 --mode 1920x1080 --pos 1920x0 --rotate normal --output HDMI-1 --mode 1920x1080 --pos 0x0 --rotate normal & xrandr --output eDP-1-1 --mode 1920x1080 --pos 1920x0 --rotate normal --output HDMI-1-1 --mode 1920x1080 --pos 0x0 --rotate normal 
 
-    # back to normal: Enter or Escape
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
@@ -175,7 +148,6 @@ mode "$mode_system" {
     bindsym r exec --no-startup-id systemctl reboot, mode "default"
     bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"  
 
-    # back to normal: Enter or Escape
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
@@ -185,7 +157,7 @@ bindsym $mod+Shift+e mode "$mode_system"
 
 #BEGIN THEMING
 
-font pango:Fira Mono Regular 10
+font pango:Fira Mono Regular 11
 
 bar {
     colors {
@@ -204,19 +176,14 @@ bar {
     i3bar_command i3bar 
 }
 
-#i3-gaps specific
-gaps inner 4
-gaps outer 2
+gaps inner 5
+gaps outer 1
 
-# class			border	backgr.	text	indicator
-client.focused		#FF3545 #FF3545 #1e1e1e #EEE8D5
+# class			        border	backgr.	text	indicator
+client.focused		    #FF3545 #FF3545 #1e1e1e #EEE8D5
 client.focused_inactive	#1e1e1e #1e1e1e #FF3545 #1e1e1e
-client.unfocused	#1e1e1e #1e1e1e #FF3545 #1e1e1e
-client.urgent		#EEE8D5 #EEE8D5 #1e1e1e #EEE8D5
-
-#no window decoration
-new_window 1pixel
-new_float 1pixel
+client.unfocused	    #1e1e1e #1e1e1e #FF3545 #1e1e1e
+client.urgent		    #EEE8D5 #EEE8D5 #1e1e1e #EEE8D5
 
 #END THEMING
 
@@ -226,7 +193,13 @@ new_float 1pixel
 exec_always --no-startup-id feh --bg-scale $HOME/.i3/makepkg.png
 
 #system
-#exec --no-startup-id numlockx off
-#exec --no-startup-id setxkbmap -rules evdev -model pc105 -layout de,de -variant ,
+exec --no-startup-id /usr/lib/mate-polkit/polkit-mate-authentication-agent-1 
+exec --no-startup-id /usr/lib/mate-settings-daemon/mate-settings-daemon
+exec --no-startup-id mate-power-manager
+exec --no-startup-id nm-applet
+exec --no-startup-id mate-volume-control-applet
+exec --no-startup-id blueman-applet 
+exec --no-startup-id unclutter
+exec_always --no-startup-id pkill picom; picom --config $HOME/.config/compton.conf 
 
 #END AUTOSTART
