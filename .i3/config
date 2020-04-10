@@ -15,7 +15,7 @@ bindsym $mod+q kill
 
 bindsym $mod+Shift+d exec dmenu-run
 bindsym $mod+d exec rofi-drun
-bindsym $mod+p exec dmenu-clipboard
+bindsym $mod+p exec rofi-clipboard
 
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
@@ -65,8 +65,9 @@ bindsym --release Shift+Print exec --no-startup-id mate-screenshot -a
 #i dont need help
 bindsym F1 nop
 
-#bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master '3%+'
-#bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master '3%-'
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 #END BINDINGS
 
@@ -244,7 +245,7 @@ exec --no-startup-id /usr/lib/mate-polkit/polkit-mate-authentication-agent-1
 exec --no-startup-id /usr/lib/mate-notification-daemon/mate-notification-daemon
 exec --no-startup-id unclutter
 exec --no-startup-id nm-applet
-exec --no-startup-id volumeicon
+#exec --no-startup-id volumeicon
 #exec_always --no-startup-id pkill picom; picom --config ~/.config/compton.conf
 exec_always --no-startup-id pkill xcompmgr; xcompmgr #-c -t-5 -l-5 -r3.3 -o.33
 
@@ -252,7 +253,7 @@ exec_always --no-startup-id pkill xcompmgr; xcompmgr #-c -t-5 -l-5 -r3.3 -o.33
 exec_always --no-startup-id $HOME/.fehbg
 
 #applications
-exec --no-startup-id discord --start-minimized
+exec --no-startup-id sleep 10; discord --start-minimized
 exec --no-startup-id telegram-desktop -startintray
 
 #END AUTOSTART
