@@ -18,6 +18,7 @@ max_text_width          0
 TEXT
 
 [ \
+  { "full_text" : "", "color" : "\#888888", "separator" : false, "separator_block_width" : 10 }, \
   { "full_text" : "${uptime_short}", "color" : "\#93E0E3", "separator" : false, "separator_block_width" : 0 }, \
 \
   { "full_text" : " | ", "color" : "\#888888", "separator" : false, "separator_block_width" : 3 }, \
@@ -25,8 +26,9 @@ TEXT
   { "full_text" : "${freq}MHz", "color" : ${if_match ${hwmon 0 temp 1}>65}"\#ff1844"${else}"\#93E0E3"${endif}, "separator" : false, "separator_block_width" : 0 }, \
   { "full_text" : "${hwmon 0 temp 1}°C", "color" : ${if_match ${hwmon 0 temp 1}>65}"\#ff1844"${else}"\#93E0E3"${endif}, "separator" : false, "separator_block_width" : 0 }, \
 \
-  { "full_text" : " | ", "color" : "\#888888", "separator" : false, "separator_block_width" : 0 }, \
-  { "full_text" : "${execi 20 nvidia-settings -query GPUCoreTemp | perl -ne 'print $1 if /GPUCoreTemp.*?\]\): (\d+)./;'}°C", "color" : "\#93E0E3", "separator" : false, "separator_block_width" : 0 }, \
+  { "full_text" : " |", "color" : "\#888888", "separator" : false, "separator_block_width" : 3 }, \
+  { "full_text" : "${execi 5 gpu-core-usage}%", "color" : "\#93E0E3", "min_width" : 35, "align" : "right", "separator" : false, "separator_block_width" : 10 }, \
+  { "full_text" : "${execi 5 gpu-core-temp}°C", "color" : "\#93E0E3", "separator" : false, "separator_block_width" : 0 }, \
 \
   { "full_text" : " |  ", "color" : "\#888888", "separator" : false, "separator_block_width" : 3 }, \
   { "full_text" : "${memperc}% ", "color" : ${if_match ${memperc}>94}"\#ff1844"${else}"\#93E0E3"${endif}, "separator" : false, "separator_block_width" : 3 }, \

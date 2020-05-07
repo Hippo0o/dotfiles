@@ -12,6 +12,7 @@ bindsym $mod+Shift+Return exec google-chrome-stable
 bindsym $mod+Ctrl+Return exec caja
 
 bindsym $mod+q kill
+bindsym --release $mod+Shift+q exec xkill
 
 bindsym $mod+Shift+d exec dmenu-run
 bindsym $mod+d exec rofi-drun
@@ -65,9 +66,9 @@ bindsym --release Shift+Print exec --no-startup-id mate-screenshot -a
 #i dont need help
 bindsym F1 nop
 
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+#bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
+#bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
+#bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 #END BINDINGS
 
@@ -245,7 +246,7 @@ exec --no-startup-id /usr/lib/mate-polkit/polkit-mate-authentication-agent-1
 exec --no-startup-id /usr/lib/mate-notification-daemon/mate-notification-daemon
 exec --no-startup-id unclutter
 exec --no-startup-id nm-applet
-#exec --no-startup-id volumeicon
+exec --no-startup-id volumeicon
 #exec_always --no-startup-id pkill picom; picom --config ~/.config/compton.conf
 exec_always --no-startup-id pkill xcompmgr; xcompmgr #-c -t-5 -l-5 -r3.3 -o.33
 

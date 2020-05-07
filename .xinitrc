@@ -34,6 +34,9 @@ fi
 
 $HOME/.screenlayout/monitor.sh 
 setxkbmap -layout de -variant us
-xkbset bo 50 #mechanical keyboard sickness
+#xkbset bo 50 #mechanical keyboard sickness
+xset s off
+xset s noblank
+xset dpms 0 0 0  
 
 exec i3
