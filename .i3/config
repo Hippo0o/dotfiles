@@ -16,7 +16,6 @@ bindsym --release $mod+Shift+q exec xkill
 
 bindsym $mod+Shift+d exec dmenu-run
 bindsym $mod+d exec rofi-drun
-bindsym $mod+p exec rofi-clipboard
 
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
