@@ -1,7 +1,7 @@
 *
 !.gitignore
 !.i3/config
-!.i3/nobinds
+!.i3/simple
 !.xinitrc
 !.xinitrc-xrun
 !.zprofile

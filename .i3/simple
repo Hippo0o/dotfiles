@@ -5,6 +5,9 @@
 set $mod Mod1+Mod4
 floating_modifier $mod
 
+bindsym $mod+p exec --no-startup-id $HOME/.screenlayout/xrun.sh
+bindsym $mod+Shift+p exec --no-startup-id $HOME/.screenlayout/tv.sh
+
 bindsym $mod+q kill
 bindsym $mod+f fullscreen toggle
 bindsym $mod+d exec dmenu-run
