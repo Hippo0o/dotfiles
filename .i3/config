@@ -59,22 +59,25 @@ bindsym $mod+Shift+r restart
 
 #bindsym Pause exec --no-startup-id loginctl lock-session
 
-bindsym --release Print exec --no-startup-id mate-screenshot -i
+bindsym --release $mod+Print exec --no-startup-id mate-screenshot -i
 bindsym --release Shift+Print exec --no-startup-id mate-screenshot -a
 
 #i dont need help
-bindsym F1 nop
+#bindsym F1 nop
 
-#bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
-#bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
-#bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+#ffxiv
+bindsym F8 exec --no-startup-id [ "$(xdotool getwindowfocus getwindowname)" = "FINAL FANTASY XIV" ] && xdotool mousedown 3
+
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 #END BINDINGS
 
 #BEGIN WORKSPACE
-
-set $wsf1 "11:f1 "
-set $wsf2 "12:f2 "
+#
+set $wsf1 "11:f1"
+set $wsf2 "12:f2"
 set $wsf3 "13:f3"
 set $wsf4 "14:f4"
 set $wsf5 "15:f5"
@@ -85,7 +88,7 @@ set $ws3 "3:3"
 set $ws4 "4:4"
 set $ws5 "5:5"
 set $ws6 "6:6"
-set $ws7 "7:7"
+set $ws7 "7:7 "
 set $ws8 "8:8"
 set $ws9 "9:9"
 set $ws10 "10:10"
@@ -157,15 +160,20 @@ workspace $ws10 output $mon1
 
 new_window pixel 1
 new_float pixel 1
-for_window [class=.*] border pixel 1
+for_window [class=".*"] border pixel 1
+
+for_window [class=".*"] split toggle
+default_orientation vertical
 
 for_window [class="Wine"] floating enable
 for_window [class="Pavucontrol"] floating enable
+for_window [class="Nm-connection-editor"] floating enable
 for_window [instance="google-chrome \(\/*"] floating enable #chromedriver
 for_window [class="Mate-screenshot"] sticky enable
 for_window [class="X2GoAgent"] fullscreen enable
 
 assign [class="X2GoAgent"] $ws10
+assign [class="Wine"] $ws7
 assign [class="discord"] $wsf1
 assign [class="TelegramDesktop"] $wsf1
 assign [title="^.+Twitch.+$"] $wsf2
@@ -206,7 +214,7 @@ bar {
         statusline #93E0E3
         separator  #888888
 
-        # Type             border  background font
+        # Type             border  bg      font
         focused_workspace  #1e1e1e #1e1e1e #93E0E3
         active_workspace   #1e1e1e #1e1e1e #EEE8D5
         inactive_workspace #1e1e1e #1e1e1e #888888
@@ -214,7 +222,7 @@ bar {
     }
     position top
 
-    tray_output primary
+    tray_output $mon2
     tray_padding 1
 
     #to force an workspace order without displaying the order numbers
@@ -222,7 +230,7 @@ bar {
 
     status_command conky-i3bar
 
-    i3bar_command i3bar
+    i3bar_command i3bar 
 
     bindsym button3 exec rofi-drun
 }
@@ -243,6 +251,7 @@ client.urgent           #FE0030 #FE0030 #1e1e1e #FE0030
 #system
 exec --no-startup-id /usr/lib/mate-polkit/polkit-mate-authentication-agent-1
 exec --no-startup-id /usr/lib/mate-notification-daemon/mate-notification-daemon
+exec --no-startup-id nvidia-fan-controller
 exec --no-startup-id unclutter
 exec --no-startup-id nm-applet
 exec --no-startup-id volumeicon
@@ -253,7 +262,7 @@ exec_always --no-startup-id pkill xcompmgr; xcompmgr #-c -t-5 -l-5 -r3.3 -o.33
 exec_always --no-startup-id $HOME/.fehbg
 
 #applications
-exec --no-startup-id sleep 10; discord --start-minimized
+exec --no-startup-id sleep 5; discord --start-minimized
 exec --no-startup-id telegram-desktop -startintray
 
 #END AUTOSTART
