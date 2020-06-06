@@ -162,8 +162,8 @@ new_window pixel 1
 new_float pixel 1
 for_window [class=".*"] border pixel 1
 
-for_window [class=".*"] split toggle
-default_orientation vertical
+#for_window [class=".*"] split toggle
+#default_orientation vertical
 
 for_window [class="Wine"] floating enable
 for_window [class="Pavucontrol"] floating enable
@@ -257,6 +257,7 @@ exec --no-startup-id nm-applet
 exec --no-startup-id volumeicon
 #exec_always --no-startup-id pkill picom; picom --config ~/.config/compton.conf
 exec_always --no-startup-id pkill xcompmgr; xcompmgr #-c -t-5 -l-5 -r3.3 -o.33
+exec --no-startup-id $HOME/.i3/alternating_layouts.py -o $mon1
 
 #wallpaper
 exec_always --no-startup-id $HOME/.fehbg
