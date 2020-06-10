@@ -60,7 +60,7 @@ bindsym $mod+Shift+r restart
 #bindsym Pause exec --no-startup-id loginctl lock-session
 
 bindsym --release $mod+Print exec --no-startup-id mate-screenshot -i
-bindsym --release Shift+Print exec --no-startup-id mate-screenshot -a
+bindsym --release Shift+Print exec --no-startup-id maim -s | xclip -selection clipboard -t image/png
 
 #i dont need help
 #bindsym F1 nop
@@ -166,17 +166,20 @@ for_window [class=".*"] border pixel 1
 #default_orientation vertical
 
 for_window [class="Wine"] floating enable
+for_window [class="^.*\.exe$"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [class="Nm-connection-editor"] floating enable
 for_window [instance="google-chrome \(\/*"] floating enable #chromedriver
 for_window [class="Mate-screenshot"] sticky enable
 for_window [class="X2GoAgent"] fullscreen enable
 
-assign [class="X2GoAgent"] $ws10
+assign [class="^.*\.exe$"] $ws7
 assign [class="Wine"] $ws7
+assign [class="ffxiv_dx11.exe"] $ws8
 assign [class="discord"] $wsf1
+assign [class="X2GoAgent"] $ws10
 assign [class="TelegramDesktop"] $wsf1
-assign [title="^.+Twitch.+$"] $wsf2
+#assign [title="^.+Twitch.+$"] $wsf2
 
 #END RULES
 
@@ -254,10 +257,10 @@ exec --no-startup-id /usr/lib/mate-notification-daemon/mate-notification-daemon
 exec --no-startup-id nvidia-fan-controller
 exec --no-startup-id unclutter
 exec --no-startup-id nm-applet
-exec --no-startup-id volumeicon
+exec --no-startup-id volctl
 #exec_always --no-startup-id pkill picom; picom --config ~/.config/compton.conf
 exec_always --no-startup-id pkill xcompmgr; xcompmgr #-c -t-5 -l-5 -r3.3 -o.33
-exec --no-startup-id $HOME/.i3/alternating_layouts.py -o $mon1
+exec_always --no-startup-id $HOME/.i3/i3-dynamic-split.py -o $mon1
 
 #wallpaper
 exec_always --no-startup-id $HOME/.fehbg
