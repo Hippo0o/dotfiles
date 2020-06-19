@@ -12,6 +12,7 @@
 !.config/dunstrc
 !.config/termite/config
 !.config/rofi/config
+!.config/i3blocks
 !.vimrc
 !.local/bin/conky-i3bar
 !.local/bin/dmenu-run
