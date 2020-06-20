@@ -65,9 +65,9 @@ bindsym --release Shift+Print exec --no-startup-id maim -s | xclip -selection cl
 #i dont need help
 #bindsym F1 nop
 
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && pkill -RTMIN+10 i3blocks
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && pkill -RTMIN+10 i3blocks
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && pkill -RTMIN+10 i3blocks
 
 #END BINDINGS
 
@@ -258,6 +258,7 @@ exec --no-startup-id nm-applet
 #exec_always --no-startup-id pkill picom; picom --config ~/.config/compton.conf
 exec_always --no-startup-id pkill xcompmgr; xcompmgr #-c -t-5 -l-5 -r3.3 -o.33
 exec_always --no-startup-id $HOME/.i3/i3-dynamic-split.py -o $mon1
+exec --no-startup-id sleep3; pactl set-sink-volume @DEFAULT_SINK@ 100% #workaround for 9% left channel bug after restart with higher than 100% volume
 
 #wallpaper
 exec_always --no-startup-id $HOME/.fehbg

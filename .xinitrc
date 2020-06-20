@@ -37,7 +37,5 @@ setxkbmap -layout de -variant us
 xset s off
 xset s noblank
 xset dpms 0 0 0  
-#pactl set-sink-volume @DEFAULT_SINK@ 100% #workaround for 9% left channel bug after restart with higher than 100% volume
 
 exec i3-session
-

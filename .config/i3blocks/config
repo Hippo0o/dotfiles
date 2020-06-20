@@ -23,7 +23,7 @@
 # Global properties
 #
 # The top properties below are applied to every block, but can be overridden.
-separator_block_width=15
+separator_block_width=20
 markup=none
 align=right
 
@@ -52,7 +52,7 @@ min_width=100% 1000MHz 10°C
 [memory]
 command=conky -q -i 1 -c $SCRIPT_DIR/conky/memory
 interval=1
-min_width=100% 10.10GiB
+min_width=10% 10.10GiB
 
 [netup_label]
 full_text=
@@ -63,6 +63,7 @@ command=conky -q -c $SCRIPT_DIR/conky/netup
 interval=persist
 min_width=1.10GiB
 separator=false
+separator_block_width=10
 
 [netdown_label]
 full_text=
@@ -74,7 +75,7 @@ interval=persist
 min_width=1.10GiB
 
 [time]
-command=date '+%a %d.%m.%Y %H:%M:%S'
+command=date '+%a %d.%m.%Y %H:%M'
 interval=5
 
 [volume_label]
@@ -84,7 +85,8 @@ separator_block_width=5
 separator=false
 [volume]
 command=$SCRIPT_DIR/volume
-interval=1
+interval=once
+signal=10
 min_width=100%
 separator=false
 separator_block_width=3
