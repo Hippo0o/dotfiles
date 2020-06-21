@@ -132,6 +132,9 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 
 bindsym $mod+Shift+Escape move scratchpad
 
+bindsym --whole-window $mod+button4 workspace prev_on_output
+bindsym --whole-window $mod+button5 workspace next_on_output
+
 set $mon1 DP-0
 set $mon2 DVI-D-0
 
