@@ -260,7 +260,7 @@ exec --no-startup-id nm-applet
 #exec --no-startup-id systemctl --user restart nvidia-fan-control
 #exec_always --no-startup-id pkill picom; picom --config ~/.config/compton.conf
 exec_always --no-startup-id pkill xcompmgr; xcompmgr #-c -t-5 -l-5 -r3.3 -o.33
-exec_always --no-startup-id $HOME/.i3/i3-dynamic-split.py -o $mon1
+exec_always --no-startup-id $HOME/.i3/i3-alternating-layouts.py -o $mon1
 exec --no-startup-id sleep3; pactl set-sink-volume @DEFAULT_SINK@ 100% #workaround for 9% left channel bug after restart with higher than 100% volume
 
 #wallpaper
