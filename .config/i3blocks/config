@@ -40,8 +40,8 @@ interval=1
 short_text=
 
 [cpu]
-command=conky -q -i 1 -c $SCRIPT_DIR/conky/cpu
-interval=1
+command=conky -q -c $SCRIPT_DIR/conky/cpu
+interval=persist
 min_width=100% 1000MHz 10°C
 
 [gpu]
@@ -75,8 +75,8 @@ interval=persist
 min_width=1.10GiB
 
 [time]
-command=date '+%a %d.%m.%Y %H:%M'
-interval=5
+command=date '+%a %d.%m.%Y %H:%M';date '+%d.%m.%Y %H:%M'
+interval=20
 
 [volume_label]
 full_text=墳

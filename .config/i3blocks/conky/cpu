@@ -1,5 +1,6 @@
 out_to_x no
 out_to_console yes
+update_interval 1
 
 TEXT
 ${cpu cpu0}% ${freq}MHz ${hwmon 0 temp 1}°C
