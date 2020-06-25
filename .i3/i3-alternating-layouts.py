@@ -18,6 +18,10 @@ parser.add_option("-o", "--outputs", dest="outputs", type="string", action="call
                   metavar="HDMI-0,DP-0,.. ", help="List of outputs that should be used instead of all.")
 (options, args) = parser.parse_args()
 
+
+skip_window_id = 0
+
+
 async def grab_focused(c):
     tree = await c.get_tree()
     focused_window = tree.find_focused()
@@ -27,38 +31,62 @@ async def grab_focused(c):
 
     if(options.outputs and focused_window.ipc_data["output"] not in options.outputs):
         return None
-    
+
     return focused_window
 
-last_window_id = 0
+
 async def set_split(c, e):
-    global last_window_id
+    global skip_window_id
     focused_window = await grab_focused(c)
     if focused_window is None:
         return
 
-    #on WINDOW_MOVE windows would otherwise get unable to be moved outside their parent container in certain cases.
-    if(last_window_id == focused_window.id):
-        return
-    last_window_id = focused_window.id
-
     parent = focused_window.parent
     prev_window = parent.nodes[-1]
+
+    if len(parent.nodes) == 1:
+        skip_window_id = focused_window.id
+    else:
+        skip_window_id = 0
+
     if (parent.layout != "tabbed" and parent.layout != "stacked"):
         if (focused_window.rect.height > focused_window.rect.width and
-                parent.layout == "splith" and 
-                parent.num is not None): #workspace container only
+                parent.layout == "splith" and
+                parent.num is not None):  # workspace/root container only
             await c.command("split vertical")
         # if prev_window.rect.height > prev_window.rect.width:
         #     await c.command("split vertical")
         # else:
         #     await c.command("split horizontal")
 
+
+# To have the right split after moving when not changing focus.
+# Workaround needed or windows get unable to be moved outside their parent container in certain cases.
+async def move_workaround(c, e):
+    global skip_window_id
+    focused_window = await grab_focused(c)
+
+    if focused_window is None:
+        return
+
+    if focused_window.id == skip_window_id:
+        skip_window_id = 0
+        return
+
+    await set_split(c, e)
+
+    focused_window = await grab_focused(c)
+    if len(focused_window.parent.nodes) == 1:
+        skip_window_id = focused_window.id
+    else:
+        skip_window_id = 0
+
+
 async def main():
     # with auto_reconnect script would survive i3 exit aswell
     c = await Connection(auto_reconnect=False).connect()
     c.on(Event.WINDOW_FOCUS, set_split)
-    c.on(Event.WINDOW_MOVE, set_split)
+    c.on(Event.WINDOW_MOVE, move_workaround)
     await c.main()
 
 asyncio.get_event_loop().run_until_complete(main())

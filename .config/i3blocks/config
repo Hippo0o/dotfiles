@@ -75,7 +75,7 @@ interval=persist
 min_width=1.10GiB
 
 [time]
-command=date '+%a %d.%m.%Y %H:%M';date '+%d.%m.%Y %H:%M'
+command=date '+%a %d.%m.%Y %H:%M';date '+%a %d.%m. %H:%M'
 interval=20
 
 [volume_label]
