@@ -50,10 +50,11 @@ async def set_split(c, e):
         skip_window_id = 0
 
     if (parent.layout != "tabbed" and parent.layout != "stacked"):
-        if (focused_window.rect.height > focused_window.rect.width and
-                parent.layout == "splith" and
-                parent.num is not None):  # workspace/root container only
+        if (focused_window.rect.height > focused_window.rect.width):  
             await c.command("split vertical")
+        
+        if (focused_window.rect.height < focused_window.rect.width and len(parent.nodes)==1):  
+            await c.command("split horizontal")
         # if prev_window.rect.height > prev_window.rect.width:
         #     await c.command("split vertical")
         # else:
