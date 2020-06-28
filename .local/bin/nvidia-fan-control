@@ -1,0 +1,21 @@
+#/bin/bash
+
+echo "GPU fan controller service started."
+nvidia-settings -a "[gpu:$gpu]/GPUFanControlState=1" > /dev/null
+
+trap 'nvidia-settings -a "[gpu:$gpu]/GPUFanControlState=0" > /dev/null' EXIT
+
+while true
+do
+    degreesC="$(nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits)"
+    coreUtil="$(nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits)"
+    fanSpeed="$(($degreesC ** 3 / 5000 + $coreUtil / 10 ))"
+    if [ $fanSpeed -gt 100 ] || [ $degreesC -gt 79 ]
+    then
+        fanSpeed=100
+    fi
+    nvidia-settings -a "[fan:0]/GPUTargetFanSpeed=$fanSpeed" > /dev/null
+    sleep 4
+done
+
+exit 1

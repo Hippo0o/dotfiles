@@ -1,0 +1,10 @@
+[Unit]
+Requires=xsession.target
+
+[Service]
+Type=simple
+ExecStart=/bin/bash %h/.local/bin/nvidia-fan-control
+#Restart=on-failure
+
+[Install]
+WantedBy=xsession.target
