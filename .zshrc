@@ -82,12 +82,12 @@ setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_FIND_NO_DUPS
 unsetopt nomatch
 
-PROMPT='%{$fg[cyan]%}%n%{$reset_color%} ${PWD/#$HOME/~}$(git_prompt_info) %{$fg[cyan]%}%*
+PROMPT='${PWD/#$HOME/~}$(git_prompt_info)
 %{$fg[cyan]%}%(!.#.$)%{$reset_color%} '
 #RPROMPT='%{$fg[cyan]%}[%*]%{$reset_color%}'
 
-ZSH_THEME_GIT_PROMPT_PREFIX=" %{$fg[green]%}git:("
-ZSH_THEME_GIT_PROMPT_SUFFIX=")%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_PREFIX=" %{$fg[green]%}"
+ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
 
 export EDITOR='vim'
 export VISUAL='vim'
