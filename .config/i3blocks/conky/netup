@@ -3,4 +3,4 @@ out_to_console yes
 update_interval 1
 
 TEXT
-${upspeed enp5s0}
+${upspeed enp4s0}

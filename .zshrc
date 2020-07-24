@@ -59,7 +59,6 @@ COMPLETION_WAITING_DOTS="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git
 #  sudo
 )
 
@@ -82,12 +81,9 @@ setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_FIND_NO_DUPS
 unsetopt nomatch
 
-PROMPT=' ${PWD/#$HOME/~}$(git_prompt_info)
+PROMPT='${PWD/#$HOME/~}
 %{$fg[cyan]%}%(!.#.$)%{$reset_color%} '
 #RPROMPT='%{$fg[cyan]%}[%*]%{$reset_color%}'
-
-ZSH_THEME_GIT_PROMPT_PREFIX=" %{$fg[green]%}"
-ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
 
 export EDITOR='vim'
 export VISUAL='vim'

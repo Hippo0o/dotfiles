@@ -134,7 +134,7 @@ bindsym $mod+Shift+Escape move scratchpad
 bindsym --whole-window $mod+button4 workspace prev_on_output
 bindsym --whole-window $mod+button5 workspace next_on_output
 
-set $mon1 DP-0
+set $mon1 DisplayPort-0
 set $mon2 DVI-D-0
 
 workspace $wsf1 output $mon2
@@ -204,6 +204,17 @@ mode "$mode_nop" {
 }
 bindsym Scroll_Lock mode "$mode_nop"
 
+set $mode_display Display default (d), hostmode (h), tv (t)
+mode "$mode_display" {
+    bindsym d exec --no-startup-id $HOME/.screenlayout/monitor.sh
+    bindsym h exec --no-startup-id $HOME/.screenlayout/hostmode.sh
+    bindsym t exec --no-startup-id $HOME/.screenlayout/tv.sh
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+p mode "$mode_display"
+
 #END MODES
 
 #BEGIN THEMING
@@ -252,20 +263,22 @@ client.urgent           #FE0030 #FE0030 #1e1e1e #FE0030
 #BEGIN AUTOSTART
 
 #system
-exec --no-startup-id /usr/lib/mate-polkit/polkit-mate-authentication-agent-1
+exec --no-startup-id /usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &> /dev/null
 exec --no-startup-id /usr/lib/mate-notification-daemon/mate-notification-daemon
 exec --no-startup-id unclutter
 exec --no-startup-id nm-applet
 #exec_always --no-startup-id pkill picom; picom --config ~/.config/compton.conf
 exec_always --no-startup-id pkill xcompmgr; xcompmgr #-c -t-5 -l-5 -r3.3 -o.33
-exec_always --no-startup-id $HOME/.i3/i3-alternating-layouts.py -o $mon1
-exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 100% && pkill -RTMIN+10 i3blocks #workaround for 9% left channel bug after exiting with higher than 100% volume
+exec_always --no-startup-id $HOME/.i3/i3-alternating-layouts.py -o $mon1,HDMI-0
+exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 150% && pkill -RTMIN+10 i3blocks #workaround for 9% left channel bug after exiting with higher than 100% volume
+exec --no-startup-id pactl set-source-volume @DEFAULT_SOURCE@ 120% #pulseaudio is good btw; imagine saving volume
 
 #wallpaper
 exec_always --no-startup-id $HOME/.fehbg
 
 #applications
-exec --no-startup-id sleep 5; discord --start-minimized
-exec --no-startup-id telegram-desktop -startintray
+#exec --no-startup-id flatpak run com.discordapp.Discord --start-minimized 
+#exec --no-startup-id telegram-desktop -startintray
+exec --no-startup-id google-chrome-stable --restore-last-session 
 
 #END AUTOSTART
