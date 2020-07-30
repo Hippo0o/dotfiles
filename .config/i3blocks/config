@@ -44,10 +44,10 @@ command=conky -q -c $SCRIPT_DIR/conky/cpu
 interval=persist
 min_width=100% 1000MHz 10°C
 
-#[gpu]
-#command=$SCRIPT_DIR/gpu
-#interval=1
-#min_width=100% 1000MHz 10°C
+[gpu]
+command=conky -q -c $SCRIPT_DIR/conky/gpu
+interval=persist
+min_width=10°C
 
 [memory]
 command=conky -q -i 1 -c $SCRIPT_DIR/conky/memory

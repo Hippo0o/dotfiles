@@ -141,6 +141,7 @@ workspace $wsf1 output $mon2
 workspace $wsf2 output $mon2
 workspace $wsf3 output $mon2
 workspace $wsf4 output $mon2
+workspace $wsf5 output $mon2
 
 workspace $ws1 output $mon1
 workspace $ws2 output $mon1
@@ -211,7 +212,7 @@ mode "$mode_display" {
     bindsym t exec --no-startup-id $HOME/.screenlayout/tv.sh
 
     bindsym Return mode "default"
-    bindsym Escape mode "default"
+    bindsym Escape mode "default", restart
 }
 bindsym $mod+p mode "$mode_display"
 
@@ -269,9 +270,10 @@ exec --no-startup-id unclutter
 exec --no-startup-id nm-applet
 #exec_always --no-startup-id pkill picom; picom --config ~/.config/compton.conf
 exec_always --no-startup-id pkill xcompmgr; xcompmgr #-c -t-5 -l-5 -r3.3 -o.33
-exec_always --no-startup-id $HOME/.i3/i3-alternating-layouts.py -o $mon1,HDMI-0
-exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 150% && pkill -RTMIN+10 i3blocks #workaround for 9% left channel bug after exiting with higher than 100% volume
+exec_always --no-startup-id $HOME/.i3/i3-alternating-layouts.py -o $mon1,HDMI-A-0
+exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 50% && pkill -RTMIN+10 i3blocks #workaround for 9% left channel bug after exiting with higher than 100% volume
 exec --no-startup-id pactl set-source-volume @DEFAULT_SOURCE@ 120% #pulseaudio is good btw; imagine saving volume
+exec_always --no-startup-id pkill synergyc; synergyc 192.168.122.101
 
 #wallpaper
 exec_always --no-startup-id $HOME/.fehbg
@@ -279,6 +281,5 @@ exec_always --no-startup-id $HOME/.fehbg
 #applications
 #exec --no-startup-id flatpak run com.discordapp.Discord --start-minimized 
 #exec --no-startup-id telegram-desktop -startintray
-exec --no-startup-id google-chrome-stable --restore-last-session 
 
 #END AUTOSTART
