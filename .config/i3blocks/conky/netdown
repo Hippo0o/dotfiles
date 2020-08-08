@@ -1,6 +1,8 @@
-out_to_x no
-out_to_console yes
-update_interval 1
-
-TEXT
+conky.config = {
+  out_to_x = false,
+  out_to_console = true,
+  update_interval = 1,
+}
+conky.text = [[
 ${downspeed enp4s0}
+]]

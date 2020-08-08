@@ -131,8 +131,8 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 
 bindsym $mod+Shift+Escape move scratchpad
 
-bindsym --whole-window $mod+button4 workspace prev_on_output
-bindsym --whole-window $mod+button5 workspace next_on_output
+#bindsym --whole-window $mod+button4 workspace prev_on_output
+#bindsym --whole-window $mod+button5 workspace next_on_output
 
 set $mon1 DisplayPort-0
 set $mon2 DVI-D-0
@@ -174,7 +174,6 @@ for_window [instance="google-chrome \(\/*"] floating enable #chromedriver
 for_window [class="Mate-screenshot"] sticky enable
 for_window [class="X2GoAgent"] fullscreen enable
 
-assign [class="ffxiv_dx11.exe"] $ws9
 #assign [class="^.*\.exe$"] $ws7
 #assign [class="Wine"] $ws7
 assign [class="discord"] $wsf1
@@ -205,11 +204,11 @@ mode "$mode_nop" {
 }
 bindsym Scroll_Lock mode "$mode_nop"
 
-set $mode_display Display default (d), hostmode (h), tv (t)
+set $mode_display Display default (d), hostmode (h), media (m)
 mode "$mode_display" {
     bindsym d exec --no-startup-id $HOME/.screenlayout/monitor.sh
     bindsym h exec --no-startup-id $HOME/.screenlayout/hostmode.sh
-    bindsym t exec --no-startup-id $HOME/.screenlayout/tv.sh
+    bindsym m exec --no-startup-id $HOME/.screenlayout/media.sh
 
     bindsym Return mode "default"
     bindsym Escape mode "default", restart
@@ -237,7 +236,7 @@ bar {
     }
     position top
 
-    tray_output $mon2
+    tray_output primary
     tray_padding 1
 
     #to force an workspace order without displaying the order numbers
@@ -268,9 +267,9 @@ exec --no-startup-id /usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &> 
 exec --no-startup-id /usr/lib/mate-notification-daemon/mate-notification-daemon
 exec --no-startup-id unclutter
 exec --no-startup-id nm-applet
-#exec_always --no-startup-id pkill picom; picom --config ~/.config/compton.conf
-exec_always --no-startup-id pkill xcompmgr; xcompmgr #-c -t-5 -l-5 -r3.3 -o.33
-exec_always --no-startup-id $HOME/.i3/i3-alternating-layouts.py -o $mon1,HDMI-A-0
+exec_always --no-startup-id pkill picom; sleep 0.1; picom --config ~/.config/compton.conf
+#exec_always --no-startup-id pkill xcompmgr; xcompmgr #-c -t-5 -l-5 -r3.3 -o.33
+exec_always --no-startup-id $HOME/.i3/i3-alternating-layouts.py 
 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 50% && pkill -RTMIN+10 i3blocks #workaround for 9% left channel bug after exiting with higher than 100% volume
 exec --no-startup-id pactl set-source-volume @DEFAULT_SOURCE@ 120% #pulseaudio is good btw; imagine saving volume
 exec_always --no-startup-id pkill synergyc; synergyc 192.168.122.101
@@ -280,6 +279,6 @@ exec_always --no-startup-id $HOME/.fehbg
 
 #applications
 #exec --no-startup-id flatpak run com.discordapp.Discord --start-minimized 
-#exec --no-startup-id telegram-desktop -startintray
+exec --no-startup-id telegram-desktop -startintray
 
 #END AUTOSTART
