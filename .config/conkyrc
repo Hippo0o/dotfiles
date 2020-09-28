@@ -25,6 +25,12 @@ TEXT
   { "full_text" : "${freq}MHz", "color" : ${if_match ${hwmon 0 temp 1}>65}"\#EEE8D5"${else}"\#FF3545"${endif},  "separator" : false, "separator_block_width" : 1 }, \
   { "full_text" : "${hwmon 0 temp 1}°C", "color" : ${if_match ${hwmon 0 temp 1}>65}"\#EEE8D5"${else}"\#FF3545"${endif},  "separator" : false, "separator_block_width" : 0 }, \
 \
+<<<<<<< HEAD
+=======
+  { "full_text" : " | ", "color" : "\#888888", "separator" : false, "separator_block_width" : 3 }, \
+  { "full_text" : "${execi 20 nvidia-settings -query GPUCoreTemp | perl -ne 'print $1 if /GPUCoreTemp.*?\]\): (\d+)./;'ff}°C", "color" : "\#FF3545",  "separator" : false, "separator_block_width" : 0 }, \
+\
+>>>>>>> eaf3cc9caf7b7eee5dc3e4973c6e4f082886d508
   { "full_text" : " | ", "color" : "\#888888", "separator" : false, "separator_block_width" : 10 }, \
   { "full_text" : "${memperc}% ", "color" : ${if_match ${memperc}>90}"\#EEE8D5"${else}"\#FF3545"${endif}, "min_width" : 40, "align" : "right", "separator" : false, "separator_block_width" : 3 }, \
   { "full_text" : "${mem}", "color" : ${if_match ${memperc}>90}"\#EEE8D5"${else}"\#FF3545"${endif},  "separator" : false, "separator_block_width" : 0 }, \
