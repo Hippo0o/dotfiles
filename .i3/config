@@ -13,6 +13,7 @@ bindsym $mod+Shift+Return exec google-chrome-stable
 bindsym $mod+Ctrl+Return exec caja
 
 bindsym $mod+q kill
+bindsym $mod+Shift+q exec xkill
 
 bindsym $mod+Shift+d exec rofi -show drun -show-icons -padding 20 -columns 7 
 bindsym $mod+d exec rofi -show run
@@ -114,6 +115,7 @@ new_float pixel 1
 for_window [class=.*] border pixel 1
 
 for_window [class="Wine"] floating enable
+for_window [class="anbox"] floating enable
 for_window [class="Termite"] focus
 
 #no_focus [class=".*"]
@@ -159,8 +161,8 @@ font pango:Fira Mono Regular 11
 bar {
     colors {
         background #1e1e1e
-        statusline #ffffff
-        separator  #1e1e1e
+        statusline #FF3545
+        separator  #888888
 
         # Type             border  background font
         focused_workspace  #1e1e1e #1e1e1e #FF3545
@@ -169,7 +171,9 @@ bar {
         urgent_workspace   #1e1e1e #1e1e1e #EEE8D5
     }
     position top
-    status_command conky-i3bar #i3status -c ~/.i3/i3status.conf
+    
+#    status_command conky-i3bar #i3status -c ~/.i3/i3status.conf
+    status_command SCRIPT_DIR=$HOME/.config/i3blocks i3blocks -c .config/i3blocks/config
     i3bar_command i3bar 
 }
 
@@ -197,6 +201,7 @@ exec --no-startup-id nm-applet
 exec --no-startup-id mate-volume-control-status-icon
 exec --no-startup-id blueman-applet 
 exec --no-startup-id unclutter
-exec_always --no-startup-id pkill picom; picom --config $HOME/.config/compton.conf 
+exec_always --no-startup-id pkill xcompmgr; xcompmgr #-c -t-5 -l-5 -r3.3 -o.33
+exec_always --no-startup-id $HOME/.i3/i3-alternating-layouts.py 
 
 #END AUTOSTART

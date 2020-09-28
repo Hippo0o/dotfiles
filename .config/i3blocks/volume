@@ -1,0 +1,14 @@
+#!/bin/bash
+
+case $BLOCK_BUTTON in
+  1) pactl set-sink-mute @DEFAULT_SINK@ toggle ;;  
+  2) pavucontrol ;;  
+  4) pactl set-sink-volume @DEFAULT_SINK@ +${STEP}% ;; 
+  5) pactl set-sink-volume @DEFAULT_SINK@ -${STEP}% ;; 
+esac
+
+VOL=$(amixer sget Master | grep 'Left:' | awk -F'[][]' '{ print $2 }')
+echo $VOL 
+echo $VOL 
+[ $(amixer sget Master | grep 'Left:' | awk -F'[][]' '{ print $4 }') == "off" ] && echo \#888888
+exit 0 

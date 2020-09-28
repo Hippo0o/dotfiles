@@ -59,8 +59,6 @@ DISABLE_AUTO_UPDATE="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git
-  sudo
 )
 
 # termite keybindings
@@ -81,12 +79,9 @@ setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_FIND_NO_DUPS
 
-PROMPT='%{$fg[red]%}%n %{$reset_color%}${PWD/#$HOME/~}$(git_prompt_info)
+PROMPT='${PWD/#$HOME/~}
 %{$fg[red]%}%(!.#.$)%{$reset_color%} '
-RPROMPT='%{$fg[red]%}[%*]%{$reset_color%}'
-
-ZSH_THEME_GIT_PROMPT_PREFIX=" %{$fg[red]%}git:("
-ZSH_THEME_GIT_PROMPT_SUFFIX=")%{$reset_color%}"
+#RPROMPT='%{$fg[red]%}[%*]%{$reset_color%}'
 
 export EDITOR='vim'
 export VISUAL='vim'

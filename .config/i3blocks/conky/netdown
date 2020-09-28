@@ -1,0 +1,8 @@
+conky.config = {
+  out_to_x = false,
+  out_to_console = true,
+  update_interval = 1,
+}
+conky.text = [[
+${if_match "${downspeed wlp2s0}"=="   0B"}${downspeed enp3s0}${else}${downspeed wlp2s0}${endif}
+]]

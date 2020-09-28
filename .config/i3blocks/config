@@ -1,0 +1,95 @@
+# i3blocks config file
+#
+# Please see man i3blocks for a complete reference!
+# The man page is also hosted at http://vivien.github.io/i3blocks
+#
+# List of valid properties:
+#
+# align
+# color
+# command
+# full_text
+# instance
+# interval
+# label
+# min_width
+# name
+# separator
+# separator_block_width
+# short_text
+# signal
+# urgent
+
+# Global properties
+#
+# The top properties below are applied to every block, but can be overridden.
+separator_block_width=20
+markup=none
+align=right
+
+[begin]
+full_text=
+short_text=
+color=#888888
+separator_block_width=10
+separator=false
+
+[uptime]
+command=conky -q -i 1 -c $SCRIPT_DIR/conky/uptime
+interval=1
+short_text=
+
+[tlp_label]
+full_text=
+short_text=
+color=#888888
+separator_block_width=3
+separator=false
+
+[tlp]
+command=tlp-stat -s | grep Mode | cut -d "=" -f2
+interval=1
+short_text=
+
+[cpu]
+command=conky -q -c $SCRIPT_DIR/conky/cpu
+interval=persist
+min_width=100% 1000MHz 10°C
+
+#[gpu]
+#command=conky -q -c $SCRIPT_DIR/conky/gpu
+#interval=persist
+#min_width=10°C
+
+[memory]
+command=conky -q -i 1 -c $SCRIPT_DIR/conky/memory
+interval=1
+min_width=10% 10.10GiB
+
+[netup_label]
+full_text=
+color=#888888
+separator=false
+[netup]
+command=conky -q -c $SCRIPT_DIR/conky/netup
+interval=persist
+min_width=1.10GiB
+separator=false
+separator_block_width=10
+
+[netdown_label]
+full_text=
+color=#888888
+separator=false
+[netdown]
+command=conky -q -c $SCRIPT_DIR/conky/netdown
+interval=persist
+min_width=1.10GiB
+
+[time]
+command=date '+%a %d.%m.%Y %H:%M';date '+%a %d.%m. %H:%M'
+interval=20
+
+#to make separator_block_width from above work
+[end]
+full_text=
