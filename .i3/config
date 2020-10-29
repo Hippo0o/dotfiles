@@ -55,6 +55,8 @@ bindsym $mod+Shift+a focus child
 
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
+
+bindsym $mod+l exec loginctl lock-session
 #bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 #bindsym Pause exec --no-startup-id loginctl lock-session
@@ -168,7 +170,7 @@ for_window [class=".*"] border pixel 1
 #for_window [class="Wine"] floating enable
 #for_window [class="^.*\.exe$"] floating enable
 for_window [class="Pavucontrol"] floating enable
-for_window [class="Cairo-dock"] floating enable
+for_window [class="anbox"] floating enable
 for_window [class="Nm-connection-editor"] floating enable
 for_window [instance="google-chrome \(\/*"] floating enable #chromedriver
 for_window [class="Mate-screenshot"] sticky enable
@@ -202,13 +204,14 @@ set $mode_nop nop
 mode "$mode_nop" {
     bindsym Scroll_Lock mode "default"
 }
-bindsym Scroll_Lock mode "$mode_nop"
+#bindsym Scroll_Lock mode "$mode_nop"
 
-set $mode_display Display default (d), hostmode (h), media (m)
+set $mode_display Display default (d), hostmode (h), media (m), tv (t)
 mode "$mode_display" {
     bindsym d exec --no-startup-id $HOME/.screenlayout/monitor.sh
     bindsym h exec --no-startup-id $HOME/.screenlayout/hostmode.sh
     bindsym m exec --no-startup-id $HOME/.screenlayout/media.sh
+    bindsym t exec --no-startup-id $HOME/.screenlayout/dupetv.sh
 
     bindsym Return mode "default"
     bindsym Escape mode "default", restart
@@ -267,12 +270,12 @@ exec --no-startup-id /usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &> 
 exec --no-startup-id /usr/lib/mate-notification-daemon/mate-notification-daemon
 exec --no-startup-id unclutter
 exec --no-startup-id nm-applet
-exec_always --no-startup-id pkill picom; sleep 0.1; picom --config ~/.config/compton.conf
-#exec_always --no-startup-id pkill xcompmgr; xcompmgr #-c -t-5 -l-5 -r3.3 -o.33
+exec --no-startup-id xss-lock --transfer-sleep-lock -- lock
+#exec_always --no-startup-id pkill picom; sleep 0.1; picom --config ~/.config/compton.conf
+exec_always --no-startup-id pkill xcompmgr; xcompmgr #-c -t-5 -l-5 -r3.3 -o.33
 exec_always --no-startup-id $HOME/.i3/i3-alternating-layouts.py 
-exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 50% && pkill -RTMIN+10 i3blocks #workaround for 9% left channel bug after exiting with higher than 100% volume
+exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 150% && pkill -RTMIN+10 i3blocks #workaround for 9% left channel bug after exiting with higher than 100% volume
 exec --no-startup-id pactl set-source-volume @DEFAULT_SOURCE@ 120% #pulseaudio is good btw; imagine saving volume
-exec_always --no-startup-id pkill synergyc; synergyc 192.168.122.101
 
 #wallpaper
 exec_always --no-startup-id $HOME/.fehbg
