@@ -38,4 +38,4 @@ fi
 #xset s noblank
 #xset dpms 0 0 0  
 
-exec i3-session
+exec i3-session &> /dev/null

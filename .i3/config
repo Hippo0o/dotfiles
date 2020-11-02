@@ -61,7 +61,7 @@ bindsym $mod+l exec --no-startup-id loginctl lock-session
 
 bindsym $mod+Shift+P exec --no-startup-id cat 1password.txt | xclip -selection clipboard
 
-bindsym --release Print exec --no-startup-id gnome-screenshot -i
+bindsym --release Print exec --no-startup-id mate-screenshot -i
 bindsym --release Shift+Print exec --no-startup-id maim -s | xclip -selection clipboard -t image/png
 
 #i dont need help
@@ -139,22 +139,22 @@ bindsym $mod+Shift+Escape move scratchpad
 set $mon1 eDP1 
 set $mon2 DP1
 
-workspace $wsf1 output $mon1
-workspace $wsf2 output $mon1
-workspace $wsf3 output $mon1
-workspace $wsf4 output $mon1
-workspace $wsf5 output $mon1
+#workspace $wsf1 output $mon1
+#workspace $wsf2 output $mon1
+#workspace $wsf3 output $mon1
+#workspace $wsf4 output $mon1
+#workspace $wsf5 output $mon1
 
-workspace $ws1 output $mon2
-workspace $ws2 output $mon2
-workspace $ws3 output $mon2
-workspace $ws4 output $mon2
-workspace $ws5 output $mon2
-workspace $ws6 output $mon2
-workspace $ws7 output $mon2
-workspace $ws8 output $mon2
-workspace $ws9 output $mon2
-workspace $ws10 output $mon2
+workspace $ws1 output $mon1
+workspace $ws2 output $mon1
+workspace $ws3 output $mon1
+workspace $ws4 output $mon1
+workspace $ws5 output $mon1
+workspace $ws6 output $mon1
+workspace $ws7 output $mon1
+workspace $ws8 output $mon1
+workspace $ws9 output $mon1
+workspace $ws10 output $mon1
 
 #END WORKSPACE
 
@@ -169,15 +169,16 @@ for_window [class=".*"] border pixel 1
 
 #for_window [class="Wine"] floating enable
 #for_window [class="^.*\.exe$"] floating enable
-for_window [class="Pavucontrol"] floating enable
+for_window [class="TelegramDesktop"] floating enable
 for_window [class="Nm-connection-editor"] floating enable
 for_window [instance="google-chrome \(\/*"] floating enable #chromedriver
 for_window [class="Mate-screenshot"] sticky enable
+for_window [class="Mate-search-tool"] floating enable
 
 #assign [class="^.*\.exe$"] $ws7
 #assign [class="Wine"] $ws7
-assign [class="discord"] $wsf1
-assign [class="TelegramDesktop"] $wsf1
+#assign [class="discord"] $wsf1
+#assign [class="TelegramDesktop"] $wsf1
 #assign [title="^.+Twitch.+$"] $wsf2
 
 #END RULES
@@ -268,11 +269,11 @@ exec --no-startup-id unclutter
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -c 000000
 exec --no-startup-id dex -a #/etc/xdg/autostart/
 #exec --no-startup-id nm-applet
-exec_always --no-startup-id pkill xcompmgr; xcompmgr #-c -t-5 -l-5 -r3.3 -o.33
+exec_always --no-startup-id pkill xcompmgr; xcompmgr -c -t-5 -l-5 -r3.3 -o.33
 exec_always --no-startup-id $HOME/.i3/i3-alternating-layouts.py 
 
 #wallpaper
-#exec_always --no-startup-id $HOME/.fehbg
+exec_always --no-startup-id $HOME/.fehbg
 
 #applications
 #exec --no-startup-id flatpak run com.discordapp.Discord --start-minimized 

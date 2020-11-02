@@ -4,5 +4,5 @@ conky.config = {
   update_interval = 1,
 }
 conky.text = [[
-${cpu cpu0}% ${freq}MHz ${hwmon 1 temp 3}°C
+${cpu cpu0}% ${freq}MHz ${hwmon 0 temp 1}°C
 ]]
