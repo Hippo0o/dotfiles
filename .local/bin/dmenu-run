@@ -1,2 +1,2 @@
 #!/bin/bash
-dmenu_run -fn 'Fira Mono Regular-13' -sb '#93E0E3' -sf '#1e1e1e' -nb '#1e1e1e' -nf '#93E0E3'
+dmenu_run -fn 'Fira Mono Regular-15' -sb '#93E0E3' -sf '#1e1e1e' -nb '#1e1e1e' -nf '#93E0E3'
