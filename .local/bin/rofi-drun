@@ -1,0 +1,1 @@
+rofi -show drun -show-icons -padding 350 -columns 7 -disable-history -width 100 -lines 20 -bw 0

@@ -1,0 +1,281 @@
+# i3 config file
+#
+# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+
+#BEGIN BINDINGS
+
+set $mod Mod4
+floating_modifier $mod
+
+bindsym $mod+Return exec termite
+bindsym $mod+Shift+Return exec chromium
+bindsym $mod+Ctrl+Return exec caja
+
+bindsym $mod+q kill
+bindsym --release $mod+Shift+q exec xkill
+
+bindsym $mod+Shift+d exec dmenu-run
+bindsym $mod+d exec rofi-drun
+
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+bindsym $mod+Ctrl+Left resize shrink width 15 px or 5 ppt
+bindsym $mod+Ctrl+Down resize shrink height 15 px or 5 ppt
+bindsym $mod+Ctrl+Up resize grow height 15 px or 5 ppt
+bindsym $mod+Ctrl+Right resize grow width 15 px or 5 ppt
+
+bindsym $mod+Next exec i3-msg resize shrink height 90 px && i3-msg resize shrink width 160 px
+bindsym $mod+Prior exec i3-msg resize grow height 90 px && i3-msg resize grow width 160 px
+
+bindsym $mod+Home resize set 500px 283px
+
+bindsym $mod+h split h
+bindsym $mod+v split v
+
+bindsym $mod+f fullscreen toggle
+
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+bindsym $mod+space floating toggle
+bindsym $mod+Ctrl+space sticky toggle
+
+bindsym $mod+Shift+space focus mode_toggle
+bindsym $mod+a focus parent
+bindsym $mod+Shift+a focus child
+
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+#bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+bindsym $mod+l exec --no-startup-id loginctl lock-session
+
+bindsym $mod+Shift+P exec --no-startup-id cat 1password.txt | xclip -selection clipboard
+
+bindsym --release Print exec --no-startup-id gnome-screenshot -i
+bindsym --release Shift+Print exec --no-startup-id maim -s | xclip -selection clipboard -t image/png
+
+#i dont need help
+#bindsym F1 nop
+
+#bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && pkill -RTMIN+10 i3blocks
+#bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && pkill -RTMIN+10 i3blocks
+#bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && pkill -RTMIN+10 i3blocks
+
+#END BINDINGS
+
+#BEGIN WORKSPACE
+set $wsf1 "11:f1"
+set $wsf2 "12:f2"
+set $wsf3 "13:f3"
+set $wsf4 "14:f4"
+set $wsf5 "15:f5"
+
+set $ws1 "1:1"
+set $ws2 "2:2"
+set $ws3 "3:3"
+set $ws4 "4:4"
+set $ws5 "5:5"
+set $ws6 "6:6"
+set $ws7 "7:7"
+set $ws8 "8:8"
+set $ws9 "9:9"
+set $ws10 "10:10"
+
+bindsym $mod+F1 workspace $wsf1
+bindsym $mod+F2 workspace $wsf2
+bindsym $mod+F3 workspace $wsf3
+bindsym $mod+F4 workspace $wsf4
+bindsym $mod+F5 workspace $wsf5
+
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+bindsym $mod+Tab workspace back_and_forth
+#bindsym $mod+Tab workspace next
+#bindsym $mod+Shift+Tab workspace prev
+bindsym $mod+Escape scratchpad show
+
+bindsym $mod+grave [urgent=latest] focus
+
+bindsym $mod+Shift+F1 move container to workspace $wsf1
+bindsym $mod+Shift+F2 move container to workspace $wsf2
+bindsym $mod+Shift+F3 move container to workspace $wsf3
+bindsym $mod+Shift+F4 move container to workspace $wsf4
+bindsym $mod+Shift+F5 move container to workspace $wsf5
+
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+bindsym $mod+Shift+Escape move scratchpad
+
+#bindsym --whole-window $mod+button4 workspace prev_on_output
+#bindsym --whole-window $mod+button5 workspace next_on_output
+
+set $mon1 eDP1 
+set $mon2 DP1
+
+workspace $wsf1 output $mon1
+workspace $wsf2 output $mon1
+workspace $wsf3 output $mon1
+workspace $wsf4 output $mon1
+workspace $wsf5 output $mon1
+
+workspace $ws1 output $mon2
+workspace $ws2 output $mon2
+workspace $ws3 output $mon2
+workspace $ws4 output $mon2
+workspace $ws5 output $mon2
+workspace $ws6 output $mon2
+workspace $ws7 output $mon2
+workspace $ws8 output $mon2
+workspace $ws9 output $mon2
+workspace $ws10 output $mon2
+
+#END WORKSPACE
+
+#BEGIN RULES
+
+new_window pixel 1
+new_float pixel 1
+for_window [class=".*"] border pixel 1
+
+#for_window [class=".*"] split toggle
+#default_orientation vertical
+
+#for_window [class="Wine"] floating enable
+#for_window [class="^.*\.exe$"] floating enable
+for_window [class="Pavucontrol"] floating enable
+for_window [class="Nm-connection-editor"] floating enable
+for_window [instance="google-chrome \(\/*"] floating enable #chromedriver
+for_window [class="Mate-screenshot"] sticky enable
+
+#assign [class="^.*\.exe$"] $ws7
+#assign [class="Wine"] $ws7
+assign [class="discord"] $wsf1
+assign [class="TelegramDesktop"] $wsf1
+#assign [title="^.+Twitch.+$"] $wsf2
+
+#END RULES
+
+#BEGIN MODES
+
+set $mode_system System (l) lock, (e) logout, (r) reboot, (s) suspend, (shift+s) shutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id loginctl lock-session, mode "default"
+    bindsym e exec --no-startup-id i3-msg exit, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym s exec --no-startup-id systemctl suspend, mode "default"  
+    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"  
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+Shift+e mode "$mode_system"
+
+set $mode_nop nop
+mode "$mode_nop" {
+    bindsym Scroll_Lock mode "default"
+}
+bindsym Scroll_Lock mode "$mode_nop"
+
+set $mode_display Display default (d), hostmode (h), media (m)
+mode "$mode_display" {
+    bindsym d exec --no-startup-id $HOME/.screenlayout/monitor.sh
+    bindsym h exec --no-startup-id $HOME/.screenlayout/hostmode.sh
+    bindsym m exec --no-startup-id $HOME/.screenlayout/media.sh
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default", restart
+}
+bindsym $mod+p mode "$mode_display"
+
+#END MODES
+
+#BEGIN THEMING
+
+font pango:Fira Mono Regular 11
+
+bar {
+    colors {
+        # Whole color settings
+        background #1e1e1e
+        statusline #93E0E3
+        separator  #888888
+
+        # Type             border  bg      font
+        focused_workspace  #1e1e1e #1e1e1e #93E0E3
+        active_workspace   #1e1e1e #1e1e1e #EEE8D5
+        inactive_workspace #1e1e1e #1e1e1e #888888
+        urgent_workspace   #1e1e1e #1e1e1e #FE0030
+    }
+    position top
+
+    tray_output primary
+    tray_padding 1
+
+    #to force an workspace order without displaying the order numbers
+    strip_workspace_numbers yes
+
+    #status_command conky-i3bar
+    status_command SCRIPT_DIR=$HOME/.config/i3blocks i3blocks -c .config/i3blocks/config
+    i3bar_command i3bar 
+
+    bindsym button3 exec rofi-drun
+}
+
+gaps inner 5
+gaps outer 1
+
+# class                 border  backgr. text    indicator child_border
+client.focused          #93E0E3 #93E0E3 #1e1e1e #EEE8D5
+client.focused_inactive #1e1e1e #1e1e1e #93E0E3 #1e1e1e
+client.unfocused        #1e1e1e #1e1e1e #93E0E3 #1e1e1e
+client.urgent           #FE0030 #FE0030 #1e1e1e #FE0030
+
+#END THEMING
+
+#BEGIN AUTOSTART
+
+#system
+#exec --no-startup-id /usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &> /dev/null
+#exec --no-startup-id /usr/lib/mate-notification-daemon/mate-notification-daemon
+exec --no-startup-id unclutter
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -c 000000
+exec --no-startup-id dex -a #/etc/xdg/autostart/
+#exec --no-startup-id nm-applet
+exec_always --no-startup-id pkill xcompmgr; xcompmgr #-c -t-5 -l-5 -r3.3 -o.33
+exec_always --no-startup-id $HOME/.i3/i3-alternating-layouts.py 
+
+#wallpaper
+#exec_always --no-startup-id $HOME/.fehbg
+
+#applications
+#exec --no-startup-id flatpak run com.discordapp.Discord --start-minimized 
+exec --no-startup-id telegram-desktop -startintray
+
+#END AUTOSTART

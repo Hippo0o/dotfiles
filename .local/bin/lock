@@ -1,0 +1,11 @@
+#! /bin/bash
+lock(){
+  while :
+  do
+    sleep 60 
+    xset dpms force off
+  done
+}
+
+lock &
+i3lock -c 000000 -n; kill $!

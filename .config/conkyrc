@@ -1,0 +1,54 @@
+# vim: filetype=rc:
+# conky
+out_to_x                no
+override_utf8_locale    no
+own_window              no
+
+# conky-cli
+background              no
+out_to_console          yes
+update_interval         0.5
+total_run_times         0
+short_units             yes
+use_spacer              left
+cpu_avg_samples         2
+max_text_width          0
+
+# not used
+#  { "full_text" : " | ", "color" : "\#666666", "separator" : false, "separator_block_width" : 10 }, \
+#  { "full_text" : "${execi 5 wget http://ipinfo.io/ip -qO -}", "color" : "\#93E0E3", "separator" : false, "separator_block_width" : 0 }, \
+
+# JSON for i3bar
+TEXT
+
+[ \
+  { "full_text" : "", "color" : "\#888888", "separator" : false, "separator_block_width" : 10 }, \
+  { "full_text" : "${uptime_short}", "color" : "\#93E0E3", "separator" : false, "separator_block_width" : 0 }, \
+\
+  { "full_text" : " |", "color" : "\#888888", "separator" : false, "separator_block_width" : 0 }, \
+  { "full_text" : "${cpu cpu0}%", "color" : "\#93E0E3", "min_width" : 40, "align" : "right", "separator" : false, "separator_block_width" : 10 }, \
+  { "full_text" : "${freq}MHz", "color" : "\#93E0E3", "separator" : false, "separator_block_width" : 0 }, \
+  { "full_text" : "${hwmon 0 temp 1}°C", "color" : "\#93E0E3", "separator" : false, "separator_block_width" : 0 }, \
+\
+  { "full_text" : " |", "color" : "\#888888", "separator" : false, "separator_block_width" : 0 }, \
+  { "full_text" : "${execi 1 nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits}%", "color" : "\#93E0E3", "min_width" : 40, "align" : "right", "separator" : false, "separator_block_width" : 10 }, \
+  { "full_text" : "${execi 1 nvidia-smi --query-gpu=clocks.current.graphics --format=csv,noheader,nounits}MHz", "color" : "\#93E0E3", "min_width" : 35, "align" : "right", "separator" : false, "separator_block_width" : 10 }, \
+  { "full_text" : "${execi 1 nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits}°C", "color" : "\#93E0E3", "separator" : false, "separator_block_width" : 0 }, \
+\
+  { "full_text" : " |", "color" : "\#888888", "separator" : false, "separator_block_width" : 6 }, \
+  { "full_text" : "${memperc}% ", "color" : "\#93E0E3", "min_width" : 40, "align" : "right", "separator" : false, "separator_block_width" : 3 }, \
+  { "full_text" : "${mem}", "color": "\#93E0E3", "separator" : false, "separator_block_width" : 0 }, \
+\
+  { "full_text" : " |  ", "color" : "\#666666", "separator" : false, "separator_block_width" : 3 }, \
+  { "full_text" : "${upspeed enp5s0}", "color" : "\#93E0E3", "separator" : false, "separator_block_width" : 3 }, \
+  { "full_text" : "  ", "color" : "\#666666", "separator" : false, "separator_block_width" : 3 }, \
+  { "full_text" : "${downspeed enp5s0}", "color" : "\#93E0E3", "separator" : false, "separator_block_width" : 0 }, \
+\
+  { "full_text" : " | ", "color" : "\#888888", "separator" : false, "separator_block_width" : 0 }, \
+  { "full_text" : "${time %a %d.%m.%Y} ", "color" : "\#93E0E3", "separator" : false, "separator_block_width" : 0 }, \
+  { "full_text" : "${time %H:%M}", "color" : "\#93E0E3", "separator" : false, "separator_block_width" : 0 }, \
+\
+  { "full_text" : " | 墳", "color" : "\#888888", "separator" : false, "separator_block_width" : 6 }, \
+  { "full_text" : "${execi 0 amixer sget Master | grep 'Left:' | awk -F'[][]' '{ print $2 }'} ", "color" : ${if_match "${execi 0 amixer sget Master | grep 'Left:' | awk -F'[][]' '{ print $4 }' }"=="off"}"\#888888"${else}"\#93E0E3"${endif}, "min_width" : 45, "align" : "right", "separator" : false, "separator_block_width" : 0 }, \
+  { "full_text" : "", "color" : "\#666666", "separator" : false, "separator_block_width" : 0 } \
+],
