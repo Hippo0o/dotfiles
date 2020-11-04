@@ -7,6 +7,6 @@ rofi.color-urgent: argb:00000000, #FE0030, argb:00000000, #FE0030, #1e1e1e
 rofi.font:                           Fira Mono Regular 23
 rofi.run-command:                    i3-msg exec '{cmd}'
 rofi.fullscreen:                     false
-rofi.m:                              primary
+rofi.m:                              -5
 rofi.separator-style:                none
 rofi.hide-scrollbar:                 true
