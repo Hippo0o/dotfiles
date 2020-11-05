@@ -6,6 +6,8 @@
 !.xinitrc-xrun
 !.zprofile
 !.zshrc
+!.vimrc
+!.npmrc
 !.Xresources
 !.config/compton.conf
 !.config/conkyrc
@@ -13,7 +15,6 @@
 !.config/termite/config
 !.config/rofi/config
 !.config/i3blocks
-!.vimrc
 !.local/bin/dmenu-run
 !.local/bin/rofi-drun
 !.local/bin/xrun

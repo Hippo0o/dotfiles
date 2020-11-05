@@ -270,7 +270,7 @@ exec --no-startup-id unclutter
 exec --no-startup-id xss-lock --transfer-sleep-lock -- lock
 exec --no-startup-id dex -a #/etc/xdg/autostart/
 #exec --no-startup-id nm-applet
-exec_always --no-startup-id pkill xcompmgr; xcompmgr -c -t-5 -l-5 -r3.3 -o.33
+exec_always --no-startup-id pkill xcompmgr; xcompmgr #-c -t-5 -l-5 -r3.3 -o.33
 exec_always --no-startup-id $HOME/.i3/i3-alternating-layouts.py 
 
 #wallpaper
