@@ -8,8 +8,8 @@ set $mod Mod4
 floating_modifier $mod
 
 bindsym $mod+Return exec termite
-bindsym $mod+Shift+Return exec google-chrome-stable
-bindsym $mod+Ctrl+Return exec caja
+bindsym $mod+Shift+Return exec xdg-open http://
+bindsym $mod+Ctrl+Return exec xdg-open .
 
 bindsym $mod+q kill
 bindsym --release $mod+Shift+q exec xkill
@@ -169,6 +169,7 @@ for_window [class=".*"] border pixel 1
 
 #for_window [class="Wine"] floating enable
 #for_window [class="^.*\.exe$"] floating enable
+for_window [class="Chromium" title="DevTools - *"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [class="anbox"] floating enable
 for_window [class="Nm-connection-editor"] floating enable
@@ -240,7 +241,7 @@ bar {
     position top
 
     tray_output primary
-    tray_padding 1
+    tray_padding 0
 
     #to force an workspace order without displaying the order numbers
     strip_workspace_numbers yes

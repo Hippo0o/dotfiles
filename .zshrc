@@ -59,7 +59,9 @@ COMPLETION_WAITING_DOTS="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-#  sudo
+    docker
+    docker-compose
+    npm
 )
 
 if [[ $TERM == xterm-termite ]]; then
