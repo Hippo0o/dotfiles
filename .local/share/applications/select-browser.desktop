@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.1
+Type=Application
+Name=Select browser
+Icon=google-chrome
+Exec=select-browser %U
+Actions=new-window;new-private-window;
+Categories=Network;WebBrowser;
+StartupNotify=true
+StartupWMClass=select-browser
+MimeType=x-scheme-handler/unknown;x-scheme-handler/about;text/html;text/xml;application/xhtml_xml;image/webp;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;

@@ -19,4 +19,5 @@
 !.local/bin/dmenu-clipboard
 !.local/bin/rofi-drun
 !.local/bin/xrun
-!.local/bin/nvidia-fan-control
+!.local/bin/select-browser
+!.local/share/applications/select-browser.desktop

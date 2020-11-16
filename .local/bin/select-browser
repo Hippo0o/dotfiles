@@ -1,0 +1,4 @@
+#!/bin/sh
+
+BROWSER=$(zenity --list --radiolist --text '' --column='' --column=browser --title='select your browser' TRUE "chromium" FALSE "firefox" FALSE "google-chrome-stable")
+$BROWSER $* &
