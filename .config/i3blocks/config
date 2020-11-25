@@ -39,20 +39,30 @@ command=conky -q -i 1 -c $SCRIPT_DIR/conky/uptime
 interval=1
 short_text=
 
+[cpu_label]
+full_text=
+color=#888888
+separator=false
+separator_block_width=10
 [cpu]
 command=conky -q -c $SCRIPT_DIR/conky/cpu
 interval=persist
-min_width=100% 1000MHz 10°C
+min_width=100% 10°C
 
 #[gpu]
 #command=conky -q -c $SCRIPT_DIR/conky/gpu
 #interval=persist
 #min_width=10°C
 
+[memory_label]
+full_text=
+color=#888888
+separator=false
+separator_block_width=10
 [memory]
 command=conky -q -i 1 -c $SCRIPT_DIR/conky/memory
 interval=1
-min_width=10% 10.10GiB
+min_width=10% 10.10 GiB
 
 [netup_label]
 full_text=
@@ -61,7 +71,7 @@ separator=false
 [netup]
 command=conky -q -c $SCRIPT_DIR/conky/netup
 interval=persist
-min_width=1.10GiB
+min_width=1.10 GiB
 separator=false
 separator_block_width=10
 
@@ -72,7 +82,7 @@ separator=false
 [netdown]
 command=conky -q -c $SCRIPT_DIR/conky/netdown
 interval=persist
-min_width=1.10GiB
+min_width=1.10 GiB
 
 [time]
 command=date '+%a %d.%m.%Y %H:%M';date '+%a %d.%m. %H:%M'

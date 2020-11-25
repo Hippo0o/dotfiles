@@ -1,5 +1,5 @@
 #!/bin/sh
 LC_ALL=en_US.UTF-8
 
-BROWSER=$(zenity --list --radiolist --height=200 --width=250 --text 'open with...' --column='' --column=browser --title='select your browser' TRUE "chromium" FALSE "firefox" FALSE "google-chrome-stable")
+BROWSER=$(zenity --list --radiolist --height=200 --width=250 --text 'open with...' --column='' --column=browser --title='select your browser' TRUE "google-chrome-stable" FALSE "chromium")
 $BROWSER --new-window $* &
