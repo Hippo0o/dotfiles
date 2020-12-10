@@ -36,7 +36,7 @@ bindsym $mod+Ctrl+Right resize grow width 15 px or 5 ppt
 bindsym $mod+Next exec i3-msg resize shrink height 90 px && i3-msg resize shrink width 160 px
 bindsym $mod+Prior exec i3-msg resize grow height 90 px && i3-msg resize grow width 160 px
 
-bindsym $mod+Home resize set 500px 283px
+bindsym $mod+Home resize set 524px 295px
 
 bindsym $mod+h split h
 bindsym $mod+v split v
@@ -79,7 +79,7 @@ set $wsf1 "11:f1"
 set $wsf2 "12:f2"
 set $wsf3 "13:f3"
 set $wsf4 "14:f4"
-set $wsf5 "15:f5"
+set $wsf5 "15:f5 "
 
 set $ws1 "1:1"
 set $ws2 "2:2"
@@ -174,15 +174,17 @@ for_window [class=".*"] border pixel 1
 for_window [class="Chromium" title="DevTools - *"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [class="TelegramDesktop"] floating enable
+for_window [class="TelegramDesktop"] sticky enable
 for_window [class="Nm-connection-editor"] floating enable
 for_window [instance="google-chrome \(\/*"] floating enable #chromedriver
 for_window [class="Mate-screenshot"] sticky enable
-for_window [class="X2GoAgent"] fullscreen enable
+for_window [class="X2GoAgent"] floating enable
 
 #assign [class="^.*\.exe$"] $ws7
 #assign [class="Wine"] $ws7
 assign [class="discord"] $wsf1
-assign [class="X2GoAgent"] $ws10
+assign [class="Bitwarden"] $wsf5
+#assign [class="X2GoAgent"] $ws10
 #assign [title="^.+Twitch.+$"] $wsf2
 
 #END RULES
@@ -206,7 +208,7 @@ set $mode_nop nop
 mode "$mode_nop" {
     bindsym Scroll_Lock mode "default"
 }
-#bindsym Scroll_Lock mode "$mode_nop"
+bindsym Scroll_Lock mode "$mode_nop"
 
 set $mode_display Display default (d), hostmode (h), media (m), tv (t)
 mode "$mode_display" {
@@ -271,7 +273,7 @@ client.urgent           #FE0030 #FE0030 #1e1e1e #FE0030
 exec --no-startup-id /usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &> /dev/null
 exec --no-startup-id /usr/lib/mate-notification-daemon/mate-notification-daemon
 exec --no-startup-id unclutter
-exec --no-startup-id while true; do nm-applet; done #crashes for some reason
+exec --no-startup-id network-manager-applet
 exec --no-startup-id xss-lock --transfer-sleep-lock -- lock
 #exec_always --no-startup-id pkill picom; sleep 0.1; picom --config ~/.config/compton.conf
 exec_always --no-startup-id pkill xcompmgr; xcompmgr -c -t-5 -l-5 -r3.3 -o.33
@@ -285,5 +287,6 @@ exec_always --no-startup-id $HOME/.fehbg
 #applications
 #exec --no-startup-id flatpak run com.discordapp.Discord --start-minimized 
 exec --no-startup-id telegram-desktop -startintray
+exec --no-startup-id bitwarden-desktop
 
 #END AUTOSTART
