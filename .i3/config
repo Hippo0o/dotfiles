@@ -132,7 +132,7 @@ bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
-bindsym $mod+Shift+Tab move container to workspace prev
+bindsym $mod+Shift+Tab move container to workspace back_and_forth
 bindsym $mod+Shift+Escape move scratchpad
 
 #bindsym --whole-window $mod+button4 workspace prev_on_output
@@ -210,12 +210,12 @@ mode "$mode_nop" {
 }
 bindsym Scroll_Lock mode "$mode_nop"
 
-set $mode_display Display default (d), hostmode (h), media (m), tv (t)
+set $mode_display Display default (d), hostmode (h), tv (t), tv@4k (m)
 mode "$mode_display" {
     bindsym d exec --no-startup-id $HOME/.screenlayout/monitor.sh
     bindsym h exec --no-startup-id $HOME/.screenlayout/hostmode.sh
+    bindsym t exec --no-startup-id $HOME/.screenlayout/tv.sh
     bindsym m exec --no-startup-id $HOME/.screenlayout/media.sh
-    bindsym t exec --no-startup-id $HOME/.screenlayout/dupetv.sh
 
     bindsym Return mode "default"
     bindsym Escape mode "default", restart
@@ -279,7 +279,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- lock
 exec_always --no-startup-id pkill xcompmgr; xcompmgr -c -t-5 -l-5 -r3.3 -o.33
 exec_always --no-startup-id $HOME/.i3/i3-alternating-layouts.py 
 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 150% && pkill -RTMIN+10 i3blocks #workaround for 9% left channel bug after exiting with higher than 100% volume
-exec --no-startup-id pactl set-source-volume @DEFAULT_SOURCE@ 120% #pulseaudio is good btw; imagine saving volume
+exec --no-startup-id pactl set-source-volume @DEFAULT_SOURCE@ 100% #pulseaudio is good btw; imagine saving volume
 
 #wallpaper
 exec_always --no-startup-id $HOME/.fehbg
