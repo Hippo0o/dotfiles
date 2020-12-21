@@ -4,5 +4,5 @@ conky.config = {
   update_interval = 1,
 }
 conky.text = [[
-${downspeed enp4s0}
+${downspeed enp5s0}
 ]]

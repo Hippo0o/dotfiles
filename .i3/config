@@ -173,6 +173,8 @@ for_window [class=".*"] border pixel 1
 #for_window [class="^.*\.exe$"] floating enable
 for_window [class="Chromium" title="DevTools - *"] floating enable
 for_window [class="Pavucontrol"] floating enable
+for_window [class="discord"] floating enable
+for_window [class="discord"] sticky enable
 for_window [class="TelegramDesktop"] floating enable
 for_window [class="TelegramDesktop"] sticky enable
 for_window [class="Nm-connection-editor"] floating enable
@@ -182,7 +184,7 @@ for_window [class="X2GoAgent"] floating enable
 
 #assign [class="^.*\.exe$"] $ws7
 #assign [class="Wine"] $ws7
-assign [class="discord"] $wsf1
+#assign [class="discord"] $wsf1
 assign [class="Bitwarden"] $wsf5
 #assign [class="X2GoAgent"] $ws10
 #assign [title="^.+Twitch.+$"] $wsf2
