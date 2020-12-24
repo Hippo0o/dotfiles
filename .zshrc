@@ -96,7 +96,7 @@ alias neofetch='neofetch --color_blocks off --ascii_distro arch --ascii_colors 7
 alias ssh='TERM=xterm ssh'
 alias dockerc='docker-compose'
 alias yay='yay --nocleanmenu --nodiffmenu --editmenu'
-alias update='yay -Syu'
+alias update='screen -S update sh -c "yay -Syu; read"'
 alias git-acp='git add .; git commit -m "$(date +%Y-%m-%d\ %H:%M)"; git push'
 alias ccopy='xclip -selection c'
 
