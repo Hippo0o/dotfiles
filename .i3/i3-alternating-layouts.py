@@ -12,12 +12,23 @@ def get_comma_separated_args(option, opt, value, parser):
 
 
 parser = OptionParser()
-parser.add_option("-e", "--exclude-workspaces", dest="excludes", type="string", action="callback", callback=get_comma_separated_args,
-                  metavar="ws1,ws2,.. ", help="List of workspaces that should be ignored.")
-parser.add_option("-o", "--outputs", dest="outputs", type="string", action="callback", callback=get_comma_separated_args,
-                  metavar="HDMI-0,DP-0,.. ", help="List of outputs that should be used instead of all.")
+parser.add_option("-e",
+                  "--exclude-workspaces",
+                  dest="excludes",
+                  type="string",
+                  action="callback",
+                  callback=get_comma_separated_args,
+                  metavar="ws1,ws2,.. ",
+                  help="List of workspaces that should be ignored.")
+parser.add_option("-o",
+                  "--outputs",
+                  dest="outputs",
+                  type="string",
+                  action="callback",
+                  callback=get_comma_separated_args,
+                  metavar="HDMI-0,DP-0,.. ",
+                  help="List of outputs that should be used instead of all.")
 (options, args) = parser.parse_args()
-
 
 skip_window_id = 0
 
@@ -26,10 +37,12 @@ async def grab_focused(c):
     tree = await c.get_tree()
     focused_window = tree.find_focused()
 
-    if(options.excludes and focused_window.workspace().name in options.excludes):
+    if (options.excludes
+            and focused_window.workspace().name in options.excludes):
         return None
 
-    if(options.outputs and focused_window.ipc_data["output"] not in options.outputs):
+    if (options.outputs
+            and focused_window.ipc_data["output"] not in options.outputs):
         return None
 
     return focused_window
@@ -49,11 +62,14 @@ async def set_split(c, e):
     else:
         skip_window_id = 0
 
-    if (parent.layout != "tabbed" and parent.layout != "stacked"):
-        if (focused_window.rect.height > focused_window.rect.width):  
+    if (parent.layout != "tabbed" and parent.layout != "stacked"
+            and focused_window.layout != "tabbed"
+            and focused_window.layout != "stacked"):
+        if (focused_window.rect.height > focused_window.rect.width):
             await c.command("split vertical")
-        
-        if (focused_window.rect.height < focused_window.rect.width and len(parent.nodes)==1):  
+
+        if (focused_window.rect.height < focused_window.rect.width
+                and len(parent.nodes) == 1):
             await c.command("split horizontal")
         # if prev_window.rect.height > prev_window.rect.width:
         #     await c.command("split vertical")
@@ -89,5 +105,6 @@ async def main():
     c.on(Event.WINDOW_FOCUS, set_split)
     c.on(Event.WINDOW_MOVE, move_workaround)
     await c.main()
+
 
 asyncio.get_event_loop().run_until_complete(main())

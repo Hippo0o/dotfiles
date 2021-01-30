@@ -63,6 +63,7 @@ bindsym $mod+l exec loginctl lock-session
 #bindsym Pause exec --no-startup-id loginctl lock-session
 
 bindsym --release $mod+Print exec --no-startup-id gnome-screenshot -i
+bindsym --release Print exec --no-startup-id gnome-screenshot
 bindsym --release Shift+Print exec --no-startup-id maim -s | xclip -selection clipboard -t image/png
 
 #i dont need help
@@ -174,9 +175,9 @@ for_window [class=".*"] border pixel 1
 for_window [class="Chromium" title="DevTools - *"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [class="discord"] floating enable
-for_window [class="discord"] sticky enable
+#for_window [class="discord"] sticky enable
 for_window [class="TelegramDesktop"] floating enable
-for_window [class="TelegramDesktop"] sticky enable
+#for_window [class="TelegramDesktop"] sticky enable
 for_window [class="Nm-connection-editor"] floating enable
 for_window [instance="google-chrome \(\/*"] floating enable #chromedriver
 for_window [class="Mate-screenshot"] sticky enable
