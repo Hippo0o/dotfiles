@@ -1,5 +1,5 @@
 #!/bin/bash
 /etc/X11/xinit/xinitrc.d/50-systemd-user.sh
 systemctl --user start xsession.target
-i3 
+dbus-run-session i3 > /dev/null
 systemctl --user stop xsession.target

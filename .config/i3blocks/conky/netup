@@ -4,5 +4,5 @@ conky.config = {
   update_interval = 1,
 }
 conky.text = [[
-${if_match "${upspeed wlp0s20f3}"=="0B"}${upspeed enp0s31f6}${else}${upspeed wlp0s20f3}${endif}
+${if_match "${upspeed wlp0s20f3}"=="0 B"}${upspeed enp0s31f6}${else}${upspeed wlp0s20f3}${endif}
 ]]
