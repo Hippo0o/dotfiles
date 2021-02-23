@@ -1,6 +1,11 @@
-#!/bin/sh
+#!/bin/bash
 LC_ALL=en_US.UTF-8
 
-BROWSER=$(zenity --list --height=200 --width=250 --text 'open with...' --column=browser --title='select your browser' "google-chrome-stable" "chromium")
+BROWSER=$(zenity --list --height=200 --width=250 --text 'open with...' --column=browser --title='select your browser' "google-chrome-stable" "chromium" "copy link")
 #BROWSER=$(zenity --list --radiolist --height=200 --width=250 --text 'open with...' --column='' --column=browser --title='select your browser' TRUE "google-chrome-stable" FALSE "chromium")
-$BROWSER --new-window $* &
+if [ "$BROWSER" == "copy link" ]
+then
+   echo $* | xclip -selection c
+else
+  $BROWSER --new-window $* &
+fi
