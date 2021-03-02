@@ -34,8 +34,8 @@ fi
 #$HOME/.screenlayout/work.sh 
 #setxkbmap -layout de -variant us
 #xkbset bo 50 #mechanical keyboard sickness
-#xset s off
-#xset s noblank
-#xset dpms 0 0 0  
+xset s off
+xset s noblank
+xset dpms 0 0 0  
 
-exec i3-session &> /dev/null
+exec i3-session > /dev/null

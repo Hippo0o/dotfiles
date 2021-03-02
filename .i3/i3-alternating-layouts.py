@@ -69,7 +69,7 @@ async def set_split(c, e):
             await c.command("split vertical")
 
         if (focused_window.rect.height < focused_window.rect.width
-                and len(parent.nodes) == 1):
+                and len(parent.nodes) != 2):
             await c.command("split horizontal")
         # if prev_window.rect.height > prev_window.rect.width:
         #     await c.command("split vertical")
