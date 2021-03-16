@@ -99,7 +99,7 @@ alias ssh='TERM=xterm ssh'
 alias dockerc='docker-compose'
 alias yay='yay --nocleanmenu --nodiffmenu --editmenu'
 alias update='screen -S update -d -R -- sh -c "yay -Syu; read -p done"'
-alias git-acp='git add .; git commit -m "$(git status -s)"; git push'
+alias git-acp='git add .; git commit -m "$(date +%Y-%m-%d\ %H:%M)\n$(git status -s)"; git push'
 alias ccopy='xclip -selection c'
 
 #
