@@ -5,7 +5,7 @@ rofi.color-normal: argb:00000000, #93E0E3, argb:00000000, #93E0E3, #1e1e1e
 rofi.color-active: argb:00000000, #EEE8D5, argb:00000000, #EEE8D5, #1e1e1e
 rofi.color-urgent: argb:00000000, #FE0030, argb:00000000, #FE0030, #1e1e1e
 rofi.font:                           Fira Mono Regular 23
-rofi.run-command:                    i3-msg exec '{cmd}'
+rofi.run-command:                    i3-msg exec -- {cmd}
 rofi.fullscreen:                     false
 rofi.m:                              -5
 rofi.separator-style:                none
