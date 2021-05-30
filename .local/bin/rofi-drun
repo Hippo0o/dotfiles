@@ -1,1 +1,1 @@
-rofi -show drun -show-icons -padding 30 -columns 5 -disable-history -lines 20 -bw 0 -fullscreen $@
+rofi -show drun -show-icons -padding 30 -columns 5 -lines 20 -bw 0 -fullscreen $@

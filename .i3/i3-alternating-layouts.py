@@ -50,7 +50,11 @@ async def grab_focused(c):
 
 async def set_split(c, e):
     global skip_window_id
-    focused_window = await grab_focused(c)
+    try:
+        focused_window = await grab_focused(c)
+    except:
+        return
+
     if focused_window is None:
         return
 
@@ -81,7 +85,10 @@ async def set_split(c, e):
 # Workaround needed or windows get unable to be moved outside their parent container in certain cases.
 async def move_workaround(c, e):
     global skip_window_id
-    focused_window = await grab_focused(c)
+    try:
+        focused_window = await grab_focused(c)
+    except:
+        return
 
     if focused_window is None:
         return
