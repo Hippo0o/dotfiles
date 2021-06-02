@@ -131,19 +131,20 @@ bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
+bindsym $mod+Shift+Tab move container to workspace back_and_forth
 bindsym $mod+Shift+Escape move scratchpad
 
 #bindsym --whole-window $mod+button4 workspace prev_on_output
 #bindsym --whole-window $mod+button5 workspace next_on_output
 
-set $mon1 eDP1 
-set $mon2 DP1
+set $mon2 eDP1 
+set $mon1 DP1
 
-#workspace $wsf1 output $mon1
-#workspace $wsf2 output $mon1
-#workspace $wsf3 output $mon1
-#workspace $wsf4 output $mon1
-#workspace $wsf5 output $mon1
+workspace $wsf1 output $mon2
+workspace $wsf2 output $mon2
+workspace $wsf3 output $mon2
+workspace $wsf4 output $mon2
+workspace $wsf5 output $mon2
 
 workspace $ws1 output $mon1
 workspace $ws2 output $mon1
@@ -177,6 +178,7 @@ for_window [class="Nm-connection-editor"] floating enable
 for_window [class="Google-chrome"] floating enable 
 for_window [class="Mate-screenshot"] sticky enable
 for_window [class="Mate-search-tool"] floating enable
+for_window [class="jetbrains-phpstorm" title="win0"] floating enable
 
 #assign [class="^.*\.exe$"] $ws7
 #assign [class="Wine"] $ws7
