@@ -241,7 +241,7 @@ bar {
     }
     position top
 
-    #tray_output primary
+    tray_output primary
     tray_padding 1
 
     #to force an workspace order without displaying the order numbers
