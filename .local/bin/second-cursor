@@ -1,8 +1,0 @@
-#!/bin/bash
-
-if [ $(xinput list | grep "Auxiliary" -c) -eq 0 ]; then
-    xinput create-master Auxiliary
-    xinput reattach "Logitech USB Laser Mouse" "Auxiliary pointer"
-else
-    xinput remove-master "Auxiliary pointer"
-fi
