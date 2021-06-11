@@ -16,7 +16,8 @@ bindsym --release $mod+Shift+q exec xkill
 
 bindsym $mod+Shift+d exec dmenu-run
 bindsym $mod+d exec rofi-drun
-bindsym $mod+o exec rofi-clipboard
+bindsym $mod+i exec rofi-clipboard
+bindsym $mod+Shift+i exec clipster -s
 
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
@@ -164,11 +165,14 @@ new_window pixel 1
 new_float pixel 1
 for_window [class=".*"] border pixel 1
 
+for_window [class=".*"] sticky enable
+
 #for_window [class=".*"] split toggle
 #default_orientation vertical
 
 #for_window [class="Wine"] floating enable
 #for_window [class="^.*\.exe$"] floating enable
+
 for_window [class="Chromium" title="DevTools - *"] floating enable
 for_window [class="TelegramDesktop"] floating enable
 for_window [class="Bitwarden"] floating enable
@@ -268,15 +272,13 @@ client.urgent           #FE0030 #FE0030 #1e1e1e #FE0030
 #BEGIN AUTOSTART
 
 #system
-#exec --no-startup-id /usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &> /dev/null
-#exec --no-startup-id /usr/lib/mate-notification-daemon/mate-notification-daemon
 exec --no-startup-id unclutter
 exec --no-startup-id xss-lock --transfer-sleep-lock -- lock
 exec --no-startup-id dex -a #/etc/xdg/autostart/
-#exec --no-startup-id nm-applet
+exec --no-startup-id clipster -d 
 exec_always --no-startup-id pkill picom; sleep 0.1; picom --config ~/.config/compton.conf
 #exec_always --no-startup-id pkill xcompmgr; xcompmgr #-c -t-5 -l-5 -r3.3 -o.33
-exec_always --no-startup-id $HOME/.i3/i3-alternating-layouts.py 
+exec_always --no-startup-id $HOME/.i3/i3-alternating-layouts.py 2>> $HOME/.i3/errors.log
 
 #wallpaper
 exec_always --no-startup-id $HOME/.fehbg
