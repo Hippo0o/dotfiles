@@ -61,6 +61,7 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(
     docker docker-compose
     kubectl
+    composer
 )
 
 if [[ $TERM == xterm-termite ]]; then

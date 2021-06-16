@@ -1,0 +1,10 @@
+[Unit]
+Requires=xsession.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/mate-power-manager
+Restart=on-failure
+
+[Install]
+WantedBy=xsession.target

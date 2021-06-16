@@ -16,6 +16,7 @@
 !.config/termite/config
 !.config/rofi/config
 !.config/i3blocks
+!.config/systemd/user
 !.local/bin/dmenu-run
 !.local/bin/rofi-drun
 !.local/bin/xrun
