@@ -220,7 +220,7 @@ bindsym Scroll_Lock mode "$mode_nop"
 
 #BEGIN THEMING
 
-font pango:Fira Mono Bold 11
+font pango:Fira Mono Semi-Bold 11
 
 bar {
     colors {
