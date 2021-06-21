@@ -16,8 +16,8 @@ bindsym --release $mod+Shift+q exec xkill
 
 bindsym $mod+Shift+d exec dmenu-run
 bindsym $mod+d exec rofi-drun
-bindsym $mod+i exec rofi-clipboard
-bindsym $mod+Shift+i exec clipster -s
+bindsym $mod+p exec rofi-clipboard
+bindsym $mod+Shift+p exec clipster -s
 
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
@@ -177,6 +177,7 @@ for_window [class=".*"] sticky enable
 
 for_window [class="Chromium" title="DevTools - *"] floating enable
 for_window [class="TelegramDesktop"] floating enable
+for_window [class="Slack"] floating enable
 for_window [class="Bitwarden"] floating enable
 for_window [class="anbox"] floating enable
 for_window [class="discord"] floating enable
@@ -214,17 +215,6 @@ mode "$mode_nop" {
     bindsym Scroll_Lock mode "default"
 }
 bindsym Scroll_Lock mode "$mode_nop"
-
-set $mode_display Display default (d), hostmode (h), media (m)
-mode "$mode_display" {
-    bindsym d exec --no-startup-id $HOME/.screenlayout/monitor.sh
-    bindsym h exec --no-startup-id $HOME/.screenlayout/hostmode.sh
-    bindsym m exec --no-startup-id $HOME/.screenlayout/media.sh
-
-    bindsym Return mode "default"
-    bindsym Escape mode "default", restart
-}
-bindsym $mod+p mode "$mode_display"
 
 #END MODES
 

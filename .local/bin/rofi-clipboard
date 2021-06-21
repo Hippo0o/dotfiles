@@ -17,11 +17,11 @@ fi
 #  - Remove empty clipboard items
 #  - Add line numbers to clip items
 # NOTE: This is all done in a single line because bash can't store a NUL byte
-C_HIST="$(clipster -c -o -n 99 -0 \
+C_HIST="$(clipster -c -o -n 999 -0 \
         | gawk 'BEGIN {RS = "\0"; ORS = "\0"} NF > 0 { print substr($0, 1, 250) }' \
         | gawk 'BEGIN {RS = "\0"; FS="\n"; OFS=" " } { $1=$1; print $0 }'  \
         | sed 's/^ *//' \
-        | gawk '{printf("%02d %s\n", NR, $0)}')"
+        | gawk '{printf("%003d %s\n", NR, $0)}')"
 
 # Echo clipboard items to Rofi and save the selection made by user
 SELECTION="$(echo "$C_HIST" | rofi -dmenu -i -p 'selection: ')"
