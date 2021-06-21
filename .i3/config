@@ -23,10 +23,10 @@ bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+bindsym $mod+Shift+Left exec i3l move left
+bindsym $mod+Shift+Down exec i3l move down
+bindsym $mod+Shift+Up exec i3l move up
+bindsym $mod+Shift+Right exec i3l move right
 
 bindsym $mod+Ctrl+Left resize shrink width 15 px or 5 ppt
 bindsym $mod+Ctrl+Down resize shrink height 15 px or 5 ppt
@@ -44,7 +44,12 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 bindsym $mod+shift+f fullscreen toggle global
 
-bindsym $mod+s layout stacking
+bindsym $mod+s exec i3l swap container with mark swapee
+#bindsym $mod+s swap container with con_id 0
+show_marks yes
+bindsym $mod+Shift+s mark --toggle swapee
+
+bindsym $mod+t layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
@@ -94,6 +99,23 @@ set $ws8 "8:8"
 set $ws9 "9:9"
 set $ws10 "10:10"
 
+set $i3l autosplit to workspace $ws1
+set $i3l autosplit to workspace $ws2
+set $i3l autosplit to workspace $ws3
+set $i3l autosplit to workspace $ws4
+set $i3l autosplit to workspace $ws5
+set $i3l autosplit to workspace $ws6
+set $i3l autosplit to workspace $ws7
+set $i3l autosplit to workspace $ws8
+set $i3l autosplit to workspace $ws9
+set $i3l autosplit to workspace $ws10
+
+set $i3l autosplit to workspace $wsf1
+set $i3l autosplit to workspace $wsf2
+set $i3l autosplit to workspace $wsf3
+set $i3l autosplit to workspace $wsf4
+set $i3l autosplit to workspace $wsf5
+
 bindsym $mod+F1 workspace $wsf1
 bindsym $mod+F2 workspace $wsf2
 bindsym $mod+F3 workspace $wsf3
@@ -141,7 +163,7 @@ bindsym $mod+Shift+Escape move scratchpad
 #bindsym --whole-window $mod+button5 workspace next_on_output
 
 set $mon1 DisplayPort-0
-set $mon2 DVI-D-0
+set $mon2 HDMI-A-0
 
 workspace $wsf1 output $mon2
 workspace $wsf2 output $mon2
@@ -164,9 +186,9 @@ workspace $ws10 output $mon1
 
 #BEGIN RULES
 
-new_window pixel 1
-new_float pixel 1
-for_window [class=".*"] border pixel 1
+#new_window pixel 1
+#new_float pixel 1
+for_window [class=".*"] border pixel 2
 
 #for_window [class=".*"] split toggle
 #default_orientation vertical
@@ -235,7 +257,7 @@ bindsym $mod+p mode "$mode_display"
 
 #BEGIN THEMING
 
-font pango:Fira Mono Regular 11
+font pango:Fira Mono Semi-Bold 11
 
 bar {
     colors {
@@ -287,7 +309,8 @@ exec --no-startup-id network-manager-applet
 exec --no-startup-id xss-lock --transfer-sleep-lock -- lock
 exec_always --no-startup-id pkill picom; sleep 0.1; picom --config ~/.config/compton.conf
 #exec_always --no-startup-id pkill xcompmgr; xcompmgr -c -t-5 -l-5 -r3.3 -o.33
-exec_always --no-startup-id $HOME/.i3/i3-alternating-layouts.py 2>> $HOME/.i3/errors.log
+#exec_always --no-startup-id $HOME/.i3/i3-alternating-layouts.py 2>> $HOME/.i3/errors.log
+exec_always --no-startup-id i3-layouts
 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 150% && pkill -RTMIN+10 i3blocks #workaround for 9% left channel bug after exiting with higher than 100% volume
 exec --no-startup-id pactl set-source-volume @DEFAULT_SOURCE@ 100% #pulseaudio is good btw; imagine saving volume
 
