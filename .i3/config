@@ -61,8 +61,8 @@ bindsym $mod+Shift+r restart
 
 bindsym $mod+l exec --no-startup-id loginctl lock-session
 
-bindsym --release Print exec --no-startup-id mate-screenshot -i
-bindsym --release Shift+Print exec --no-startup-id maim -s | xclip -selection clipboard -t image/png
+bindsym --release Shift+Print exec --no-startup-id mate-screenshot -i
+bindsym --release Print exec --no-startup-id maim -s | xclip -selection clipboard -t image/png
 
 bindsym $mod+b exec --no-startup-id bitwarden
 
@@ -163,14 +163,14 @@ workspace $ws10 output $mon1
 
 #BEGIN RULES
 
-new_window pixel 1
-new_float pixel 1
-for_window [class=".*"] border pixel 1
+#new_window pixel 1
+#new_float pixel 1
+for_window [class=".*"] border pixel 2
 
 for_window [class=".*"] sticky enable
 
-#for_window [class=".*"] split toggle
-#default_orientation vertical
+for_window [class=".*"] split toggle
+default_orientation vertical
 
 #for_window [class="Wine"] floating enable
 #for_window [class="^.*\.exe$"] floating enable
@@ -220,7 +220,7 @@ bindsym Scroll_Lock mode "$mode_nop"
 
 #BEGIN THEMING
 
-font pango:Fira Mono Regular 11
+font pango:Fira Mono Bold 11
 
 bar {
     colors {
@@ -270,7 +270,7 @@ exec --no-startup-id dex -a -s ~/.config/autostart/
 exec --no-startup-id clipster -d 
 exec_always --no-startup-id pkill picom; sleep 0.1; picom --config ~/.config/compton.conf
 #exec_always --no-startup-id pkill xcompmgr; xcompmgr #-c -t-5 -l-5 -r3.3 -o.33
-exec_always --no-startup-id $HOME/.i3/i3-alternating-layouts.py 2>> $HOME/.i3/errors.log
+#exec_always --no-startup-id $HOME/.i3/i3-alternating-layouts.py 2>> $HOME/.i3/errors.log
 
 #wallpaper
 exec_always --no-startup-id $HOME/.fehbg
