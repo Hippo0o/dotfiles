@@ -27,6 +27,10 @@ bindsym $mod+Shift+Left exec i3l move left
 bindsym $mod+Shift+Down exec i3l move down
 bindsym $mod+Shift+Up exec i3l move up
 bindsym $mod+Shift+Right exec i3l move right
+bindsym $mod+Shift+Mod1+Left move left
+bindsym $mod+Shift+Mod1+Down move down
+bindsym $mod+Shift+Mod1+Up move up
+bindsym $mod+Shift+Mod1+Right move right
 
 bindsym $mod+Ctrl+Left resize shrink width 15 px or 5 ppt
 bindsym $mod+Ctrl+Down resize shrink height 15 px or 5 ppt
@@ -44,9 +48,7 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 bindsym $mod+shift+f fullscreen toggle global
 
-bindsym $mod+s exec i3l swap container with mark swapee
-#bindsym $mod+s swap container with con_id 0
-show_marks yes
+bindsym $mod+s exec i3l swap container with mark swapee 
 bindsym $mod+Shift+s mark --toggle swapee
 
 bindsym $mod+t layout stacking
@@ -110,11 +112,11 @@ set $i3l autosplit to workspace $ws8
 set $i3l autosplit to workspace $ws9
 set $i3l autosplit to workspace $ws10
 
-set $i3l autosplit to workspace $wsf1
-set $i3l autosplit to workspace $wsf2
-set $i3l autosplit to workspace $wsf3
-set $i3l autosplit to workspace $wsf4
-set $i3l autosplit to workspace $wsf5
+set $i3l companion to workspace $wsf1
+set $i3l companion to workspace $wsf2
+set $i3l companion to workspace $wsf3
+set $i3l companion to workspace $wsf4
+set $i3l companion to workspace $wsf5
 
 bindsym $mod+F1 workspace $wsf1
 bindsym $mod+F2 workspace $wsf2
