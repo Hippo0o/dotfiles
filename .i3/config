@@ -47,8 +47,9 @@ bindsym $mod+h split h
 bindsym $mod+v split v
 
 bindsym $mod+w exec i3l swap container with mark i3l:$(i3-current-workspace):main
-bindsym $mod+s exec i3l swap container with mark swapee 
-bindsym $mod+Shift+s mark --toggle swapee
+bindsym $mod+Shift+w exec i3l swap container with mark i3l::previous
+bindsym $mod+s exec i3l swap container with mark swapee
+bindsym $mod+Shift+s mark --add --toggle swapee
 
 bindsym $mod+f fullscreen toggle
 
