@@ -102,16 +102,16 @@ set $ws8 "8:8"
 set $ws9 "9:9"
 set $ws10 "10:10"
 
-set $i3l 3columns 0.5 0.33 to workspace $ws1
-set $i3l 3columns 0.5 0.33 to workspace $ws2
-set $i3l 3columns 0.5 0.33 to workspace $ws3
-set $i3l 3columns 0.5 0.33 to workspace $ws4
-set $i3l 3columns 0.5 0.33 to workspace $ws5
-set $i3l 3columns 0.5 0.33 to workspace $ws6
-set $i3l 3columns 0.5 0.33 to workspace $ws7
-set $i3l 3columns 0.5 0.33 to workspace $ws8
-set $i3l 3columns 0.5 0.33 to workspace $ws9
-set $i3l 3columns 0.5 0.33 to workspace $ws10
+set $i3l 3columns 0.5 0.33 2 to workspace $ws1
+set $i3l 3columns 0.5 0.33 2 to workspace $ws2
+set $i3l 3columns 0.5 0.33 2 to workspace $ws3
+set $i3l 3columns 0.5 0.33 2 to workspace $ws4
+set $i3l 3columns 0.5 0.33 2 to workspace $ws5
+set $i3l 3columns 0.5 0.33 2 to workspace $ws6
+set $i3l 3columns 0.5 0.33 2 to workspace $ws7
+set $i3l 3columns 0.5 0.33 2 to workspace $ws8
+set $i3l 3columns 0.5 0.33 2 to workspace $ws9
+set $i3l 3columns 0.5 0.33 2 to workspace $ws10
 
 set $i3l none to workspace $wsf1
 set $i3l none to workspace $wsf2
@@ -297,7 +297,7 @@ exec --no-startup-id clipster -d
 exec_always --no-startup-id pkill picom; sleep 0.1; picom --config ~/.config/compton.conf
 #exec_always --no-startup-id pkill xcompmgr; xcompmgr #-c -t-5 -l-5 -r3.3 -o.33
 #exec_always --no-startup-id $HOME/.i3/i3-alternating-layouts.py 2>> $HOME/.i3/errors.log
-exec_always --no-startup-id i3-layouts
+exec_always --no-startup-id i3-layouts 2>> $HOME/.i3/errors.log
 
 #wallpaper
 exec_always --no-startup-id $HOME/.fehbg
