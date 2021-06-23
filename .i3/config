@@ -66,7 +66,6 @@ bindsym $mod+Shift+a focus child
 
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
-bindsym $mod+Shift+l exec i3l none; exec i3l $layout
 #bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 bindsym $mod+l exec --no-startup-id loginctl lock-session
@@ -75,6 +74,11 @@ bindsym --release Shift+Print exec --no-startup-id mate-screenshot -i
 bindsym --release Print exec --no-startup-id maim -s | xclip -selection clipboard -t image/png
 
 bindsym $mod+b exec --no-startup-id bitwarden
+
+bindsym $mod+Shift+j exec i3l none
+bindsym $mod+Shift+k exec i3l $layout
+bindsym $mod+Shift+l exec i3l $layout2
+
 
 #i dont need help
 #bindsym F1 nop
@@ -103,7 +107,10 @@ set $ws8 "8:8"
 set $ws9 "9:9"
 set $ws10 "10:10"
 
-set $layout 3columns 0.5 0.33
+
+#i3-layouts
+set $layout 3columns 0.5 0.33 0 right
+set $layout2 spiral
 set $i3l $layout to workspace $ws1
 set $i3l $layout to workspace $ws2
 set $i3l $layout to workspace $ws3
@@ -114,7 +121,6 @@ set $i3l $layout to workspace $ws7
 set $i3l $layout to workspace $ws8
 set $i3l $layout to workspace $ws9
 set $i3l $layout to workspace $ws10
-
 set $i3l none to workspace $wsf1
 set $i3l none to workspace $wsf2
 set $i3l none to workspace $wsf3
