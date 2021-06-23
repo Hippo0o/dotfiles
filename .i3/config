@@ -43,8 +43,8 @@ bindsym $mod+Prior exec i3-msg resize grow height 90 px && i3-msg resize grow wi
 
 bindsym $mod+Home resize set 500px 283px
 
-bindsym $mod+h split h
-bindsym $mod+v split v
+bindsym $mod+h exec i3l none; split h
+bindsym $mod+v exec i3l none; split v
 
 bindsym $mod+w exec i3l swap container with mark i3l:$(i3-current-workspace):main
 bindsym $mod+Shift+w exec i3l swap container with mark i3l::previous
@@ -55,7 +55,7 @@ bindsym $mod+f fullscreen toggle
 
 bindsym $mod+Shift+t layout stacking
 bindsym $mod+t layout tabbed
-bindsym $mod+e layout toggle split
+bindsym $mod+e exec i3l none; layout toggle split
 
 bindsym $mod+space floating toggle
 bindsym $mod+Ctrl+space sticky toggle
@@ -305,7 +305,7 @@ exec --no-startup-id clipster -d
 exec_always --no-startup-id pkill picom; sleep 0.1; picom --config ~/.config/compton.conf
 #exec_always --no-startup-id pkill xcompmgr; xcompmgr #-c -t-5 -l-5 -r3.3 -o.33
 #exec_always --no-startup-id $HOME/.i3/i3-alternating-layouts.py 2>> $HOME/.i3/errors.log
-exec_always --no-startup-id i3-layouts 2>> $HOME/.i3/errors.log
+exec_always --no-startup-id i3-layouts --debug > ~/i3-layouts.log 2>&1
 
 #wallpaper
 exec_always --no-startup-id $HOME/.fehbg
