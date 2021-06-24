@@ -23,14 +23,10 @@ bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
-bindsym $mod+Shift+Left exec i3l move left
-bindsym $mod+Shift+Down exec i3l move down
-bindsym $mod+Shift+Up exec i3l move up
-bindsym $mod+Shift+Right exec i3l move right
-bindsym $mod+Shift+Mod1+Left move left
-bindsym $mod+Shift+Mod1+Down move down
-bindsym $mod+Shift+Mod1+Up move up
-bindsym $mod+Shift+Mod1+Right move right
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
 
 bindsym $mod+Ctrl+Left resize shrink width 15 px or 5 ppt
 bindsym $mod+Ctrl+Down resize shrink height 15 px or 5 ppt
@@ -42,20 +38,20 @@ bindsym $mod+Prior exec i3-msg resize grow height 90 px && i3-msg resize grow wi
 
 bindsym $mod+Home resize set 524px 295px
 
-bindsym $mod+h exec i3l none; split h
-bindsym $mod+v exec i3l none; split v
+bindsym $mod+h split h
+bindsym $mod+v split v
 
-bindsym $mod+w exec i3l swap container with mark i3l:$(i3-current-workspace):main
-bindsym $mod+Shift+w exec i3l swap container with mark i3l::previous
-bindsym $mod+s exec i3l swap container with mark swapee
+bindsym $mod+w exec $HOME/.i3/i3-promote.py
+#bindsym $mod+Shift+w exec i3l swap container with mark i3l::previous
+bindsym $mod+s swap container with mark swapee
 bindsym $mod+Shift+s mark --add --toggle swapee
 
 bindsym $mod+f fullscreen toggle
 bindsym $mod+shift+f fullscreen toggle global
 
-bindsym $mod+Shift+t exec i3l none; layout stacking
-bindsym $mod+t exec i3l none; layout tabbed
-bindsym $mod+e exec i3l none; layout toggle split
+bindsym $mod+Shift+t layout stacking
+bindsym $mod+t layout tabbed
+bindsym $mod+e layout toggle split
 
 bindsym $mod+space floating toggle
 bindsym $mod+Ctrl+space sticky toggle
@@ -75,10 +71,6 @@ bindsym $mod+l exec loginctl lock-session
 bindsym --release $mod+Print exec --no-startup-id gnome-screenshot -i
 bindsym --release Print exec --no-startup-id gnome-screenshot
 bindsym --release Shift+Print exec --no-startup-id maim -s | xclip -selection clipboard -t image/png
-
-bindsym $mod+Shift+j exec i3l none
-bindsym $mod+Shift+k exec i3l $layout
-bindsym $mod+Shift+l exec i3l $layout2
 
 #i dont need help
 #bindsym F1 nop
@@ -106,25 +98,6 @@ set $ws7 "7:7"
 set $ws8 "8:8"
 set $ws9 "9:9"
 set $ws10 "10:10"
-
-#i3-layouts
-set $layout 3columns 0.5 0.33 0 right
-set $layout2 2columns
-set $i3l $layout to workspace $ws1
-set $i3l $layout to workspace $ws2
-set $i3l $layout to workspace $ws3
-set $i3l $layout to workspace $ws4
-set $i3l $layout to workspace $ws5
-set $i3l $layout to workspace $ws6
-set $i3l $layout to workspace $ws7
-set $i3l $layout to workspace $ws8
-set $i3l $layout to workspace $ws9
-set $i3l $layout to workspace $ws10
-set $i3l $layout2 to workspace $wsf1
-set $i3l $layout2 to workspace $wsf2
-set $i3l $layout2 to workspace $wsf3
-set $i3l $layout2 to workspace $wsf4
-set $i3l $layout2 to workspace $wsf5
 
 bindsym $mod+F1 workspace $wsf1
 bindsym $mod+F2 workspace $wsf2
@@ -320,7 +293,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- lock
 exec_always --no-startup-id pkill picom; sleep 0.1; picom --config ~/.config/compton.conf
 #exec_always --no-startup-id pkill xcompmgr; xcompmgr -c -t-5 -l-5 -r3.3 -o.33
 #exec_always --no-startup-id $HOME/.i3/i3-alternating-layouts.py 2>> $HOME/.i3/errors.log
-exec_always --no-startup-id i3-layouts
+exec_always --no-startup-id $HOME/.i3/i3-autosplit.py 2>> $HOME/.i3/errors.log
 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 150% && pkill -RTMIN+10 i3blocks #workaround for 9% left channel bug after exiting with higher than 100% volume
 exec --no-startup-id pactl set-source-volume @DEFAULT_SOURCE@ 100% #pulseaudio is good btw; imagine saving volume
 
