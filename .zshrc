@@ -62,6 +62,7 @@ plugins=(
     docker docker-compose
     kubectl
     composer
+    npm
 )
 
 if [[ $TERM == xterm-termite ]]; then
@@ -91,6 +92,8 @@ export EDITOR='vim'
 export VISUAL='vim'
 
 alias ll='ls -alFh --group-directories-first --color=auto'
+alias df='df -h'
+alias duh='du -hs * | sort -h'
 alias i3config='vi ~/.i3/config'
 alias neofetch='neofetch --color_blocks off --ascii_distro arch --ascii_colors 7 --colors 6 7 7 6'
 alias ssh='TERM=xterm ssh'
