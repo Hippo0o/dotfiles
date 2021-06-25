@@ -88,7 +88,7 @@ set $wsf1 "11:f1"
 set $wsf2 "12:f2"
 set $wsf3 "13:f3"
 set $wsf4 "14:f4"
-set $wsf5 "15:f5 "
+set $wsf5 "15:f5"
 
 set $ws1 "1:1"
 set $ws2 "2:2"
@@ -199,7 +199,7 @@ for_window [class="jetbrains-phpstorm" title="win0"] floating enable
 #assign [class="^.*\.exe$"] $ws7
 #assign [class="Wine"] $ws7
 #assign [class="discord"] $wsf1
-assign [class="Bitwarden"] $wsf5
+#assign [class="Bitwarden"] $wsf5
 #assign [class="X2GoAgent"] $ws10
 #assign [title="^.+Twitch.+$"] $wsf2
 
