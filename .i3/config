@@ -9,7 +9,7 @@ floating_modifier $mod
 
 bindsym $mod+Return exec termite
 bindsym $mod+Shift+Return exec google-chrome-stable #xdg-open http://
-bindsym $mod+Mod1+Shift+Return exec chromium #xdg-open http://
+bindsym $mod+Mod1+Shift+Return exec google-chromium #xdg-open http://
 bindsym $mod+Ctrl+Return exec xdg-open .
 
 bindsym $mod+q kill
@@ -42,7 +42,6 @@ bindsym $mod+h split h
 bindsym $mod+v split v
 
 bindsym $mod+r exec $HOME/.i3/i3-promote.py
-#bindsym $mod+Shift+w exec i3l swap container with mark i3l::previous
 bindsym $mod+s swap container with mark swapee
 bindsym $mod+Shift+s mark --add --toggle swapee
 
@@ -191,7 +190,7 @@ for_window [class="Slack"] floating enable
 for_window [class="TelegramDesktop"] floating enable
 #for_window [class="TelegramDesktop"] sticky enable
 for_window [class="Nm-connection-editor"] floating enable
-for_window [instance="google-chrome \(\/*"] floating enable #chromedriver
+#for_window [instance="google-chrome \(\/*"] floating enable #chromedriver
 for_window [class="Gnome-screenshot"] floating enable
 for_window [class="X2GoAgent"] floating enable
 for_window [class="jetbrains-phpstorm" title="win0"] floating enable
