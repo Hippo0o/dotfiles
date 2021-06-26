@@ -63,6 +63,7 @@ plugins=(
     docker-compose
     npm
     kubectl
+    composer
 )
 
 if [[ $TERM == xterm-termite ]]; then
