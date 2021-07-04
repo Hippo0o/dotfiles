@@ -293,8 +293,8 @@ exec --no-startup-id network-manager-applet
 exec --no-startup-id xss-lock --transfer-sleep-lock -- lock
 exec_always --no-startup-id pkill picom; sleep 0.1; picom --config ~/.config/compton.conf
 #exec_always --no-startup-id pkill xcompmgr; xcompmgr -c -t-5 -l-5 -r3.3 -o.33
-#exec_always --no-startup-id $HOME/.i3/i3-alternating-layouts.py 2>> $HOME/.i3/errors.log
-exec_always --no-startup-id $HOME/.i3/i3-autosplit.py 2>> $HOME/.i3/errors.log
+exec_always --no-startup-id $HOME/.i3/i3-alternating-layouts.py 2>> $HOME/.i3/errors.log
+#exec_always --no-startup-id $HOME/.i3/i3-autosplit.py 2>> $HOME/.i3/errors.log
 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 150% && pkill -RTMIN+10 i3blocks #workaround for 9% left channel bug after exiting with higher than 100% volume
 exec --no-startup-id pactl set-source-volume @DEFAULT_SOURCE@ 100% #pulseaudio is good btw; imagine saving volume
 
@@ -305,6 +305,5 @@ exec_always --no-startup-id $HOME/.fehbg
 #applications
 #exec --no-startup-id flatpak run com.discordapp.Discord --start-minimized 
 exec --no-startup-id telegram-desktop -startintray
-exec --no-startup-id bitwarden
 
 #END AUTOSTART
